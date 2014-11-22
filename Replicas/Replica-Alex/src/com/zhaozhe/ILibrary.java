@@ -1,7 +1,8 @@
+package com.zhaozhe;
 public interface ILibrary{
 	// 0 : OK
 	// 1 : Server failiure 
-	// 5 : Username exists 
+	// 2 : Username exists 
 	public String registerUser(String instName, String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password);
 	// output: 2@
 
@@ -17,7 +18,7 @@ public interface ILibrary{
 	// 0 : OK
 	// 1 : Server faillure
 	// 2 : Autentciation failed
-	// 4 : Username or Book doesnt exists, or user doesnt have this book
+	// 3 : Username or Book doesnt exists, or user doesnt have this book
 	public String setDuration(String instName, String adminUsername, String adminPassword, String username, String bookName, String authorName, int days);
 	// output: 2@
 

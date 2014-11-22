@@ -1,21 +1,13 @@
 package com.zhaozhe.server;
 
-import java.io.PrintWriter;
 import java.util.List;
 
-import org.omg.CORBA.ORB;
-import org.omg.PortableServer.POA;
-import org.omg.PortableServer.POAHelper;
-
+import com.zhaozhe.ILibrary;
 import com.zhaozhe.entity.Account;
 import com.zhaozhe.entity.Book;
 import com.zhaozhe.entity.Reservation;
 
-import corba.CORBAResponse;
-import corba.LibraryServerPOA;
-
-
-public class LibraryServer extends LibraryServerPOA{
+public class LibraryServer implements ILibrary{
 	
 	/*
 	 * Mark - Driver
@@ -23,27 +15,13 @@ public class LibraryServer extends LibraryServerPOA{
 	
 	public static void main(String[] args) {
 		try {
-			
-			ORB orb = ORB.init(args, null);
-			POA rootPOA = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
-			
 
 			ServerInfoManager serverInfoManager = ServerInfoManager.defaultManager();
 			for (ServerInfo serverInfo: serverInfoManager.getServers()){
 
 				LibraryServer libraryServer = new LibraryServer(serverInfo);
 				
-				byte[] id = rootPOA.activate_object(libraryServer);
-				org.omg.CORBA.Object ref = rootPOA.id_to_reference(id);
-				String ior = orb.object_to_string(ref);
-				
-				PrintWriter fw = new PrintWriter("corba/ior_"+ serverInfo.getIdentity() + ".txt");
-				fw.println(ior);
-				fw.close();
 			}
-			
-			rootPOA.the_POAManager().activate();
-			orb.run();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,8 +75,8 @@ public class LibraryServer extends LibraryServerPOA{
 	 * Mark - Services - Student - Methods
 	 */
 	
-	@Override
-	public CORBAResponse createAccount(String firstName, String lastName, String emailAddress, String phoneNumber, 
+	
+	public String createAccount(String firstName, String lastName, String emailAddress, String phoneNumber, 
 						      String username, String password, String educationalInstitution) {
 		
 		// Assuming that every parameter in this function is not null
@@ -113,7 +91,7 @@ public class LibraryServer extends LibraryServerPOA{
 			if (account != null){
 				response.setErrorCode(ServerError.ACCOUNT_EXISTED);
 				System.out.println(response.getErrorCode());
-				return response.toCorba();
+				return response.toString();
 			}
 			
 			// To execute
@@ -124,14 +102,14 @@ public class LibraryServer extends LibraryServerPOA{
 		}
 
 		System.out.println(response.getErrorCode());
-		return response.toCorba();
+		return response.toString();
 	}
 
 	
 	private static final int _DEFAULT_RESERVATION_DURATION = 14;
 	
-	@Override
-	public CORBAResponse reserveBook(String username, String password, String bookName, String authorName) {
+	
+	public String reserveBook(String username, String password, String bookName, String authorName) {
 
 		// Assuming that every parameter in this function is not null
 
@@ -143,14 +121,14 @@ public class LibraryServer extends LibraryServerPOA{
 		if (account == null) {
 			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 
 		// To check if the password is correct
 		if (!account.getPassword().equals(password)) {
 			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 
 		// To check if the book is exist
@@ -158,7 +136,7 @@ public class LibraryServer extends LibraryServerPOA{
 		if (book == null){
 			response.setErrorCode(ServerError.BOOK_NOT_EXISTED);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 		
 		// Try to reserve a book locally
@@ -183,13 +161,13 @@ public class LibraryServer extends LibraryServerPOA{
 		if (localBookReserved == false) {
 			response.setErrorCode(ServerError.BOOK_NOT_ENOUGH);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 		
-		return response.toCorba();
+		return response.toString();
 	}
 	
-	public CORBAResponse reserveInterLibrary (String username, String password, String bookName, String authorName){
+	public String reserveInterLibrary (String username, String password, String bookName, String authorName){
 
 		// Assuming that every parameter in this function is not null
 
@@ -201,14 +179,14 @@ public class LibraryServer extends LibraryServerPOA{
 		if (account == null) {
 			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 		
 		// To check if the password is correct
 		if (!account.getPassword().equals(password)) {
 			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 
 //		boolean localBookExisted = true;
@@ -249,7 +227,7 @@ public class LibraryServer extends LibraryServerPOA{
 				
 
 				internalSender.setDelegate(new InternalSenderDelegate() {
-					@Override
+					
 					public void internalSenderDidReceiveMessage(ServerInfo serverInfo, ServerInfo fromServerInfo, InternalMessage receiveMessage) {
 						String successString = receiveMessage.getParameter("value");
 						boolean success = Boolean.valueOf(successString);
@@ -263,7 +241,7 @@ public class LibraryServer extends LibraryServerPOA{
 						}
 					}
 					
-					@Override
+					
 					public void internalSenderDidReceiveAllMessages(ServerInfo serverInfo) {
 						
 					}
@@ -275,7 +253,7 @@ public class LibraryServer extends LibraryServerPOA{
 			if (remoteBookReserved.getValue() == false){
 				response.setErrorCode(ServerError.BOOK_NOT_ENOUGH_EVEN_REMOTE);
 				System.out.println(response.getErrorCode());
-				return response.toCorba();
+				return response.toString();
 			} 
 			
 
@@ -287,15 +265,15 @@ public class LibraryServer extends LibraryServerPOA{
 			
 		}
 		
-		return response.toCorba();
+		return response.toString();
 	}
 	
 	/*
 	 * Mark - Services - Admin - Methods
 	 */
 
-	@Override
-	public CORBAResponse getNonRetuners(String adminUsername, String adminPassword,
+	
+	public String getNonRetuners(String adminUsername, String adminPassword,
 			                   String educationalInstitution, String numDays) {
 
 		// Assuming that every parameter in this function is not null
@@ -307,7 +285,7 @@ public class LibraryServer extends LibraryServerPOA{
 		if (!adminUsername.equals(Account.ADMIN_USERNAME)){
 			response.setErrorCode(ServerError.ACCOUNT_IS_NOT_ADMIN);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 		
 		// To check the password
@@ -315,7 +293,7 @@ public class LibraryServer extends LibraryServerPOA{
 		if (!account.getPassword().equals(adminPassword)) {
 			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 
 		// To combine the local result
@@ -330,12 +308,12 @@ public class LibraryServer extends LibraryServerPOA{
 			sendMessage.addParameter("numDays", numDays);
 			
 			internalSender.setDelegate(new InternalSenderDelegate() {
-				@Override
+				
 				public void internalSenderDidReceiveMessage(ServerInfo serverInfo, ServerInfo fromServerInfo, InternalMessage receiveMessage) {
 					allMessages.append(receiveMessage.getParameter("value"));
 				}
 				
-				@Override
+				
 				public void internalSenderDidReceiveAllMessages(ServerInfo serverInfo) {
 					
 				}
@@ -344,11 +322,11 @@ public class LibraryServer extends LibraryServerPOA{
 			response.setData(allMessages.toString());
 		}
 		
-		return response.toCorba();
+		return response.toString();
 	}
 
-	@Override
-	public CORBAResponse setDuration(String username, String bookName, String numDays) {
+	
+	public String setDuration(String username, String bookName, String numDays) {
 
 		// Assuming that every parameter in this function is not null
 		
@@ -360,7 +338,7 @@ public class LibraryServer extends LibraryServerPOA{
 		if (account == null) {
 			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
 			System.out.println(response.getErrorCode());
-			return response.toCorba();
+			return response.toString();
 		}
 		
 		// To execute
@@ -373,15 +351,15 @@ public class LibraryServer extends LibraryServerPOA{
 			}
 		}
 		
-		return response.toCorba();
+		return response.toString();
 	}
 	
 	/*
 	 * Mark - Services - Debug - Methods
 	 */
 	 
-	@Override
-	public CORBAResponse show() {
+	
+	public String show() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Name:" + "\n");
 		stringBuilder.append("\t" + serverInfo.getName() + "\n");
@@ -407,7 +385,7 @@ public class LibraryServer extends LibraryServerPOA{
 		response.setErrorCode(ServerError.SUCCESS);
 		response.setData(stringBuilder.toString());
 		
-		return response.toCorba();
+		return response.toString();
 	}
 	
 
@@ -436,7 +414,7 @@ public class LibraryServer extends LibraryServerPOA{
 	
 	// to convert messgae params to function params.
 	private class InternalGetNonReturnsHandler implements InternalReceiverHandler {
-		@Override
+		
 		public void handle(InternalMessage receiveMessage, InternalMessage sendMessage) {
 			String numDays = receiveMessage.getParameter("numDays");
 			
@@ -472,7 +450,7 @@ public class LibraryServer extends LibraryServerPOA{
 	// to convert messgae params to function params.
 	private class InternalReserveBookHandler implements InternalReceiverHandler {
 
-		@Override
+		
 		public void handle(InternalMessage receiveMessage, InternalMessage sendMessage) {
 			String bookName = receiveMessage.getParameter("bookName") ;
 			String authorName = receiveMessage.getParameter("authorName");

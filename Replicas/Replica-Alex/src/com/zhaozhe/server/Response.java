@@ -1,6 +1,5 @@
 package com.zhaozhe.server;
 
-import corba.CORBAResponse;
 
 
 public class Response{
@@ -12,10 +11,6 @@ public class Response{
 	public Response() {
 		this.errorCode = "";
 		this.data = "";
-	}
-
-	public Response(CORBAResponse response) {
-		setFromCorba(response);
 	}
 	
 	/*
@@ -54,19 +49,8 @@ public class Response{
 		this.data = data;
 	}
 	
-	/*
-	 * Mark - CORBA Coversion - Methods
-	 */
-	 
-	public CORBAResponse toCorba() {
-		CORBAResponse response = new CORBAResponse();
-		response.errorCode = errorCode;
-		response.data = data;
-		return response;
+	public String toString(){
+		return this.errorCode + "@" + this.data;
 	}
 	
-	public void setFromCorba(CORBAResponse response) {
-		errorCode = response.errorCode;
-		data = response.data;
-	}
 }
