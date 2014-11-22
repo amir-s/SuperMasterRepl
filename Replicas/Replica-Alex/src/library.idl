@@ -1,0 +1,22 @@
+module corba {
+	struct CORBAResponse { 
+		string errorCode; 
+		string data; 
+	}; 
+	
+	interface LibraryServer { 
+		CORBAResponse createAccount(in string firstName, in string lastName, in string emailAddress, in string phoneNumber, 
+						      in string username, in string password, in string educationalInstitution);
+	
+		CORBAResponse reserveBook (in string username, in string password, in string bookName, in string authorName);
+	
+		CORBAResponse reserveInterLibrary (in string username, in string password, in string bookName, in string authorName);
+	
+		CORBAResponse getNonRetuners (in string adminUsername, in string adminPassword, 
+							    in string educationalInstitution, in string numDays);
+	
+		CORBAResponse setDuration (in string username, in string bookName, in string numDays);
+		
+		CORBAResponse show();
+	}; 
+};
