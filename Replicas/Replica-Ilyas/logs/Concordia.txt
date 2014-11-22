@@ -1,0 +1,30 @@
+
+Thu Nov 20 16:19:04 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 16:19:10 EST 2014: Failed to register the username Frankenstien, it already exists.
+Thu Nov 20 16:22:32 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 16:22:37 EST 2014: Failed to register the username Frankenstien, it already exists.
+Thu Nov 20 16:22:50 EST 2014: Failed to register the username Frankenstien, it already exists.
+Thu Nov 20 16:28:33 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 16:28:56 EST 2014: reserveInterLibrary: book ilyas not available at local library for user request Frankenstien. Checking other servers
+Thu Nov 20 16:35:47 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 16:35:52 EST 2014: Failed to register the username Frankenstien, it already exists.
+Thu Nov 20 16:36:14 EST 2014: reserveInterLibrary: book ilyas not available at local library for user request Frankenstien. Checking other servers
+Thu Nov 20 16:45:30 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 16:48:16 EST 2014: Failed to reserve book bones of the lost with author kathy reichs for an Inter Library request
+Thu Nov 20 17:59:23 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days1. The result is: 
+Educational Institution Concordia: 
+.........................
+Educational Institution McGill: drwho 900 5149999999
+
+.........................
+Educational Institution UQAM: 
+.........................
+
+Thu Nov 20 18:02:44 EST 2014: Admin operation set Duration called on Concordia. Result: Failed. The username drwho900 does not exist in Concordia.
+Thu Nov 20 20:39:43 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 20:40:05 EST 2014: reserveInterLibrary: book Absolute erlang not available at local library for user request Frankenstien. Checking other servers
+Thu Nov 20 20:41:40 EST 2014: The Account for user Frankenstien has been successfully created in Concordia.
+Thu Nov 20 20:41:44 EST 2014: Failed to register the username Frankenstien, it already exists.
+Thu Nov 20 20:42:04 EST 2014: reserveInterLibrary: book absolute scala not available at local library for user request Frankenstien. Checking other servers
+Thu Nov 20 20:42:04 EST 2014: updateStudentRecord: Successfully reserved book absolute scala for the username Frankenstien.
+Thu Nov 20 20:42:04 EST 2014: reserveInterLibrary: Successfully reserved book absolute scala from UQAM library for the username Frankenstien.

@@ -1,0 +1,8 @@
+
+Thu Nov 20 16:36:14 EST 2014: Failed to reserve book ilyas with author rashid for an Inter Library request
+Thu Nov 20 16:45:46 EST 2014: The Account for user patrickStar has been successfully created in UQAM.
+Thu Nov 20 16:45:55 EST 2014: Failed to register the username patrickStar, it already exists.
+Thu Nov 20 16:48:16 EST 2014: Successfully reserved book bones of the lost for an Inter Library request. Number of copies available now: 3
+Thu Nov 20 18:02:44 EST 2014: Admin operation set Duration called on UQAM. Result: Failed. The username drwho900 does not exist in UQAM.
+Thu Nov 20 20:40:05 EST 2014: Failed to reserve book Absolute erlang with author author for an Inter Library request
+Thu Nov 20 20:42:04 EST 2014: Successfully reserved book absolute scala for an Inter Library request. Number of copies available now: 4

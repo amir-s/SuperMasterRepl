@@ -1,0 +1,9 @@
+
+Thu Nov 20 16:36:14 EST 2014: Failed to reserve book ilyas with author rashid for an Inter Library request
+Thu Nov 20 16:45:38 EST 2014: The Account for user drwho900 has been successfully created in McGill.
+Thu Nov 20 16:48:16 EST 2014: reserveInterLibrary: book bones of the lost not available at local library for user request drwho900. Checking other servers
+Thu Nov 20 16:48:16 EST 2014: updateStudentRecord: Successfully reserved book bones of the lost for the username drwho900.
+Thu Nov 20 16:48:16 EST 2014: reserveInterLibrary: Successfully reserved book bones of the lost from UQAM library for the username drwho900.
+Thu Nov 20 18:02:44 EST 2014: Admin operation set Duration called on McGill. Result: Success. The username drwho900 was fined for book bones of the lost. Fines Accumulated for this user is now: $3
+Thu Nov 20 20:40:05 EST 2014: Failed to reserve book Absolute erlang with author author for an Inter Library request
+Thu Nov 20 20:42:04 EST 2014: Failed to reserve book absolute scala with author walter for an Inter Library request
