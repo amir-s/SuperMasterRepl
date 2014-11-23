@@ -76,8 +76,7 @@ public class LibraryServer implements ILibrary{
 	 */
 	
 	
-	public String createAccount(String firstName, String lastName, String emailAddress, String phoneNumber, 
-						      String username, String password, String educationalInstitution) {
+	public String registerUser(String instName, String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password){
 		
 		// Assuming that every parameter in this function is not null
 		
@@ -109,8 +108,8 @@ public class LibraryServer implements ILibrary{
 	private static final int _DEFAULT_RESERVATION_DURATION = 14;
 	
 	
-	public String reserveBook(String username, String password, String bookName, String authorName) {
-
+	public String reserveBook(String instName, String username, String password, String bookName, String authorName){
+	
 		// Assuming that every parameter in this function is not null
 
 		Response response = new Response();
@@ -119,14 +118,14 @@ public class LibraryServer implements ILibrary{
 		// To check if the account is exist
 		Account account = database.getAccount(username);
 		if (account == null) {
-			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
 
 		// To check if the password is correct
 		if (!account.getPassword().equals(password)) {
-			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
@@ -159,7 +158,7 @@ public class LibraryServer implements ILibrary{
 
 		// To check if the book is not enough
 		if (localBookReserved == false) {
-			response.setErrorCode(ServerError.BOOK_NOT_ENOUGH);
+			response.setErrorCode(ServerError.BOOK_NOT_EXISTED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
@@ -167,8 +166,7 @@ public class LibraryServer implements ILibrary{
 		return response.toString();
 	}
 	
-	public String reserveInterLibrary (String username, String password, String bookName, String authorName){
-
+	public String reserveInterLibrary(String instName, String username, String password, String bookName, String authorName) {
 		// Assuming that every parameter in this function is not null
 
 		final Response response = new Response();
@@ -177,14 +175,14 @@ public class LibraryServer implements ILibrary{
 		// To check if the account is exist
 		Account account = database.getAccount(username);
 		if (account == null) {
-			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
 		
 		// To check if the password is correct
 		if (!account.getPassword().equals(password)) {
-			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
@@ -251,7 +249,7 @@ public class LibraryServer implements ILibrary{
 			
 			// To check the result of reserving book in other libraries
 			if (remoteBookReserved.getValue() == false){
-				response.setErrorCode(ServerError.BOOK_NOT_ENOUGH_EVEN_REMOTE);
+				response.setErrorCode(ServerError.BOOK_NOT_EXISTED);
 				System.out.println(response.getErrorCode());
 				return response.toString();
 			} 
@@ -273,9 +271,8 @@ public class LibraryServer implements ILibrary{
 	 */
 
 	
-	public String getNonRetuners(String adminUsername, String adminPassword,
-			                   String educationalInstitution, String numDays) {
-
+	public String getNonRetuners(String instName, String adminUsername, String adminPassword, int days){
+	
 		// Assuming that every parameter in this function is not null
 
 		Response response = new Response();
@@ -283,7 +280,7 @@ public class LibraryServer implements ILibrary{
 		
 		// To check if the account is an admin account
 		if (!adminUsername.equals(Account.ADMIN_USERNAME)){
-			response.setErrorCode(ServerError.ACCOUNT_IS_NOT_ADMIN);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
@@ -291,21 +288,21 @@ public class LibraryServer implements ILibrary{
 		// To check the password
 		Account account = database.getAccount(adminUsername);
 		if (!account.getPassword().equals(adminPassword)) {
-			response.setErrorCode(ServerError.ACCOUNT_WRONG_PASSWORD);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
 
 		// To combine the local result
 		final StringBuilder allMessages = new StringBuilder();
-		allMessages.append(internalGetNonReturns(numDays));
+		allMessages.append(internalGetNonReturns(Integer.toString(days)));
 
 		// To combine the remote results
 		synchronized (interCommunicationLock) {
 
 			InternalMessage sendMessage = new InternalMessage();
 			sendMessage.setType(InternalMessage.TYPE_GET_NON_RETURNS);
-			sendMessage.addParameter("numDays", numDays);
+			sendMessage.addParameter("numDays", Integer.toString(days));
 			
 			internalSender.setDelegate(new InternalSenderDelegate() {
 				
@@ -326,8 +323,7 @@ public class LibraryServer implements ILibrary{
 	}
 
 	
-	public String setDuration(String username, String bookName, String numDays) {
-
+	public String setDuration(String instName, String adminUsername, String adminPassword, String username, String bookName, String authorName, int days){
 		// Assuming that every parameter in this function is not null
 		
 		Response response = new Response();
@@ -336,7 +332,7 @@ public class LibraryServer implements ILibrary{
 		// To check if the account is exist
 		Account account = database.getAccount(username);
 		if (account == null) {
-			response.setErrorCode(ServerError.ACCOUNT_NOT_EXISTED);
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
 			System.out.println(response.getErrorCode());
 			return response.toString();
 		}
@@ -346,7 +342,7 @@ public class LibraryServer implements ILibrary{
 		for (Reservation reservation : reservations) {
 			Book book = reservation.getBook();
 			if (book.getName().equals(bookName)) {
-				reservation.setDuration(Integer.valueOf(numDays));
+				reservation.setDuration(Integer.valueOf(days));
 				break;
 			}
 		}
