@@ -8,7 +8,7 @@ import java.net.InetAddress;
 // UDP communication in the libraries
 public class UDPTransporter {
 	
-	// this function sends a message to a port on localhost
+	// this function sends a message to a port on localhost and waits for reply
 	public static String transport(String host, int port, String msg) {
 		try {
 			DatagramSocket clientSocket = new DatagramSocket();
@@ -25,6 +25,21 @@ public class UDPTransporter {
 			return out;
 		}catch (Exception e) {
 			return null;
+		}
+		
+	}
+	
+	public static void send(String host, int port, String msg) {
+		try {
+			DatagramSocket clientSocket = new DatagramSocket();
+			InetAddress IPAddress = InetAddress.getByName(host);
+			byte[] sendData = msg.getBytes();
+			byte[] receiveData = new byte[4096];
+			
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+			clientSocket.send(sendPacket);
+			clientSocket.close();
+		}catch (Exception e) {
 		}
 		
 	}
@@ -46,15 +61,20 @@ public class UDPTransporter {
 						e.printStackTrace();
 						return;
 					}
-					byte[] send = packetServer.serve(new String(receivePacket.getData())).getBytes();
-					int prt = receivePacket.getPort();
-					InetAddress IPAddress = receivePacket.getAddress();
-					DatagramPacket sendPacket = new DatagramPacket(send, send.length, IPAddress, prt);
-					try {
-						server.send(sendPacket);
-					} catch (IOException e) {
-						e.printStackTrace();
+					String reply = packetServer.serve(new String(receivePacket.getData()));
+					if (reply != null) {
+						byte[] send = packetServer.serve(new String(receivePacket.getData())).getBytes();
+						int prt = receivePacket.getPort();
+						InetAddress IPAddress = receivePacket.getAddress();
+						DatagramPacket sendPacket = new DatagramPacket(send, send.length, IPAddress, prt);
+						try {
+							server.send(sendPacket);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
+					
+					
 				}	
 			}
 		});
