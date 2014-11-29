@@ -1,3 +1,0 @@
-
-Thu Nov 20 16:45:46 EST 2014: FirstName: patrick, LastName: Star, Email Address: ilyas@ilyas.com
-Thu Nov 20 16:45:46 EST 2014: PhoneNumber: 5147777777, Username: patrickStar, Password: password, Institution: uqam

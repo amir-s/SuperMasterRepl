@@ -1,6 +1,0 @@
-
-Thu Nov 20 16:45:38 EST 2014: FirstName: drwho, LastName: 900, Email Address: ilyas@ilyas.com
-Thu Nov 20 16:45:38 EST 2014: PhoneNumber: 5149999999, Username: drwho900, Password: password, Institution: mcGill
-Thu Nov 20 16:48:16 EST 2014: updateStudentRecord: Successfully reserved book bones of the lost for the username drwho900. Duration is 14 days
-Thu Nov 20 16:48:16 EST 2014: reserveInterLibrary: McGill Successfully reserved book bones of the lost from UQAM library. Duration is 14 days
-Thu Nov 20 18:02:44 EST 2014: The username drwho900 was fined for book bones of the lost. Fines Accumulated for this user is now: $3

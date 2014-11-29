@@ -1,6 +1,4 @@
-package com.concordia.comp6231;
-
-import javax.jws.WebService;
+package com.concordia.replica.ilyas;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -16,7 +14,7 @@ import java.nio.charset.Charset;
  * Assignment # 3 - Option 1
  */
 
-@WebService(endpointInterface="com.concordia.comp6231.Drms", serviceName="drmsService", portName="drmsPort", targetNamespace="http://com.concordia")
+
 public class LibraryServer {
 	private List<Book> m_bookList = new ArrayList<Book>();
 	private HashMap<Character, List<Student>> m_allUsers = new HashMap<Character, List<Student>>();
@@ -298,9 +296,9 @@ public class LibraryServer {
 	updating the student record,  then the method will complete with the Failed result. However, if the students record is updated successfuly, then the 
 	method will complete with the Success result. However, if the second inter library is not able to reserve the book, the method return with a failed result, and
 	the user will be notified that the book cannot be reserved in any libraries.
-	If the request is coming to the Concordia library, the first inter library that it will try is McGill. The second inter library that it will try is UQAM.
-	If the request is coming to the McGill library, the first inter library that it will try is Concordia. The second inter library that it will try is UQAM.
-	If the request is coming to the UQAM library, the first inter library that it will try is Concordia. The second inter library that it will try is McGill.
+	If the request is coming to the Concordia library, the first inter library that it will try is McGill. The second inter library that it will try is polytechnique.
+	If the request is coming to the McGill library, the first inter library that it will try is Concordia. The second inter library that it will try is polytechnique.
+	If the request is coming to the polytechnique library, the first inter library that it will try is Concordia. The second inter library that it will try is McGill.
 	@param1 : The users Username
 	@param2 : The name of the Book the user wishes to reserve
 	@param3 : The name of the author of the Book the user wishes to reserve
@@ -340,9 +338,9 @@ public class LibraryServer {
 				}
 			}
 			else if(_mcgillResult.contains("Result: Failed.")){
-				//Check UQAM
-				String _uqamResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
-				if (_uqamResult.contains("Result: Success.")){
+				//Check polytechnique
+				String _polytechniqueResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
+				if (_polytechniqueResult.contains("Result: Success.")){
 					
 					//update student record
 					String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
@@ -362,12 +360,12 @@ public class LibraryServer {
 						}
 					}
 					else if (_updateRecordResult.contains("Result: Success.")){
-						_result = "Result: Success. Able to reserve book from UQAM Library";
-						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from UQAM library for the username " + Username + ".");
-	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from UQAM library. Duration is 14 days");
+						_result = "Result: Success. Able to reserve book from polytechnique Library";
+						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from polytechnique library for the username " + Username + ".");
+	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from polytechnique library. Duration is 14 days");
 					}
 				}
-				else if (_uqamResult.contains("Result: Failed.")){
+				else if (_polytechniqueResult.contains("Result: Failed.")){
 					_result = "Result: Failed. Not able to Reserve book " + BookName +" from local or other inter libraries.";					
 				}
 			}
@@ -402,9 +400,9 @@ public class LibraryServer {
 				}
 			}
 			else if(_concordiaResult.contains("Result: Failed.")){
-				//Check UQAM
-				String _uqamResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
-				if (_uqamResult.contains("Result: Success.")){
+				//Check polytechnique
+				String _polytechniqueResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
+				if (_polytechniqueResult.contains("Result: Success.")){
 					
 					//update student record
 					String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
@@ -424,17 +422,17 @@ public class LibraryServer {
 						}
 					}
 					else if (_updateRecordResult.contains("Result: Success.")){
-						_result = "Result: Success. Able to reserve book from UQAM Library";
-						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from UQAM library for the username " + Username + ".");
-	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from UQAM library. Duration is 14 days");
+						_result = "Result: Success. Able to reserve book from polytechnique Library";
+						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from polytechnique library for the username " + Username + ".");
+	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from polytechnique library. Duration is 14 days");
 					}
 				}
-				else if (_uqamResult.contains("Result: Failed.")){
+				else if (_polytechniqueResult.contains("Result: Failed.")){
 					_result = "Result: Failed. Not able to Reserve book " + BookName +" from local or other inter libraries.";					
 				}
 			}
 		}
-		else if (m_serverName.equals("UQAM")){
+		else if (m_serverName.equals("Polytechnique")){
 			//Check Concordia first
 			String _concordiaResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6789);
 			if (_concordiaResult.contains("Result: Success.")){
@@ -575,16 +573,16 @@ public class LibraryServer {
 		if (m_serverName.equals("Concordia")){
 			//McGill
 			_result = _result + listNonReturnersFromAnotherServerInstanceViaUDP(6790) + _eol + "........................."+ _eol;
-			//UQAM
+			//polytechnique
 			_result = _result + listNonReturnersFromAnotherServerInstanceViaUDP(6791) + _eol + "........................."+ _eol;
 		}
 		else if (m_serverName.equals("McGill")){
 			//Concordia
 			_result = _result + listNonReturnersFromAnotherServerInstanceViaUDP(6789) + _eol + "........................."+ _eol;
-			//UQAM
+			//polytechnique
 			_result = _result + listNonReturnersFromAnotherServerInstanceViaUDP(6791) + _eol + "........................."+ _eol;
 		}
-		else if (m_serverName.equals("UQAM")){
+		else if (m_serverName.equals("Polytechnique")){
 			//Concordia
 			_result = _result + listNonReturnersFromAnotherServerInstanceViaUDP(6789) + _eol + "........................."+ _eol;
 			//McGill
@@ -668,7 +666,7 @@ public class LibraryServer {
 	When it receives a "ReserveBook" request, it will call the reserveBookForInterLibrary method and send back its result.
 	When it receives a "UnreserveBook" request, it will call the unreserveBookForInterLibrary method and send back its result.
 	
-	Concordia server will listen on port 6789, McGill will listen on port 6790, and the UQAM server will listen 6791   
+	Concordia server will listen on port 6789, McGill will listen on port 6790, and the Polytechnique server will listen 6791   
 	@return : Nothing
 	*/
 	public void startUDPServer(){
@@ -682,7 +680,7 @@ public class LibraryServer {
 			else if (m_serverName.equals("McGill")){
 				_port = 6790;
 			}
-			if (m_serverName.equals("UQAM")){
+			if (m_serverName.equals("Polytechnique")){
 				_port = 6791;
 			}
 			_aSocket = new DatagramSocket(_port);
@@ -1103,7 +1101,7 @@ public class LibraryServer {
 				m_allUsers.put(_firstChar, _studentList);
 			}
 			else if (m_port == 2022){
-				m_serverName="UQAM";
+				m_serverName="Polytechnique";
 				
 				Book _absoluteScala = new Book("Absolute Scala","Walter", 5);
 				//Book _absoluteScala = new Book("bones of the lost","kathy reichs", 4);
@@ -1122,7 +1120,7 @@ public class LibraryServer {
 				
 				List<Student> _studentList = new ArrayList<Student>();
 				char _firstChar = "wayneg".charAt(0);
-				Student _wayneg = new Student("Wayne", "Gretzky", "wayne.gretzky@gretzky.com", 5143333333L, "wayneg", "wayneg", "UQAM");
+				Student _wayneg = new Student("Wayne", "Gretzky", "wayne.gretzky@gretzky.com", 5143333333L, "wayneg", "wayneg", "Polytechnique");
 				_studentList.add(_wayneg);
 				m_allUsers.put(_firstChar, _studentList);
 			}
