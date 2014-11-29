@@ -126,16 +126,18 @@ public class UDPServer{
 			@Override
 			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
 				String instName = receiveMessage.getParameter("instName");
+				String adminUsername = receiveMessage.getParameter("adminUsername");
+				String adminPassword = receiveMessage.getParameter("adminPassword");
 				String username = receiveMessage.getParameter("username");
-				String password = receiveMessage.getParameter("password");
 				String bookName = receiveMessage.getParameter("bookName");
 				String authorName = receiveMessage.getParameter("authorName");
+				String days = receiveMessage.getParameter("days");
 				
-				String value = library.reserveBook(instName, username, password, bookName, authorName);
+				String value = library.setDuration(instName, adminUsername, adminPassword, username, bookName, authorName, Integer.valueOf(days));
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
 			}
-		}, InterMessage.TYPE_RESERVE_BOOK);
+		}, InterMessage.TYPE_SET_DURATION);
 		
 		// reserveInterLibrary
 		interReceiver.addHandler(new InterReceiverHandler() {
@@ -152,7 +154,7 @@ public class UDPServer{
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
 			}
-		}, InterMessage.TYPE_RESERVE_BOOK);
+		}, InterMessage.TYPE_RESERVE_INTER_LIBRARY);
 		
 		// getNonRetuners
 		interReceiver.addHandler(new InterReceiverHandler() {
@@ -168,7 +170,7 @@ public class UDPServer{
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
 			}
-		}, InterMessage.TYPE_RESERVE_BOOK);
+		}, InterMessage.TYPE_GET_NON_RETURNERS);
 	}
 
 	public void setPortNumber(int portNumber) {
