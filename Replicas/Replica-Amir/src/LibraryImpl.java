@@ -74,7 +74,7 @@ public class LibraryImpl {
 						String[] book = s.split("\\$");
 						Logger.log(self.institudeName, "N/A", "Got request for InterReserve for (" + book[0] + ":" + book[1] + ")");
 						// can we reserve this book for this user?
-						if (interReserveBook(book[0], book[1])) return "TRUE";
+						if (interReserveBook(book[0], book[1]) == 0) return "TRUE";
 						// no we cant!
 						return "FALSE";
 					}
@@ -96,7 +96,7 @@ public class LibraryImpl {
 	// based on the values that will be feeded in
 	// returns true or false based on the successfulness
 	// of the operation
-	public boolean registerUser(String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password) {
+	public int registerUser(String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password) {
 		Logger.log(institudeName, username, "Registering user");
 		
 		// lock the block based on the username requested
@@ -108,13 +108,13 @@ public class LibraryImpl {
 			// and return false if it is.
 			if (list.containsKey(username)) {
 				Logger.log(institudeName, username, "Username exists");
-				return false;
+				return 5;//username exists
 			}
 			// put this user into the list and return true.
 			list.put(username, new Student(firstName, lastName, emailAddress, phoneNumber, username, password));
 			Logger.log(institudeName, username, "Username registered");
 		}
-		return true;
+		return 0;
 	}
 	
 	// check if a username and password that provided
@@ -143,12 +143,12 @@ public class LibraryImpl {
 	// reserve the needed book if it is already exists in the local repo
 	// and if its quantity is more than zero. this reservatoin is for the 
 	// user that provided the username and password
-	public boolean reserveBook(String username, String password, String bookName, String authorName) {
+	public int reserveBook(String username, String password, String bookName, String authorName) {
 		Logger.log(institudeName, username, "Reserving book " + bookName + ":" + authorName + " for " + username);
 		// authentication
 		if (!check(username, password)) {
 			Logger.log(institudeName, username, "Authentication failed");
-			return false;
+			return 2;
 		}
 		// lower case all in input
 		bookName = bookName.toLowerCase();
@@ -157,7 +157,7 @@ public class LibraryImpl {
 		// do we have this book?
 		if (!books.containsKey(bookName+":"+authorName)) {
 			Logger.log(institudeName, username, "Book " + bookName + ":" + authorName + " not found");
-			return false;
+			return 3;
 		}
 		// get the book
 		Book b = books.get(bookName+":"+authorName);
@@ -166,12 +166,12 @@ public class LibraryImpl {
 			// we dont have any of this book right now, it is finished
 			if (b.quantity == 0) {
 				Logger.log(institudeName, username, "Book " + bookName + ":" + authorName + " is finished");
-				return false;
+				return 3;
 			}
 			// check if this user is already in the list of borrowers of this book
 			if (b.borrowers.containsKey(username)) {
 				Logger.log(institudeName, username, "Book " + bookName + ":" + authorName + " is already borrowed");
-				return false;
+				return 3;
 			}
 			// decrease the quantity and put the reservation
 			b.quantity--;
@@ -179,14 +179,14 @@ public class LibraryImpl {
 			b.borrowers.put(username, new Integer(14));
 		}
 		// return
-		return true;
+		return 0;
 	}
 	
 	// reserve the needed book if it is already exists in the local repo
 	// and if its quantity is more than zero.
 	// this function does not care about the person that reserve this book
 	// it should be handled outside
-	public boolean interReserveBook(String bookName, String authorName) {
+	public int interReserveBook(String bookName, String authorName) {
 		Logger.log(institudeName, "INTER", "Reserving book " + bookName + ":" + authorName);
 		
 		// lower case the input
@@ -196,7 +196,7 @@ public class LibraryImpl {
 		// do we have this book?
 		if (!books.containsKey(bookName+":"+authorName)) {
 			Logger.log(institudeName, "INTER", "Book " + bookName + ":" + authorName + " not found");
-			return false;
+			return 3;
 		}
 		// get the book
 		Book b = books.get(bookName+":"+authorName);
@@ -205,13 +205,13 @@ public class LibraryImpl {
 			// do we still have it?
 			if (b.quantity == 0) {
 				Logger.log(institudeName, "INTER", "Book " + bookName + ":" + authorName + " is finished");
-				return false;
+				return 3;
 			}
 			// decrease its quantity
 			b.quantity--;
 			Logger.log(institudeName, "INTER", "Book " + bookName + ":" + authorName + " is reserved. Quantity: from " + (b.quantity+1) + " TO " + b.quantity);
 		}
-		return true;
+		return 0;
 	}
 	
 	
@@ -242,7 +242,7 @@ public class LibraryImpl {
 	}
 	
 	// set reservation duration of reservation
-	public void setDuration(String adminUsername, String adminPassword, String username, String bookName, String authorName, int days) {
+	public int setDuration(String adminUsername, String adminPassword, String username, String bookName, String authorName, int days) {
 		// lowercase the book properties
 		bookName = bookName.toLowerCase();
 		authorName = authorName.toLowerCase();
@@ -250,21 +250,21 @@ public class LibraryImpl {
 		// authenticating
 		if (!authAdmin(adminUsername, adminPassword)) {
 			Logger.log(institudeName, adminUsername, "Admin authentication failed");
-			return;
+			return 2;
 		}
 		// get the book
 		Book b = books.get(bookName+":"+authorName);
 		// is it real?
 		if (b == null) {
 			Logger.log(institudeName, adminUsername, "Book not found " + bookName + ":" + authorName);
-			return;
+			return 4;
 		}
 		// lock it
 		synchronized (b) {
 			// it is not borrowed by the specified user
 			if (!b.borrowers.containsKey(username)) {
 				Logger.log(institudeName, adminUsername, "User " + username + " didn't borrowed " + bookName + ":" + authorName);
-				return;
+				return 4;
 			}
 			// get the current duration
 			int oldValue = b.borrowers.get(username).intValue();
@@ -272,6 +272,7 @@ public class LibraryImpl {
 			b.borrowers.put(username, new Integer(oldValue+days));
 			Logger.log(institudeName, adminUsername, "Duration for " + username + " @ " + bookName + ":" + authorName + " is now " + b.borrowers.get(username));
 		}
+		return 0;
 	}
 	
 	// generate the list of users that borrowed a book
@@ -290,12 +291,12 @@ public class LibraryImpl {
 					if (record.getValue().intValue() >= days) continue; // is it desired?
 					// add this to the return list
 					Student st = getList(getKey(record.getKey())).get(record.getKey());
-					result += "\t+" + st.firstName + ", " + st.lastName + ", " + st.emailAddress + ", " + st.phoneNumber + ", [" + book.getValue().name + " -- " + book.getValue().author + "]\n";
+					result += "@" + institudeName + "," + st.firstName + "," + st.lastName + "," + st.phoneNumber;
 				}
 			}
 		}
 		// return list with institute name
-		return institudeName + "\n" + result + "\n\n";
+		return result;
 	}
 	
 	// exposed version of the non returners
@@ -307,7 +308,7 @@ public class LibraryImpl {
 		// authenticating
 		if (!authAdmin(adminUsername, adminPassword)) {
 			Logger.log(institudeName, adminUsername, "Admin authentication failed");
-			return "";
+			return "-1";
 		}
 		// list of schools
 		String other = "";
@@ -324,15 +325,15 @@ public class LibraryImpl {
 		return (listNonReturners(days) + other).replaceAll("[\\000]*", "");
 	}
 	
-	public boolean reserveInterLibrary(String username, String password, String bookName, String authorName) {
+	public int reserveInterLibrary(String username, String password, String bookName, String authorName) {
 		Logger.log(institudeName, username, "Inter Reserving book " + bookName + ":" + authorName + " for " + username);
 		if (!check(username, password)) {
 			Logger.log(institudeName, username, "Authentication failed");
-			return false;
+			return 2;
 		}
-		if (reserveBook(username, password, bookName, authorName)) {
+		if (reserveBook(username, password, bookName, authorName) == 0) {
 			Logger.log(institudeName, username, "book found in local repo. " + bookName + ":" + authorName + " for " + username);
-			return true;
+			return 0;
 		}
 		String[] univs = {"concordia", "mcgill", "polymtl"};
 		Config cnf = new Config();
@@ -346,13 +347,13 @@ public class LibraryImpl {
 				books.put(bookName+":"+authorName+"##"+u+"@"+username, b);
 				b.borrowers.put(username, new Integer(14));
 				Logger.log(institudeName, username, "Added reservation " + bookName+":"+authorName+"##"+u+"@"+username + " for user " + username);
-				return true;
+				return 0;
 			}else {
 				Logger.log(institudeName, username, "NOT Found the book on " + u + "!");
 			}
 		}
 		Logger.log(institudeName, username, "NOT Found the book");
-		return false;
+		return 3;
 	}
 	
 }
