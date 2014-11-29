@@ -1,4 +1,4 @@
-public interface ILibrary{
+public interface LibraryServer{
 	// 0 : OK
 	// 1 : Server failiure 
 	// 5 : Username exists 
