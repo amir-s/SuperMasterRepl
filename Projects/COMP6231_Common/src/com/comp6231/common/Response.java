@@ -64,10 +64,11 @@ public class Response{
 	public void setFromString(String responseValue) {
 		String[] parts = responseValue.split("\\@");
 		errorCode = parts[0];
-		data = parts[1];
+		if (parts.length > 1) {
+			data = parts[1];
+		} else {
+			data = "";
+		}
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 }

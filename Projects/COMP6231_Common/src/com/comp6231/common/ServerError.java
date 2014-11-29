@@ -16,10 +16,13 @@ public class ServerError {
 	
 	static {
 		messages = new HashMap<String, String>();
+		messages.put(SERVER_FAILED, "Server Failed");
+		messages.put(AUTENTCIATION_FAILED, "Autentciation Failed");
+		messages.put(SERVER_FAILED, "Book not existed");
+		messages.put(SERVER_FAILED, "Account existed");
 	}
 
 	public static String getMessage(String errorCode) {
 		return messages.get(errorCode);
-		
 	}
 }
