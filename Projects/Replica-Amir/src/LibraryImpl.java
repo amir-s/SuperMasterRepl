@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
+import com.UDPTransport.PacketServer;
+import com.UDPTransport.UDPTransporter;
+
 
 
 
@@ -52,6 +55,7 @@ public class LibraryImpl {
 			
 			// create the UDP server
 			UDPTransporter.server(UDPPort, new PacketServer() {
+				
 				// this function will be called  when a package comes in
 				public String serve(String in) {
 					Logger.log(self.institudeName, "N/A", "Recieved " + in + " from UDP server");
@@ -320,7 +324,7 @@ public class LibraryImpl {
 			if (institudeName.equals(u)) continue;
 			Logger.log(institudeName, adminUsername, "Requesting to " + u + " for non returners for " + days + "days");
 			// get the request
-			other += UDPTransporter.transport(cnf.getInt(u+":udp:port"), "nonRetList-" + days + "@" + Math.random());
+			other += UDPTransporter.transport("localhost", cnf.getInt(u+":udp:port"), "nonRetList-" + days + "@" + Math.random());
 		}
 		return (listNonReturners(days) + other).replaceAll("[\\000]*", "");
 	}
@@ -340,7 +344,7 @@ public class LibraryImpl {
 		for (String u: univs) {
 			if (institudeName.equals(u)) continue;
 			Logger.log(institudeName, username, "Requesting to " + u + " to reserve " + bookName + ":" + authorName + " for " + username);
-			String result = UDPTransporter.transport(cnf.getInt(u+":udp:port"), "InterReserve-" + bookName + "$" + authorName + "@" + Math.random());
+			String result = UDPTransporter.transport("localhost", cnf.getInt(u+":udp:port"), "InterReserve-" + bookName + "$" + authorName + "@" + Math.random());
 			if (result.startsWith("TRUE")) {
 				Logger.log(institudeName, username, "Found the book on " + u + "! Reserving ...");
 				Book b = new Book(bookName, authorName, 0);

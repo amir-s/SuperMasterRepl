@@ -1,3 +1,4 @@
+package com.UDPTransport;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -8,10 +9,10 @@ import java.net.InetAddress;
 public class UDPTransporter {
 	
 	// this function sends a message to a port on localhost
-	public static String transport(int port, String msg) {
+	public static String transport(String host, int port, String msg) {
 		try {
 			DatagramSocket clientSocket = new DatagramSocket();
-			InetAddress IPAddress = InetAddress.getByName("localhost");
+			InetAddress IPAddress = InetAddress.getByName(host);
 			byte[] sendData = msg.getBytes();
 			byte[] receiveData = new byte[4096];
 			
@@ -23,7 +24,6 @@ public class UDPTransporter {
 			clientSocket.close();
 			return out;
 		}catch (Exception e) {
-			Logger.log("Transporter", "N/A", "Transporter Error " + e.getMessage());
 			return null;
 		}
 		
@@ -32,7 +32,7 @@ public class UDPTransporter {
 	/// this create a server that listenes
 	// on the specified port and runs the function
 	// whenever any message come.
-	public static void server(int port, final PacketServer cb) throws Exception{
+	public static void server(int port, final PacketServer packetServer) throws Exception{
 		final DatagramSocket server = new DatagramSocket(port);
 		Thread listener = new Thread(new Runnable() {
 			
@@ -43,18 +43,16 @@ public class UDPTransporter {
 					try {
 						server.receive(receivePacket);
 					} catch (IOException e) {
-						Logger.log("TransporterServer", "N/A", "Error creating the server");
 						e.printStackTrace();
 						return;
 					}
-					byte[] send = cb.serve(new String(receivePacket.getData())).getBytes();
+					byte[] send = packetServer.serve(new String(receivePacket.getData())).getBytes();
 					int prt = receivePacket.getPort();
 					InetAddress IPAddress = receivePacket.getAddress();
 					DatagramPacket sendPacket = new DatagramPacket(send, send.length, IPAddress, prt);
 					try {
 						server.send(sendPacket);
 					} catch (IOException e) {
-						Logger.log("TransporterServer", "N/A", "Error sending the data");
 						e.printStackTrace();
 					}
 				}	
