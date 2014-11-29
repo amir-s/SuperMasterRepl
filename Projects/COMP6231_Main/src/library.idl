@@ -1,0 +1,16 @@
+module corba {
+	
+	interface LibraryServer { 
+		
+		string registerUser(in string instName, in string firstName, in string lastName, in string emailAddress, in string phoneNumber, in string username, in string password);
+	
+		string reserveBook(in string instName, in string username, in string password, in string bookName, in string authorName);
+	
+		string setDuration(in string instName, in string adminUsername, in string adminPassword, in string username, in string bookName, in string authorName, in string days);
+	
+		string reserveInterLibrary(in string instName, in string username, in string password, in string bookName, in string authorName);
+	
+		string getNonRetuners(in string instName, in string adminUsername, in string adminPassword, in string days);
+	
+	}; 
+};
