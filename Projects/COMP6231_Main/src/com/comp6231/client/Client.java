@@ -1,8 +1,7 @@
 package com.comp6231.client;
 
-import com.zhaozhe.server.Response;
-import com.zhaozhe.server.ServerError;
-import com.zhaozhe.server.ServerInfo;
+import com.comp6231.common.Response;
+import com.comp6231.common.ServerError;
 
 import corba.LibraryServer;
 
@@ -12,15 +11,15 @@ public class Client {
 	 * Mark - Context
 	 */
 
-	protected ServerInfo serverInfo;
+	protected String instName;
 	protected LibraryServer libraryServer;
-	
-	public ServerInfo getServerInfo() {
-		return serverInfo;
+
+	public String getInstName() {
+		return instName;
 	}
 
-	public void setServerInfo(ServerInfo serverInfo) {
-		this.serverInfo = serverInfo;
+	public void setInstName(String instName) {
+		this.instName = instName;
 	}
 
 	public LibraryServer getLibraryServer() {
@@ -37,6 +36,7 @@ public class Client {
 	 
 	public void showResponse(Response response) {
 		System.out.println("------- Result -------");
+		
 		if (response.isSuccess()) {
 			System.out.println("Success: " + response.getData());
 		} else {

@@ -2,9 +2,7 @@ package com.comp6231.client;
 
 import java.util.Scanner;
 
-import com.zhaozhe.server.Response;
-import com.zhaozhe.server.ServerError;
-import com.zhaozhe.server.ServerInfo;
+import com.comp6231.common.Response;
 
 import corba.LibraryServer;
 
@@ -15,13 +13,13 @@ public class StudentClient extends Client {
 	 */
 
 	public static void main(String[] args) throws Exception{
-		
+
 		ServerConnector serverConnector = new ServerConnector();
-		ServerInfo serverInfo = serverConnector.chooseServer();
-		LibraryServer libraryServer = serverConnector.connect(serverInfo);
+		String instName = serverConnector.chooseServer();
+		LibraryServer libraryServer = serverConnector.connect();
 		
 		StudentClient client = new StudentClient();
-		client.setServerInfo(serverInfo);
+		client.setInstName(instName);
 		client.setLibraryServer(libraryServer);
 		
 		client.run();
@@ -80,7 +78,7 @@ public class StudentClient extends Client {
 					break;
 				}
 
-				response = new Response(libraryServer.createAccount(firstName, lastName, emailAddress, phoneNumber, username, password, serverInfo.getName()));
+				response = new Response(libraryServer.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password));
 				showResponse(response);
 				
 				break;
@@ -95,7 +93,7 @@ public class StudentClient extends Client {
 				String bookName = keyboard.next(); 
 				String authorName = keyboard.next(); 
 
-				response = new Response(libraryServer.reserveBook(username, password, bookName, authorName));
+				response = new Response(libraryServer.reserveBook(instName, username, password, bookName, authorName));
 				showResponse(response);
 				
 				break;
@@ -110,7 +108,7 @@ public class StudentClient extends Client {
 				String bookName = keyboard.next(); 
 				String authorName = keyboard.next(); 
 
-				response = new Response(libraryServer.reserveInterLibrary(username, password, bookName, authorName));
+				response = new Response(libraryServer.reserveInterLibrary(instName, username, password, bookName, authorName));
 				showResponse(response);
 				
 				break;

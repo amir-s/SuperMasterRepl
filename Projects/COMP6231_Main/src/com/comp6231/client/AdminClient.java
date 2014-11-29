@@ -1,13 +1,8 @@
 package com.comp6231.client;
 
-import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
 import java.util.Scanner;
 
-import com.zhaozhe.server.LibraryServerInterface;
-import com.zhaozhe.server.Response;
-import com.zhaozhe.server.ServerError;
-import com.zhaozhe.server.ServerInfo;
+import com.comp6231.common.Response;
 
 import corba.LibraryServer;
 
@@ -19,11 +14,11 @@ public class AdminClient extends Client {
 
 	public static void main(String[] args) throws Exception{
 		ServerConnector serverConnector = new ServerConnector();
-		ServerInfo serverInfo = serverConnector.chooseServer();
-		LibraryServer libraryServer = serverConnector.connect(serverInfo);
+		String instName = serverConnector.chooseServer();
+		LibraryServer libraryServer = serverConnector.connect();
 		
 		AdminClient client = new AdminClient();
-		client.setServerInfo(serverInfo);
+		client.setInstName(instName);
 		client.setLibraryServer(libraryServer);
 		
 		client.run();
@@ -61,12 +56,12 @@ public class AdminClient extends Client {
 			case 1: 
 			{
 				// get non returnes 
-				System.out.println("username password numDays");
+				System.out.println("username password days");
 				String username = keyboard.next(); 
 				String password = keyboard.next(); 
-				String numDays = keyboard.next(); 
+				String days = keyboard.next(); 
 
-				response = new Response(libraryServer.getNonRetuners(username, password, serverInfo.getName(), numDays));
+				response = new Response(libraryServer.getNonRetuners(instName, username, password, days));
 				showResponse(response);
 				
 				break;
@@ -75,12 +70,15 @@ public class AdminClient extends Client {
 			case 2: 
 			{
 				// set duration
-				System.out.println("username bookName numDays");
+				System.out.println("adminUsername adminPassword username bookName authorName days");
+				String adminUsername = keyboard.next(); 
+				String adminPassword = keyboard.next(); 
 				String username = keyboard.next(); 
 				String bookName = keyboard.next(); 
-				String numDays = keyboard.next(); 
+				String authorName = keyboard.next(); 
+				String days = keyboard.next(); 
 
-				response = new Response(libraryServer.setDuration(username, bookName, numDays));
+				response = new Response(libraryServer.setDuration(instName, adminUsername, adminPassword, username, bookName, authorName, days));
 				showResponse(response);
 				
 				break;
