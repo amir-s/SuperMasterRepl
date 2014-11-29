@@ -33,6 +33,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	
 	private void initPortal() {
 		portal = new UDPServer();
+		portal.setHeartBeatsPortNumber(4023);
 		portal.setPortNumber(7000);
 		portal.setLibrary(this);
 		portal.start();

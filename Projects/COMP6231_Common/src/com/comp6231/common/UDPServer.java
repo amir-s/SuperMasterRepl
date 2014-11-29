@@ -1,5 +1,7 @@
 package com.comp6231.common;
 
+import com.heartbeat.Heart;
+
 public class UDPServer{
 	
 	/*
@@ -29,14 +31,54 @@ public class UDPServer{
 	}
 	
 	/*
-	 * Mark - Basic - Properties
+	 * Mark - Basic - Methods
+	 */
+
+	public void start() {
+		interReceiver.start();
+		startHeartBeats();
+	}
+	
+	/*
+	 * Mark - Heart Beats - Properties
+	 */
+	 
+	private Heart heartBeats;
+	private int heartBeatsPortNumber;
+	
+	/*
+	 * Mark - Heart Beats - Methods
+	 */
+	
+	
+	public void startHeartBeats () {
+		heartBeats = new Heart("localhost", heartBeatsPortNumber);
+		heartBeats.beat();
+	}
+	 
+	/*
+	 * Mark - Heart Beats - Getters & Setters
+	 */
+	
+	public int getHeartBeatsPortNumber() {
+		return heartBeatsPortNumber;
+	}
+
+	public void setHeartBeatsPortNumber(int heartBeatsPortNumber) {
+		this.heartBeatsPortNumber = heartBeatsPortNumber;
+	}
+
+	 
+	
+	/*
+	 * Mark - Request Handle  - Properties
 	 */
 	 
 
 	private InterReceiver interReceiver;
 	
 	/*
-	 * Mark - Basic - Methods
+	 * Mark - Request Handle - Methods
 	 */
 	 
 	public void initInterReceiver() {
@@ -127,25 +169,10 @@ public class UDPServer{
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
 			}
 		}, InterMessage.TYPE_RESERVE_BOOK);
-				
-			
-		
 	}
-	
-	public void start() {
-		interReceiver.start();
-	}
-	
-	/*
-	 * Mark - Basic - Getters & Setters
-	 */
 
 	public void setPortNumber(int portNumber) {
 		interReceiver.setPortNumber(portNumber);
 	}
-	
-	
-	
-	
 	
 }
