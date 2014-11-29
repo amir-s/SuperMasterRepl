@@ -316,7 +316,7 @@ public class LibraryImpl {
 		}
 		// list of schools
 		String other = "";
-		String[] univs = {"concordia", "mcgill", "polymtl"};
+		String[] univs = {"concordia", "mcgill", "polytechnique"};
 		Config cnf = new Config();
 		
 		// loop over all the schools
@@ -339,7 +339,7 @@ public class LibraryImpl {
 			Logger.log(institudeName, username, "book found in local repo. " + bookName + ":" + authorName + " for " + username);
 			return 0;
 		}
-		String[] univs = {"concordia", "mcgill", "polymtl"};
+		String[] univs = {"concordia", "mcgill", "polytechnique"};
 		Config cnf = new Config();
 		for (String u: univs) {
 			if (institudeName.equals(u)) continue;

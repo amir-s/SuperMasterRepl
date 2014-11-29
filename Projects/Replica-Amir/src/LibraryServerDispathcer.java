@@ -15,10 +15,10 @@ public class LibraryServerDispathcer implements ILibrary{
 		Config cnf = new Config()
 				.set("concordia:udp:port", 5001)
 				.set("mcgill:udp:port", 5002)
-				.set("polymtl:udp:port", 5003)
+				.set("polytechnique:udp:port", 5003)
 			.write();
 		
-		String[] univs = {"concordia", "mcgill", "polymtl"};
+		String[] univs = {"concordia", "mcgill", "polytechnique"};
 		// loop over schools and register them into POA
 		for (String u: univs) {
 			libs.put(u,new LibraryImpl(u, cnf.getInt(u+":udp:port")).loadBooks(u+".books"));
