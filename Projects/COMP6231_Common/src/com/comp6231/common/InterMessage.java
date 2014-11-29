@@ -24,8 +24,20 @@ public class InterMessage {
 	/*
 	 * Mark - Basic - Types
 	 */
-
-	public static final String TYPE_RETURN = "RETURN";
+	
+	public static final String TYPE_REGISTE_USER 			= "registerUser";
+	public static final String TYPE_RESERVE_BOOK 			= "reserveBook";
+	public static final String TYPE_SET_DURATION 			= "setDuration";
+	public static final String TYPE_RESERVE_INTER_LIBRARY 	= "reserveInterLibrary";
+	public static final String TYPE_GET_NON_RETURNERS 		= "getNonRetuners";
+	
+	public static final String TYPE_RETURN 					= "RETURN";
+	
+	/*
+	 * Mark - Basic - Keys
+	 */
+	 
+	public static final String KEY_RETURN_VALUE 			= "value";
 	
 	/*
 	 * Mark - Basic - Methods
