@@ -4,28 +4,36 @@ import com.UDPTransport.UDPTransporter;
 
 
 public class Heart extends Thread{
-	private final long PERIOD = 5000;
+	private final long PERIOD = 2000;
 	private String host = null;
 	private int port = -1;
 	private final String msg = "HELLO";
-	private boolean stop = false;
+	private boolean running = false;
 	public Heart(String host, int port) {
 		this.host = host;
 		this.port = port;
 	}
 	public void run() {
-		while (!stop) {
+		while (running) {
 			System.out.println("Sending HeartBeat");
-			UDPTransporter.transport(host, port, msg);
+			UDPTransporter.send(host, port, msg);
 			try {
 				Thread.sleep(PERIOD);
 			} catch (InterruptedException e) {
-				stop = false;
+				running = true;
 				e.printStackTrace();
 			}
 		}
 	}
 	public void beat() {
-		start();
+		running = true;
+		super.start();
+	}
+	public void stopRunning() {
+		running = false;
+	}
+	public void start() {
+		running = true;
+		super.start();
 	}
 }
