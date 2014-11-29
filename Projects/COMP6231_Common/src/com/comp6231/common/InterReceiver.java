@@ -65,12 +65,12 @@ public class InterReceiver extends Thread {
 				DatagramPacket receivePacket = new DatagramPacket(receiveBytes, receiveBytes.length);
 				socket.receive(receivePacket);
 				
-				Inter receiveMessage = new Inter();
+				InterMessage receiveMessage = new InterMessage();
 				receiveMessage.decode(receiveBytes);
 				
 				// build send back message
-				Inter sendMessage = new Inter();
-				sendMessage.setType(Inter.TYPE_RETURN);
+				InterMessage sendMessage = new InterMessage();
+				sendMessage.setType(InterMessage.TYPE_RETURN);
 				
 				// handle
 				String messageType = receiveMessage.getType();
