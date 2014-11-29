@@ -41,6 +41,8 @@ public class UDPServer{
 	 
 	public void initInterReceiver() {
 		interReceiver = new InterReceiver();
+		
+		// registerUser
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
@@ -58,6 +60,75 @@ public class UDPServer{
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
 			}
 		}, InterMessage.TYPE_REGISTE_USER);
+		
+		// reserveBook
+		interReceiver.addHandler(new InterReceiverHandler() {
+			
+			@Override
+			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+				String instName = receiveMessage.getParameter("instName");
+				String username = receiveMessage.getParameter("username");
+				String password = receiveMessage.getParameter("password");
+				String bookName = receiveMessage.getParameter("bookName");
+				String authorName = receiveMessage.getParameter("authorName");
+				
+				String value = library.reserveBook(instName, username, password, bookName, authorName);
+				
+				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+			}
+		}, InterMessage.TYPE_RESERVE_BOOK);
+		
+		// setDuration
+		interReceiver.addHandler(new InterReceiverHandler() {
+			
+			@Override
+			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+				String instName = receiveMessage.getParameter("instName");
+				String username = receiveMessage.getParameter("username");
+				String password = receiveMessage.getParameter("password");
+				String bookName = receiveMessage.getParameter("bookName");
+				String authorName = receiveMessage.getParameter("authorName");
+				
+				String value = library.reserveBook(instName, username, password, bookName, authorName);
+				
+				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+			}
+		}, InterMessage.TYPE_RESERVE_BOOK);
+		
+		// reserveInterLibrary
+		interReceiver.addHandler(new InterReceiverHandler() {
+			
+			@Override
+			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+				String instName = receiveMessage.getParameter("instName");
+				String username = receiveMessage.getParameter("username");
+				String password = receiveMessage.getParameter("password");
+				String bookName = receiveMessage.getParameter("bookName");
+				String authorName = receiveMessage.getParameter("authorName");
+				
+				String value = library.reserveInterLibrary(instName, username, password, bookName, authorName);
+				
+				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+			}
+		}, InterMessage.TYPE_RESERVE_BOOK);
+		
+		// getNonRetuners
+		interReceiver.addHandler(new InterReceiverHandler() {
+			
+			@Override
+			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+				String instName = receiveMessage.getParameter("instName");
+				String adminUsername = receiveMessage.getParameter("adminUsername");
+				String adminPassword = receiveMessage.getParameter("adminPassword");
+				String days = receiveMessage.getParameter("days");
+				
+				String value = library.getNonRetuners(instName, adminUsername, adminPassword, Integer.valueOf(days));
+				
+				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+			}
+		}, InterMessage.TYPE_RESERVE_BOOK);
+				
+			
 		
 	}
 	
