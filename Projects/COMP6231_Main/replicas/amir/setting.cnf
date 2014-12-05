@@ -1,0 +1,6 @@
+concordia:udp:port
+5001
+mcgill:udp:port
+5002
+polytechnique:udp:port
+5003

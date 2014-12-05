@@ -6,8 +6,18 @@ import javax.jws.*;
 import javax.jws.*;
 import javax.xml.ws.Endpoint;
 // this class boots up all 3 libraries
-@WebService(targetNamespace="lib")
+
+
+import com.comp6231.common.ILibrary;
+import com.comp6231.common.UDPServer;
+
 public class LibraryServerDispathcer implements ILibrary{
+	
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+		new LibraryServerDispathcer();
+	}
+	
+	
 	HashMap<String, LibraryImpl> libs = new HashMap<String, LibraryImpl>();
 	public LibraryServerDispathcer() throws FileNotFoundException, UnsupportedEncodingException {
 	
@@ -27,8 +37,17 @@ public class LibraryServerDispathcer implements ILibrary{
 		// write all the key values into the config file
 		cnf.write();
 		
+		initPortal();
+		
 	}
-
+	private UDPServer portal;
+	private void initPortal() {
+		portal = new UDPServer();
+		portal.setHeartBeatsPortNumber(4021);
+		portal.setPortNumber(5000);
+		portal.setLibrary(this);
+		portal.start();
+	}
 	
 	public String registerUser(String InstName, String firstName,
 			String lastName, String emailAddress, String phoneNumber,

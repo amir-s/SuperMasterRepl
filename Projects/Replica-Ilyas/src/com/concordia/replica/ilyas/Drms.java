@@ -1,5 +1,7 @@
 package com.concordia.replica.ilyas;
 
+import com.comp6231.common.ILibrary;
+
 /**
  * @author Ilyas Rashid - Student Id 4819608
  * @date 19/11/2014
@@ -8,9 +10,6 @@ package com.concordia.replica.ilyas;
 
 
 public class Drms implements ILibrary{
-	
-	//TODO: get non returns: list all reservations greater than equal
-	//TODO: set durantion: add the days to the reserved #
 	
 	private LibraryServer m_concordiaServer = new LibraryServer(2020);
 	private LibraryServer m_mcgillServer = new LibraryServer(2021);
@@ -24,7 +23,7 @@ public class Drms implements ILibrary{
 		
 		try {
 			 longPhoneNumber = Long.parseLong(phoneNumber);
-			 System.out.println("longPhoneNumber = " + longPhoneNumber);
+			 //System.out.println("longPhoneNumber = " + longPhoneNumber);
 		  } catch (NumberFormatException nfe) {
 		     System.out.println("NumberFormatException: " + nfe.getMessage());
 		  }
@@ -122,7 +121,16 @@ public class Drms implements ILibrary{
 
 	public static void main(String[] args){
 		Drms drms = new Drms();
-		System.out.println(drms.getNonRetuners("Polytechnique", "Admin", "Admin", 5));
+		//System.out.println(drms.getNonRetuners("Polytechnique", "Admin", "Admin", 5));
+		System.out.println("");
+		System.out.println("");
+		System.out.println(drms.registerUser("McGill", "John", "Smith", "john@smith.com", "514123456", "johnsmith", "johnsmith"));
+		System.out.println(drms.registerUser("McGill", "John", "Smith", "john@smith.com", "514123456", "johnsmith", "johnsmith"));
+		System.out.println(drms.reserveBook("Concordia", "paulka", "paulka", "Absolute C++", "Walter"));
+		System.out.println(drms.reserveInterLibrary("McGill", "paulka", "paulka", "Absolute C++", "Walter"));
+		System.out.println(drms.reserveInterLibrary("McGill", "johnsmith", "johnsmith", "Absolute C++", "Walter"));
+		System.out.println(drms.setDuration("Concordia", "Admin", "Admin", "paulka", "Absolute C++", "Walter", 10));
+		System.out.println(drms.getNonRetuners("Polytechnique", "Admin", "Admin", 30));
 	}
 	
 }
