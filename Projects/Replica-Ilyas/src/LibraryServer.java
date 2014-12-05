@@ -69,7 +69,7 @@ public class LibraryServer {
 				_studentList.add(_tempStudent);
 				m_allUsers.put(_firstChar, _studentList);			
 			}
-			_result = "0@The Account has been successfully created in " + m_serverName + ".";
+			_result = "0@";
 			writeToServerLogFile("The Account for user " + Username + " has been successfully created in " + m_serverName + ".");
 			writeToStudentLogFile(Username.toLowerCase(), "The Account has been successfully created in " + m_serverName + ":");
 			writeToStudentLogFile(Username.toLowerCase(), "FirstName: " + FirstName + ", LastName: " + LastName +  ", Email Address: " + EmailAddress);
@@ -83,7 +83,7 @@ public class LibraryServer {
 				_studentList.add(_tempStudent);			
 				m_allUsers.put(_firstChar, _studentList);
 			}
-			_result = "0@The Account has been successfully created in " + m_serverName + ".";
+			_result = "0@";
 			writeToServerLogFile("The Account for user " + Username + " has been successfully created in " + m_serverName + ".");
 			writeToStudentLogFile(Username.toLowerCase(), "FirstName: " + FirstName + ", LastName: " + LastName +  ", Email Address: " + EmailAddress);
 			writeToStudentLogFile(Username.toLowerCase(), "PhoneNumber: " + PhoneNumber + ", Username: " + Username + ", Password: " + Password + ", Institution: " + EducationalInstitution);
@@ -95,7 +95,7 @@ public class LibraryServer {
 				for(Student _s : _studentList){
 					
 			        if(_s.m_userName != null && _s.m_userName.toLowerCase().equals(Username.toLowerCase())){
-			        	_result = "5@The username "  + Username + " already exists in " + m_serverName + ".";
+			        	_result = "5@";
 			        	writeToServerLogFile("Failed to register the username "  + Username + ", it already exists.");
 			        	_userExists = true;
 			        }
@@ -105,7 +105,7 @@ public class LibraryServer {
 					Student _tempStudent = new Student(FirstName, LastName, EmailAddress, PhoneNumber, Username, Password, EducationalInstitution);
 					_studentList.add(_tempStudent);
 					
-					_result = "0@The Account has been successfully created in " + m_serverName + ".";
+					_result = "0@";
 					writeToServerLogFile("The Account for user " + Username + " has been successfully created in " + m_serverName + ".");
 					writeToStudentLogFile(Username.toLowerCase(), "FirstName: " + FirstName + ", LastName: " + LastName +  ", Email Address: " + EmailAddress);
 					writeToStudentLogFile(Username.toLowerCase(), "PhoneNumber: " + PhoneNumber + ", Username: " + Username + ", Password: " + Password + ", Institution: " + EducationalInstitution);
@@ -142,7 +142,7 @@ public class LibraryServer {
 		//check for user exists
 		char _firstChar = Username.toLowerCase().charAt(0);		
 		if(m_allUsers.isEmpty() || m_allUsers.get(_firstChar) == null){
-			_result = "1@The username "  + Username + " does not exist in " + m_serverName + ".";
+			_result = "1@";
 			writeToServerLogFile("Failed to reserve book " + BookName + " for The username " + Username + " . The username does not exist in " + m_serverName + ".");
 			
 		}
@@ -163,14 +163,14 @@ public class LibraryServer {
 						        	_bookExists = true;
 						        	synchronized (m_bookList.get(m_bookList.indexOf(_b))){
 						        		if (_b.m_availableCopies == 0){
-						        			_result = "3@Sorry, all copies are already reserved.";
+						        			_result = "3@";
 						        			writeToServerLogFile("Failed to reserve book " + BookName + "for The username " + Username + ". No more copies available.");
 						        			writeToStudentLogFile(Username.toLowerCase(), "Failed to reserve book " + BookName + "for the username " + Username + ". No more copies available.");
 						        		}
 						        		else{
 						        			_b.m_availableCopies--;
 						        			_s.m_reservedBooks.put(BookName, 14);
-						        			_result = "0@The book " + _b.m_name + " has been reserved for " + _s.m_fristName + " " + _s.m_lastName;
+						        			_result = "0@";
 						        			writeToServerLogFile("Successfully reserved book " + BookName + " for the username " + Username + ".");
 						        			writeToStudentLogFile(Username.toLowerCase(), "Successfully reserved book " + BookName + " for the username " + Username + ". Duration is 14 days");
 						        		}
@@ -179,7 +179,7 @@ public class LibraryServer {
 				        	}
 			        		
 			        		if(!_bookExists){
-			        			_result = "3@The book " + BookName + " with author " + AuthorName + " was not found in the library.";
+			        			_result = "3@";
 			        			writeToServerLogFile("Failed to reserve book " + BookName + " with author " + AuthorName + " for The username " + Username + ". Not found in the library.");
 			        			writeToStudentLogFile(Username.toLowerCase(), "Failed to reserve book " + BookName + " with author " + AuthorName + " for the username " + Username + ". Not found in the library.");
 			        		}
@@ -187,14 +187,14 @@ public class LibraryServer {
 			        	}
 			        	else{
 			        		//incorrect password
-			        		_result = "2@The username and password does not match.";
+			        		_result = "2@";
 			        		writeToServerLogFile("Failed to reserve book " + BookName + "for the username " + Username + ". The username and password does not match.");
 			        		writeToStudentLogFile(Username.toLowerCase(), "Failed to reserve book " + BookName + "for the username " + Username + ". The username and password does not match.");
 			        	}
 			        }
 				}
 				if (!_userExists){					
-					_result = "1@The username "  + Username + " does not exist in " + m_serverName + ".";
+					_result = "1@";
 					writeToServerLogFile("Failed to reserve book " + BookName + "for the username " + Username + " . The username does not exist in " + m_serverName + ".");
 				}
 			}	
@@ -231,7 +231,7 @@ public class LibraryServer {
 		//check for user exists
 		char _firstChar = Username.toLowerCase().charAt(0);		
 		if(m_allUsers.isEmpty() || m_allUsers.get(_firstChar) == null){
-			_result = "1@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+			_result = "1@";
 			writeToServerLogFile("reserveInterLibrary: Failed to reserve book " + BookName + " for The username " + Username + " . The username does not exist in " + m_serverName + ".");
 			
 		}
@@ -262,7 +262,7 @@ public class LibraryServer {
 						        		else{
 						        			_b.m_availableCopies--;
 						        			_s.m_reservedBooks.put(BookName, 14);
-						        			_result = "0@Result: Success. The book " + _b.m_name + " has been found at "+ m_serverName + " and has been reserved for " + _s.m_fristName + " " + _s.m_lastName;
+						        			_result = "0@";
 						        			writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " locally for the username " + Username + ".");
 						        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: Successfully reserved book " + BookName + " locally at " 
 						        			+ m_serverName + " for the username " + Username + ". Duration is 14 days");
@@ -280,14 +280,14 @@ public class LibraryServer {
 			        	}
 			        	else{
 			        		//incorrect password
-			        		_result = "2@Result: Failed. The username and password does not match.";
+			        		_result = "2@";
 			        		writeToServerLogFile("Failed to reserve book " + BookName + "for the username " + Username + ". The username and password does not match.");
 			        		writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: Failed to reserve book " + BookName + "for the username " + Username + ". The username and password does not match.");
 			        	}
 			        }
 				}
 				if (!_userExists){					
-					_result = "1@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+					_result = "1@";
 					writeToServerLogFile("reserveInterLibrary: Failed to reserve book " + BookName + "for the username " + Username + " . The username does not exist in " + m_serverName + ".");
 				}
 			}	
@@ -333,7 +333,7 @@ public class LibraryServer {
 					unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6790);
 					
 					if (_updateRecordResult.contains("already reserved")){
-						_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+						_result="1@";
 						
 					}
 					else{
@@ -343,7 +343,7 @@ public class LibraryServer {
 				
 				}
 				else if (_updateRecordResult.contains("Result: Success.")){
-					_result = "0@Result: Success. Able to reserve book from McGill Library";
+					_result = "0@";
 					writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from McGill library for the username " + Username + ".");
         			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from McGill library. Duration is 14 days");
 				}
@@ -362,7 +362,7 @@ public class LibraryServer {
 						unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
 						
 						if (_updateRecordResult.contains("already reserved")){
-							_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+							_result="1@";
 							
 						}
 						else{
@@ -371,13 +371,13 @@ public class LibraryServer {
 						}
 					}
 					else if (_updateRecordResult.contains("Result: Success.")){
-						_result = "0@Result: Success. Able to reserve book from polytechnique Library";
+						_result = "0@";
 						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from polytechnique library for the username " + Username + ".");
 	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from polytechnique library. Duration is 14 days");
 					}
 				}
 				else if (_polytechniqueResult.contains("Result: Failed.")){
-					_result = "3@Result: Failed. Not able to Reserve book " + BookName +" from local or other inter libraries.";					
+					_result = "3@";					
 				}
 			}
 		}
@@ -405,7 +405,7 @@ public class LibraryServer {
 				
 				}
 				else if (_updateRecordResult.contains("Result: Success.")){
-					_result = "0@Result: Success. Able to reserve book from Concordia Library";
+					_result = "0@";
 					writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from Concordia library for the username " + Username + ".");
         			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from Concordia library. Duration is 14 days");
 				}
@@ -433,13 +433,13 @@ public class LibraryServer {
 						}
 					}
 					else if (_updateRecordResult.contains("Result: Success.")){
-						_result = "0@Result: Success. Able to reserve book from polytechnique Library";
+						_result = "0@";
 						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from polytechnique library for the username " + Username + ".");
 	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from polytechnique library. Duration is 14 days");
 					}
 				}
 				else if (_polytechniqueResult.contains("Result: Failed.")){
-					_result = "3@Result: Failed. Not able to Reserve book " + BookName +" from local or other inter libraries.";					
+					_result = "3@";					
 				}
 			}
 		}
@@ -467,7 +467,7 @@ public class LibraryServer {
 				
 				}
 				else if (_updateRecordResult.contains("Result: Success.")){
-					_result = "0@Result: Success. Able to reserve book from Concordia Library";
+					_result = "0@";
 					writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from Concordia library for the username " + Username + ".");
         			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from Concordia library. Duration is 14 days");
 				}
@@ -495,13 +495,13 @@ public class LibraryServer {
 						}
 					}
 					else if (_updateRecordResult.contains("Result: Success.")){
-						_result = "0@Result: Success. Able to reserve book from McGill Library";
+						_result = "0@";
 						writeToServerLogFile("reserveInterLibrary: Successfully reserved book " + BookName + " from McGill library for the username " + Username + ".");
 	        			writeToStudentLogFile(Username.toLowerCase(), "reserveInterLibrary: " + m_serverName + " Successfully reserved book " + BookName + " from McGill library. Duration is 14 days");
 					}
 				}
 				else if (_mcgillResult.contains("Result: Failed.")){
-					_result = "3@Result: Failed. Not able to Reserve book " + BookName +" from local or other inter libraries.";					
+					_result = "3@";					
 				}
 			}
 		}
@@ -527,7 +527,7 @@ public class LibraryServer {
 		//check for user exists
 		char _firstChar = Username.toLowerCase().charAt(0);		
 		if(m_allUsers.isEmpty() || m_allUsers.get(_firstChar) == null){
-			_result = "1@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+			_result = "1@";
 			writeToServerLogFile("updateStudentRecord: Failed to update Student Record for book " + BookName + " for The username " + Username + " . The username does not exist in " + m_serverName + ".");
 			
 		}
@@ -543,7 +543,7 @@ public class LibraryServer {
 			        	if (_s.m_reservedBooks.containsKey(BookName)){
 			        		writeToServerLogFile("updateStudentRecord: Failed to reserve book " + BookName + " for the username " + Username + ". It is already reserved.");
 		        			writeToStudentLogFile(Username.toLowerCase(), "updateStudentRecord: Book " + BookName + " is already reserved for the username " + Username + ". Duration is 14 days");
-		        			_result = "1@Result: Failed. The book " + BookName + " has been already reserved for user " + Username;
+		        			_result = "1@";
 			        		
 			        	}
 			        	else{
@@ -551,13 +551,13 @@ public class LibraryServer {
 			        		
 			        		writeToServerLogFile("updateStudentRecord: Successfully reserved book " + BookName + " for the username " + Username + ".");
 		        			writeToStudentLogFile(Username.toLowerCase(), "updateStudentRecord: Successfully reserved book " + BookName + " for the username " + Username + ". Duration is 14 days");
-		        			_result = "0@Result: Success. The book " + BookName + " has been reserved for " + Username;
+		        			_result = "0@";
 			        	}
 			        }
 				}
 				
 				if (!_userExists){					
-					_result = "1@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+					_result = "1@";
 					writeToServerLogFile("updateStudentRecord: Failed to update Student Record for book " + BookName + " for The username " + Username + " . The username does not exist in " + m_serverName + ".");
 				}
 			}	
@@ -627,7 +627,7 @@ public class LibraryServer {
 		//check for user exists
 		char _firstChar = Username.toLowerCase().charAt(0);		
 		if(m_allUsers.isEmpty() || m_allUsers.get(_firstChar) == null){
-			_result = "4@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+			_result = "4@";
 			writeToServerLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".");
 			writeToAdminLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".");
 			
@@ -653,7 +653,7 @@ public class LibraryServer {
 			        			_s.m_reservedBooks.put(_reservedBook, _oldValue + NumDays);
 			        			
 			        			_s.m_finesAccumulated = _s.m_finesAccumulated + NumDays;
-			        			_result = "0@Result: Success. The username "  + Username + " was fined for book " + BookName + ". Fines Accumulated for this user is now: $" + _s.m_finesAccumulated;
+			        			_result = "0@";
 			        			writeToServerLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Success. The username "  + Username + " was fined for book " + BookName + ". Fines Accumulated for this user is now: $" + _s.m_finesAccumulated);
 			        			writeToStudentLogFile(Username.toLowerCase(), "The username "  + Username + " was fined for book " + BookName + ". Fines Accumulated for this user is now: $" + _s.m_finesAccumulated);
 			        			writeToStudentLogFile(Username.toLowerCase(), "The username "  + Username + " now has a duration " +_s.m_reservedBooks.get(_reservedBook) + " for book " + BookName + ".");
@@ -663,7 +663,7 @@ public class LibraryServer {
 			        	}
 			        	
 			        	if (!_userHasReservedBook){
-			        		_result = "4@Result: Failed. The user "  + Username + " has not reserved the book " + BookName;
+			        		_result = "4@";
 			        		writeToServerLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The user "  + Username + " has not reserved the book " + BookName);
 			        		writeToAdminLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The user "  + Username + " has not reserved the book " + BookName);
 			        	}
@@ -671,7 +671,7 @@ public class LibraryServer {
 				}			        	
 			        		
 				if (!_userExists){					
-					_result = "4@Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".";
+					_result = "4@";
 					writeToServerLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".");
 					writeToAdminLogFile("Admin operation set Duration called on " + m_serverName + ". Result: Failed. The username "  + Username + " does not exist in " + m_serverName + ".");
 				}
