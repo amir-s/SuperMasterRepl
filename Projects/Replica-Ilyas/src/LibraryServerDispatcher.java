@@ -98,7 +98,7 @@ public class LibraryServerDispatcher implements ILibrary{
 			return m_polytechniqueServer.reserveInterLibrary(username, password, bookName, authorName);
 		}
 		
-		return "";
+		return "-2";
 	}
 	
 

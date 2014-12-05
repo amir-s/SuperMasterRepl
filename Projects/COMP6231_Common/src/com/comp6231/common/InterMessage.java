@@ -92,7 +92,7 @@ public class InterMessage {
 		}
 		
 		sb.append("\n");
-		
+		System.out.println("Encoded Message: '" + sb.toString() + "'");
 		return sb.toString().getBytes();
 	}
 	
@@ -102,7 +102,7 @@ public class InterMessage {
 		System.out.println("$$$$$$$$$$$$$$$");
 		System.out.println(endIndex);
 		message = message.substring(0, endIndex);
-		System.out.println(message);
+		System.out.println("MSG: '" + message + "'");
 		String[] parts = message.split("\\|");
 		this.type = parts[0];
 		System.out.println(this.type);

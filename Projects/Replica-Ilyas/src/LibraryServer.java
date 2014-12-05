@@ -224,7 +224,7 @@ public class LibraryServer {
 	// 3 : Book does not exists or no copies left
 	*/
 	public String reserveInterLibrary(String Username, String Password, String BookName, String AuthorName){
-		String _result = "";
+		String _result = "-1";
 		boolean _userExists = false;
 		boolean _bookExists = false;
 		
@@ -316,7 +316,7 @@ public class LibraryServer {
 	@return : String that contains the Success or Failure description
 	*/	
 	public String reserveBookFromARemoteLibrary(String Username, String BookName, String AuthorName){
-		String _result="";
+		String _result="-3";
 		
 		if (m_serverName.equals("Concordia")){
 
@@ -521,7 +521,7 @@ public class LibraryServer {
 	@return : String that contains the Success or Failure description
 	*/
 	public String updateStudentRecord(String Username, String BookName, String AuthorName){
-		String _result = "";
+		String _result = "-4";
 		boolean _userExists = false;
 		
 		//check for user exists
