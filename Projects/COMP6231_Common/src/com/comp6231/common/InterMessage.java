@@ -37,7 +37,9 @@ public class InterMessage {
 	 * Mark - Basic - Keys
 	 */
 	 
-	public static final String KEY_RETURN_VALUE 			= "value";
+	public static final String KEY_RETURN_VALUE 				= "value";
+	public static final String KEY_SEQUENCE_NUMBER 				= "sequenceNumber";
+	public static final String KEY_REPLICA_MANAGER_PORT_NUMBER 	= "replicaManagerPortNumber";
 	
 	/*
 	 * Mark - Basic - Methods
@@ -49,6 +51,10 @@ public class InterMessage {
 	
 	public String getParameter(String name){
 		return parameters.get(name);
+	}
+
+	public void removeParameter(String name) {
+		parameters.remove(name);
 	}
 	
 	/*
