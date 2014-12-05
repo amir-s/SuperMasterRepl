@@ -20,7 +20,7 @@ public class LibraryServer implements ILibrary{
 		loger = new Logger();
 		loger.setLibraryServer(this);
 
-		buildFakeData();
+		// buildFakeData();
 		initInternalComunication();
 	}
 

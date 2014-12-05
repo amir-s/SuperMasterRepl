@@ -1,6 +1,7 @@
 package com.concordia.replica.ilyas;
 
 import com.comp6231.common.ILibrary;
+import com.comp6231.common.UDPServer;
 
 /**
  * @author Ilyas Rashid - Student Id 4819608
@@ -9,7 +10,7 @@ import com.comp6231.common.ILibrary;
  */
 
 
-public class Drms implements ILibrary{
+public class LibraryServerDispatcher implements ILibrary{
 	
 	private LibraryServer m_concordiaServer = new LibraryServer(2020);
 	private LibraryServer m_mcgillServer = new LibraryServer(2021);
@@ -118,9 +119,24 @@ public class Drms implements ILibrary{
 	}
 	//2@InsName,FirstName,LastName,PhoneNumber@InsName,FirstName,LastName,PhoneNumber@InsName,FirstName,LastName,PhoneNumber
 
-
-	public static void main(String[] args){
-		Drms drms = new Drms();
+	private UDPServer portal;
+	private void initPortal() {
+		portal = new UDPServer();
+		portal.setHeartBeatsPortNumber(4022);
+		portal.setPortNumber(6000);
+		portal.setLibrary(this);
+		portal.start();
+	}
+	
+	public LibraryServerDispatcher() {
+		initPortal();
+	}
+	public static void main(String[] args) {
+		new LibraryServerDispatcher();
+	}
+	public static void test() {
+	
+		LibraryServerDispatcher drms = new LibraryServerDispatcher();
 		//System.out.println(drms.getNonRetuners("Polytechnique", "Admin", "Admin", 5));
 		System.out.println("");
 		System.out.println("");

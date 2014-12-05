@@ -2,9 +2,6 @@ import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
-import javax.jws.*;
-import javax.jws.*;
-import javax.xml.ws.Endpoint;
 // this class boots up all 3 libraries
 
 
