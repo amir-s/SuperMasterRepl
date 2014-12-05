@@ -1003,6 +1003,7 @@ public class LibraryServer {
 	*/
 	public void writeToServerLogFile(String output){
 		try{
+			System.out.println(m_serverName + ": " + output);
 			File _file = new File(m_serverName + ".txt");
 			if(!_file.exists()){
 				_file.createNewFile();
