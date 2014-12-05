@@ -79,6 +79,14 @@ public class LibraryServerDispatcher implements ILibrary{
 			String username, String password) {
 		
 		System.out.println("LibraryServerDispatcher : Function Called : registerUser");
+
+		Response response = new Response();
+		response.setErrorCode(ServerError.SUCCESS);
+		
+		if (firstName.equals("conflict")) {
+			response.setErrorCode(ServerError.AUTENTCIATION_FAILED);
+			return response.toString();
+		}
 		
 		LibraryServer libraryServer = libraries.get(instName);
 		return libraryServer.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password);
