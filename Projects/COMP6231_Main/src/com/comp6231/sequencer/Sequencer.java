@@ -6,6 +6,8 @@ import java.net.*;
 import java.io.*;
 import java.nio.charset.Charset;
 
+import com.comp6231.common.InterMessage;
+
 public class Sequencer {
 	private Queue<byte[]> seqQueue = new LinkedList<byte[]>();
 	private boolean holdRequests = false;
@@ -68,8 +70,6 @@ public class Sequencer {
 				InetAddress _aHost = InetAddress.getByName("localhost");
 				System.out.println("Sequencer: Got a message on port 4001");
 				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
-				
-				
 				
 				//TODO:Add hold requests check
 				DatagramPacket _sendToR1 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r1ServerPort);

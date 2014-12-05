@@ -56,7 +56,7 @@ public class InterSender {
 			InetAddress host = InetAddress.getByName("localhost");
 			int serverPort = toPortNumber;
 
-			System.out.println("InterSender : Event : Going to send message to port " + toPortNumber);
+			System.out.println("InterSender : Event : Going to send message to port " + toPortNumber + " from " + socket.getLocalPort());
 			// sending 
 			byte[] sendBytes = sendMessage.encode();
 			DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, host, serverPort);
