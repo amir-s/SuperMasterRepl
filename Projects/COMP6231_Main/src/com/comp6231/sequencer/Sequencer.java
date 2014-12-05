@@ -53,34 +53,35 @@ public class Sequencer {
 		try{
 			int _port = 4001;
 			_aSocket = new DatagramSocket(_port);
-			System.out.println("Client Listener started and binding to port: " + _port);
-			byte [] _buffer = new byte[1000];
+			System.out.println("Front End Listener started and binding to port: " + _port);
+			//byte [] _buffer = new byte[1000];
 			
 			while(true){
-			
-			DatagramPacket _request = new DatagramPacket(_buffer, _buffer.length);
-			
-			_aSocket.receive(_request);
-
-			//TODO: Adding to the queue
-			//seqQueue.add(_buffer);
-			InetAddress _aHost = InetAddress.getByName("localhost");
-			System.out.println("Got a message from the front end");
-			System.out.println("Message Content: " + new String(_request.getData()));
-			
-			
-			
-			//TODO:Add hold requests check
-			DatagramPacket _sendToR1 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r1ServerPort);
-			DatagramPacket _sendToR2 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r2ServerPort);
-			DatagramPacket _sendToR3 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r3ServerPort);
-			
-			_aSocket.send(_sendToR1);
-			_aSocket.send(_sendToR2);
-			_aSocket.send(_sendToR3);
-			
-			//TODO: Remove from queue when done
-			//seqQueue.remove();
+				byte [] _buffer = new byte[1000];
+	
+				DatagramPacket _request = new DatagramPacket(_buffer, _buffer.length);
+				
+				_aSocket.receive(_request);
+	
+				//TODO: Adding to the queue
+				//seqQueue.add(_buffer);
+				InetAddress _aHost = InetAddress.getByName("localhost");
+				System.out.println("Sequencer: Got a message on port 4001");
+				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
+				
+				
+				
+				//TODO:Add hold requests check
+				DatagramPacket _sendToR1 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r1ServerPort);
+				DatagramPacket _sendToR2 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r2ServerPort);
+				DatagramPacket _sendToR3 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r3ServerPort);
+				
+				_aSocket.send(_sendToR1);
+				_aSocket.send(_sendToR2);
+				_aSocket.send(_sendToR3);
+				
+				//TODO: Remove from queue when done
+				//seqQueue.remove();
 			
 			
 			}
@@ -109,8 +110,8 @@ public class Sequencer {
 			
 				DatagramPacket _request = new DatagramPacket(_buffer, _buffer.length);
 				_aSocket.receive(_request);
-				System.out.println("Got a message from the front end");
-				System.out.println("Message Content: " + new String(_request.getData()));
+				System.out.println("Sequencer: Got a message on port 4050");
+				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
 				
 				Charset _charset = Charset.forName("UTF-8");
 				
