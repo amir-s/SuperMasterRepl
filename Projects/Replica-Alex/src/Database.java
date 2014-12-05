@@ -1,12 +1,9 @@
-package com.comp6231.zhaozhe.server;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.comp6231.zhaozhe.entity.Account;
-import com.comp6231.zhaozhe.entity.Book;
 
 public class Database {
 	

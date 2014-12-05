@@ -1,4 +1,3 @@
-package com.concordia.replica.ilyas;
 
 import com.comp6231.common.ILibrary;
 import com.comp6231.common.UDPServer;

@@ -1,8 +1,6 @@
-package com.comp6231.zhaozhe.server;
+
 
 import java.util.Date;
-
-import com.comp6231.zhaozhe.entity.Account;
 
 public class Log {
 	

@@ -1,4 +1,4 @@
-package com.comp6231.zhaozhe.server;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +55,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	 */
 	
 	private void initServers() {
+		System.out.println("Alex Replica");
 		libraries = new HashMap<String, LibraryServer>();
 		
 		List<ServerInfo> infos = ServerInfoManager.defaultManager().getServers();
