@@ -66,7 +66,7 @@ public class Sequencer {
 			//seqQueue.add(_buffer);
 			InetAddress _aHost = InetAddress.getByName("localhost");
 			System.out.println("Got a message from the front end");
-			System.out.println("Message Content: " + _request.getData());
+			System.out.println("Message Content: " + new String(_request.getData()));
 			
 			
 			
@@ -110,7 +110,7 @@ public class Sequencer {
 				DatagramPacket _request = new DatagramPacket(_buffer, _buffer.length);
 				_aSocket.receive(_request);
 				System.out.println("Got a message from the front end");
-				System.out.println("Message Content: " + _request.getData());
+				System.out.println("Message Content: " + new String(_request.getData()));
 				
 				Charset _charset = Charset.forName("UTF-8");
 				
