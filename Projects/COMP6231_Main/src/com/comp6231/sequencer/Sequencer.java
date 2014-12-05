@@ -3,18 +3,18 @@ package com.comp6231.sequencer;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import com.UDPTransport.UDPTransporter;
+import com.comp6231.common.IConsumer;
 import com.comp6231.common.InterMessage;
 import com.comp6231.common.InterReceiver;
 import com.comp6231.common.InterReceiverHandler;
 import com.comp6231.common.InterSender;
+import com.comp6231.common.SocketProducerConsumer;
 
 public class Sequencer {
 	private Queue<DatagramPacket> seqQueue = new LinkedList<DatagramPacket>();
@@ -26,46 +26,30 @@ public class Sequencer {
 	private long sequenceNumber = 0;
 	
 	public Sequencer() {
-		testInit();
+		
 		try {
-//			Thread t = new Thread(new Runnable() {
-//		         public void run()
-//		         {
-//		        	 startFrontEndListener();
-//		         }
-//			});
-//			t.start();
-			Thread t1 = new Thread(new Runnable() {
-				 public void run()
-				 {
+			Thread feThread = new Thread(new Runnable() {
+		         public void run() {
+		        	 initFrontEndListener();
+		         }
+			});
+			feThread.start();
+			Thread rmThread = new Thread(new Runnable() {
+				 public void run() {
 					 startReplicaManagerListener();
 				 }
 			});
-			t1.start();
-			
+			rmThread.start();
+			Thread prThread = new Thread(new Runnable() {
+				public void run() {
+					consumer();
+				}
+			});
+			prThread.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		
-//		try {
-//			Thread t = new Thread(new Runnable() {
-//		         public void run()
-//		         {
-//		        	 startFrontEndListener();
-//		         }
-//			});
-//			t.start();
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		
+
 	}
 	
 	
@@ -74,6 +58,7 @@ public class Sequencer {
 	   
 	@return : Nothing
 	*/
+	/*
 	private void startFrontEndListener(){
 		DatagramSocket _aSocket = null;
 
@@ -99,13 +84,13 @@ public class Sequencer {
 				sequenceNumber++;
 				_buffer = message.encode();
 				
-				//TODO: Adding to the queue
+				//TO DO: Adding to the queue
 
 				InetAddress _aHost = InetAddress.getByName("localhost");
 				System.out.println("Sequencer: Got a message on port 4001");
 				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
 				
-//				//TODO:Add hold requests check
+//				//TO DO:Add hold requests check
 //				DatagramPacket _sendToR1 = new DatagramPacket(_buffer, _buffer.length, _aHost, r1ServerPort);
 //				DatagramPacket _sendToR2 = new DatagramPacket(_buffer, _buffer.length, _aHost, r2ServerPort);
 //				DatagramPacket _sendToR3 = new DatagramPacket(_buffer, _buffer.length, _aHost, r3ServerPort);
@@ -116,7 +101,7 @@ public class Sequencer {
 				
 //				_buffer = returnedMessage1.encode();
 				
-				//TODO: Remove from queue when done
+				//TO DO: Remove from queue when done
 				//seqQueue.remove();
 			
 			
@@ -126,7 +111,7 @@ public class Sequencer {
 		}finally {if(_aSocket != null) _aSocket.close();}
 		
 	}
-	
+	*/
 	/**
 	Desc :    
 	@return : Nothing
@@ -149,7 +134,6 @@ public class Sequencer {
 				System.out.println("Sequencer: Got a message on port 4050");
 				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
 				
-				Charset _charset = Charset.forName("UTF-8");
 				
 				int _i;
 				String _udpRequest="";
@@ -160,10 +144,12 @@ public class Sequencer {
 					System.out.println("!! '" + _udpRequest+"'");
 				if( _udpRequest.contains("STOP")){
 					System.out.println("START QUEUEING");
+					receiver.pauseConsumer();
 					holdRequests = true;				
 				}
 				else if(_udpRequest.contains("START")){
 					System.out.println("STOP QUEUEING");
+					receiver.resumeConsumer();
 					holdRequests = false;				
 				}
 			}
@@ -173,22 +159,26 @@ public class Sequencer {
 		
 	}
 	
-	private InterReceiver receiver;
+	private SocketProducerConsumer receiver;
 
+	private void consumer() {
+		while (true) {
+			
+		}
+	}
+	private void initFrontEndListener() {
 
-	private void testInit() {
-
-		receiver = new InterReceiver();
+		receiver = new SocketProducerConsumer();
 		receiver.setPortNumber(4001);
-		receiver.setUniversalHandler(new InterReceiverHandler() {
-
-			@Override
-			public InterMessage handle(InterMessage receiveMessage) {
+		receiver.setConsumer(new IConsumer() {
+			
+			public void consume(InterMessage receiveMessage, DatagramPacket packet) throws IOException {
+				System.out.println("Consuming");
 				InterMessage message = receiveMessage;
 				
 				message.addParameter(InterMessage.KEY_SEQUENCE_NUMBER, Long.toString(sequenceNumber));
 				sequenceNumber++;
-				System.out.println(new String(message.encode()));
+				
 				InterSender sender;
 				sender = new InterSender();
 				sender.setToPortNumber(r1ServerPort);
@@ -228,14 +218,20 @@ public class Sequencer {
 				if (wrong != -1) {
 					UDPTransporter.send("localhost", replicaManagers[wrong], "WRONG");
 				}
+				InterMessage toSend = returnedMessage1;
+			
+				if (wrong == 0) toSend = returnedMessage2;
+				if (wrong == 1) toSend = returnedMessage3;
+				if (wrong == 2) toSend = returnedMessage1;
 				
-				if (wrong == 0) return returnedMessage2;
-				if (wrong == 1) return returnedMessage3;
-				if (wrong == 2) return returnedMessage1;
+				toSend.setType(InterMessage.TYPE_RETURN);
 				
+				
+				// send back
+				byte[] sendBytes = toSend.encode();
+				DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, packet.getAddress(), packet.getPort());
+				receiver.send(sendPacket);
 				System.out.println("Wrong = " + wrong);
-				
-				return returnedMessage1;
 
 			}
 
@@ -249,7 +245,7 @@ public class Sequencer {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Sequencer sq = new Sequencer();
+		new Sequencer();
 
 	}
 	

@@ -75,3 +75,13 @@ Fri Dec 05 12:41:42 EST 2014: The Account for user amirsa has been successfully 
 Fri Dec 05 12:41:47 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
 Fri Dec 05 12:41:47 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
 Fri Dec 05 12:42:22 EST 2014: Failed to reserve book 66 with author 77 for The username amirsa. Not found in the library.
+Fri Dec 05 13:59:05 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 14:00:50 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 14:03:31 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 14:08:59 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 14:09:49 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 14:09:49 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 14:10:19 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 14:14:53 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 14:14:55 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 14:14:55 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.

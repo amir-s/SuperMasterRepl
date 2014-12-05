@@ -99,20 +99,14 @@ public class InterMessage {
 	public void decode(byte[] messageBytes){
 		String message = new String(messageBytes);
 		int endIndex = message.indexOf('\n');
-		System.out.println("$$$$$$$$$$$$$$$");
-		System.out.println(endIndex);
 		message = message.substring(0, endIndex);
-		System.out.println("MSG: '" + message + "'");
 		String[] parts = message.split("\\|");
 		this.type = parts[0];
-		System.out.println(this.type);
 		String[] parameterStrings = parts[1].split(",");
 		for (String parameterString : parameterStrings){
 			String[] paraParts = parameterString.split(":");
 			String name = paraParts[0];
 			String value = paraParts[1];
-			System.out.println(name);
-			System.out.println(value);
 			this.addParameter(name, value);
 		}
 	}
