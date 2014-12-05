@@ -215,8 +215,6 @@ public class LibraryServer implements ILibrary{
 						if (success) {
 							remoteBookReserved.setValue(true);
 							
-							response.setData("Reserved the book in " + fromServerInfo.getName());
-							
 							internalSender.stop();
 						}
 					}
