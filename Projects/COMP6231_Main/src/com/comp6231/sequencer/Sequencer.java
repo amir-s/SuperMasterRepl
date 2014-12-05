@@ -126,7 +126,7 @@ public class Sequencer {
 					System.out.println("START QUEUEING");
 					holdRequests = true;				
 				}
-				else if( _udpRequest.contains("START")){
+				else if(_udpRequest.contains("START")){
 					System.out.println("STOP QUEUEING");
 					holdRequests = false;				
 				}
