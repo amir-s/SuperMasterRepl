@@ -118,7 +118,7 @@ public class LibraryImpl {
 			list.put(username, new Student(firstName, lastName, emailAddress, phoneNumber, username, password));
 			Logger.log(institudeName, username, "Username registered");
 		}
-		return 0;
+		return 5;
 	}
 	
 	// check if a username and password that provided

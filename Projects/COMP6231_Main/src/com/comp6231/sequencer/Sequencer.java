@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.UDPTransport.UDPTransporter;
 import com.comp6231.common.InterMessage;
 import com.comp6231.common.InterReceiver;
 import com.comp6231.common.InterReceiverHandler;
@@ -25,44 +26,45 @@ public class Sequencer {
 	private long sequenceNumber = 0;
 	
 	public Sequencer() {
-		try {
-			Thread t = new Thread(new Runnable() {
-		         public void run()
-		         {
-		        	 startFrontEndListener();
-		         }
-			});
-			t.start();
-			Thread t1 = new Thread(new Runnable() {
-				 public void run()
-				 {
-					 startReplicaManagerListener();
-				 }
-			});
-			t1.start();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			Thread t = new Thread(new Runnable() {
-		         public void run()
-		         {
-		        	 startFrontEndListener();
-		         }
-			});
-			t.start();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		testInit();
+//		try {
+//			Thread t = new Thread(new Runnable() {
+//		         public void run()
+//		         {
+//		        	 startFrontEndListener();
+//		         }
+//			});
+//			t.start();
+//			Thread t1 = new Thread(new Runnable() {
+//				 public void run()
+//				 {
+//					 startReplicaManagerListener();
+//				 }
+//			});
+//			t1.start();
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			Thread t = new Thread(new Runnable() {
+//		         public void run()
+//		         {
+//		        	 startFrontEndListener();
+//		         }
+//			});
+//			t.start();
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 	
@@ -198,15 +200,40 @@ public class Sequencer {
 				sender.setToPortNumber(r2ServerPort);
 				InterMessage returnedMessage2 = sender.sendMessage(message);
 				returnedMessage2.removeParameter(InterMessage.KEY_SEQUENCE_NUMBER);
-				returnedMessage2
-						.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
+				returnedMessage2.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
 
 				sender = new InterSender();
 				sender.setToPortNumber(r3ServerPort);
 				InterMessage returnedMessage3 = sender.sendMessage(message);
 				returnedMessage3.removeParameter(InterMessage.KEY_SEQUENCE_NUMBER);
 				returnedMessage3.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
-
+				
+				String[] r = new String[3];
+				r[0] = new String(returnedMessage1.encode());
+				r[1] = new String(returnedMessage2.encode());
+				r[2] = new String(returnedMessage3.encode());
+				
+				for (int i=0;i<3;i++) {
+					System.out.println("~~ " + i + " " + r[i]);
+				}
+				int wrong = -1;
+				
+				int[] replicaManagers = {4011, 4012, 4013};
+				
+				if (r[1].equals(r[2]) && !r[1].equals(r[0])) wrong = 0;
+				if (r[0].equals(r[2]) && !r[0].equals(r[1])) wrong = 1;
+				if (r[0].equals(r[1]) && !r[0].equals(r[2])) wrong = 2;
+				
+				if (wrong != -1) {
+					UDPTransporter.send("localhost", replicaManagers[wrong], "WRONG");
+				}
+				
+				if (wrong == 0) return returnedMessage2;
+				if (wrong == 1) return returnedMessage3;
+				if (wrong == 2) return returnedMessage1;
+				
+				System.out.println("Wrong = " + wrong);
+				
 				return returnedMessage1;
 
 			}

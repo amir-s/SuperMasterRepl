@@ -70,6 +70,9 @@ public class ReplicaManager {
 		UDPTransporter.server(commandPort, new PacketServer() {
 			public String serve(String in) {
 				if (in.toUpperCase().contains("WRONG")) {
+					System.out.println("GOT WRONG COMMAND");
+					self.wrongCounter++;
+					System.out.println("Counter = " + self.wrongCounter);
 					if (self.wrongCounter >= 3) {
 						try {
 							self.restartProcess();

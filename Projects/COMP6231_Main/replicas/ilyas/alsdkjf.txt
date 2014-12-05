@@ -1,0 +1,4 @@
+
+Thu Dec 04 23:57:14 EST 2014: The Account has been successfully created in Concordia:
+Thu Dec 04 23:57:14 EST 2014: FirstName: null, LastName: laksdj, Email Address: alskdj@asd.com
+Thu Dec 04 23:57:14 EST 2014: PhoneNumber: 198730, Username: alsdkjf, Password: lsakdjf, Institution: Concordia

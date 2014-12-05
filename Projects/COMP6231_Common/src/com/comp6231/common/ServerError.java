@@ -18,8 +18,8 @@ public class ServerError {
 		messages = new HashMap<String, String>();
 		messages.put(SERVER_FAILED, "Server Failed");
 		messages.put(AUTENTCIATION_FAILED, "Autentciation Failed");
-		messages.put(SERVER_FAILED, "Book not existed");
-		messages.put(SERVER_FAILED, "Account existed");
+		messages.put(BOOK_NOT_EXISTED, "Book not existed");
+		messages.put(ACCOUNT_EXISTED, "Account existed");
 	}
 
 	public static String getMessage(String errorCode) {

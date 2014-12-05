@@ -6,3 +6,8 @@ Thu Dec 04 20:44:36 EST 2014: The Account for user asdjalsd has been successfull
 Thu Dec 04 20:53:11 EST 2014: The Account for user alskdjalskd has been successfully created in Concordia.
 Thu Dec 04 20:59:08 EST 2014: The Account for user alskdja has been successfully created in Concordia.
 Thu Dec 04 21:03:15 EST 2014: The Account for user aslkdj has been successfully created in Concordia.
+Thu Dec 04 23:09:21 EST 2014: The Account for user aslkdj has been successfully created in Concordia.
+Thu Dec 04 23:10:13 EST 2014: Failed to register the username aslkdj, it already exists.
+Thu Dec 04 23:11:34 EST 2014: Failed to register the username aslkdj, it already exists.
+Thu Dec 04 23:54:20 EST 2014: The Account for user asdlkj has been successfully created in Concordia.
+Thu Dec 04 23:57:14 EST 2014: The Account for user alsdkjf has been successfully created in Concordia.
