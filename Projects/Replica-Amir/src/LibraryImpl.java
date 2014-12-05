@@ -25,7 +25,7 @@ public class LibraryImpl {
 	// The UDP port that this lib is listening to
 	private int UDPPort;
 	
-	// list of studends. This map, maps the usernames to student objects
+	// list of students. This map, maps the usernames to student objects
 	// and there is a map for each starting letter of the usernames
 	// so we can lock them separately
 	private HashMap<String, Student>[] students = new HashMap[26];

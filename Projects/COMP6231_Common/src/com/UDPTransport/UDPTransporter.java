@@ -15,13 +15,11 @@ public class UDPTransporter {
 			InetAddress IPAddress = InetAddress.getByName(host);
 			byte[] sendData = msg.getBytes();
 			byte[] receiveData = new byte[4096];
-			System.out.println("MSG " + msg);
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
 			clientSocket.send(sendPacket);
 			DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 			clientSocket.receive(receivePacket);
 			String out = new String(receivePacket.getData());
-			System.out.println("OUT " + out);
 			clientSocket.close();
 			return out;
 		}catch (Exception e) {
@@ -45,7 +43,7 @@ public class UDPTransporter {
 		
 	}
 	
-	/// this create a server that listenes
+	/// this create a server that listens
 	// on the specified port and runs the function
 	// whenever any message come.
 	public static void server(int port, final PacketServer packetServer) throws Exception{
@@ -62,10 +60,10 @@ public class UDPTransporter {
 						e.printStackTrace();
 						return;
 					}
-					System.out.println("GOT '" + new String(receivePacket.getData()) + "'");
+					
 					String reply = packetServer.serve(new String(receivePacket.getData()));
 					if (reply != null) {
-						byte[] send = packetServer.serve(new String(receivePacket.getData())).getBytes();
+						byte[] send = reply.getBytes();
 						int prt = receivePacket.getPort();
 						InetAddress IPAddress = receivePacket.getAddress();
 						DatagramPacket sendPacket = new DatagramPacket(send, send.length, IPAddress, prt);
