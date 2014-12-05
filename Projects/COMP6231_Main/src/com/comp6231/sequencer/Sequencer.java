@@ -122,10 +122,12 @@ public class Sequencer {
 					_udpRequest = new String(_buffer, 0, _i, _charset);
 				}
 					
-				if( _udpRequest.contains("HoldRequests")){
+				if( _udpRequest.contains("STOP")){
+					System.out.println("START QUEUEING");
 					holdRequests = true;				
 				}
-				else if( _udpRequest.contains("ResumeRequests")){
+				else if( _udpRequest.contains("START")){
+					System.out.println("STOP QUEUEING");
 					holdRequests = false;				
 				}
 			}

@@ -26,9 +26,13 @@ public class ReplicaManager {
 		pb.redirectOutput(Redirect.INHERIT);
 		pb.directory(new File("./replicas/" + replica + "/"));
 		process = pb.start();
+		System.out.println("Sending START to Sequencer");
+		UDPTransporter.send(sequencerHost, sequencerPort, "START");
 		return process;
 	}
 	Process restartProcess() throws Exception {
+		System.out.println("Sending STOP to Sequencer");
+		UDPTransporter.send(sequencerHost, sequencerPort, "STOP");
 		System.out.println("RESTARTING REPLICA " + replica);
 		
 		System.out.println("KILLING REPLICA " + replica);
