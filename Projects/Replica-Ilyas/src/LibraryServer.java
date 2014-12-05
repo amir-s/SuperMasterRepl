@@ -2,6 +2,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.net.*;
 import java.io.*;
 import java.util.Calendar;
@@ -1069,18 +1070,33 @@ public class LibraryServer {
 	It will call the export server, then it will initialize the server name, the books it has in its library,
 	and will register 1 student in the server.     
 	@return : Nothing
+	 * @throws FileNotFoundException 
 	*/
+	public void loadBooks(String file) throws FileNotFoundException {
+		Scanner sc;	
+		sc = new Scanner(new File(file));
+		while (sc.hasNextLine()) {
+			// read information for each book from the file
+			String name = sc.nextLine().toLowerCase();
+			String author = sc.nextLine().toLowerCase();
+			int quantity = Integer.parseInt(sc.nextLine());
+			// put it into list
+			m_bookList.add(new Book(name, author, quantity));
+		}
+		sc.close();
+	
+	}
 	public void run(){
 		try {			
 			
 			if (m_port == 2020){
 				m_serverName="Concordia";
 				
-				Book _absoluteCplusplus = new Book("Absolute C++","Walter", 5);
-				Book _absoluteC = new Book("Absolute C","Walter", 5);
-				m_bookList.add(_absoluteCplusplus);
-				m_bookList.add(_absoluteC);
-				
+//				Book _absoluteCplusplus = new Book("Absolute C++","Walter", 5);
+//				Book _absoluteC = new Book("Absolute C","Walter", 5);
+//				m_bookList.add(_absoluteCplusplus);
+//				m_bookList.add(_absoluteC);
+//				
 				
 				/*Assignment #1 Demo
 				 * Book _absoluteCplusplus = new Book("Cuda","Nicholas", 2);
@@ -1094,11 +1110,11 @@ public class LibraryServer {
 				
 				
 				List<Student> _studentList = new ArrayList<Student>();
-				char _firstChar = "paulka".charAt(0);
-				Student _paulk = new Student("Paul", "Karia", "paul.karia@karia.com", 5141111111L, "paulka", "paulka", "Concordia");
+				//char _firstChar = "paulka".charAt(0);
+				//Student _paulk = new Student("Paul", "Karia", "paul.karia@karia.com", 5141111111L, "paulka", "paulka", "Concordia");
 				//Student _paulk = new Student("boromir", "king", "paul.karia@karia.com", 5141111111L, "boromirking", "password", "Concordia");
-				_studentList.add(_paulk);
-				m_allUsers.put(_firstChar, _studentList);
+				//_studentList.add(_paulk);
+				//m_allUsers.put(_firstChar, _studentList);
 				
 				
 				 
@@ -1106,11 +1122,11 @@ public class LibraryServer {
 			else if (m_port == 2021){
 				m_serverName="McGill";
 				
-				Book _absolutePython = new Book("Absolute Python","Walter", 5);
-				Book _absolutePerl = new Book("Absolute Perl","Walter", 5);				
-				m_bookList.add(_absolutePython);
-				m_bookList.add(_absolutePerl);
-				
+				//Book _absolutePython = new Book("Absolute Python","Walter", 5);
+//				Book _absolutePerl = new Book("Absolute Perl","Walter", 5);				
+//				m_bookList.add(_absolutePython);
+//				m_bookList.add(_absolutePerl);
+//				
 				/* Assignment #1 Demo
 				 * Book _absoluteCplusplus = new Book("Cuda","Nicholas", 2);
 				Book _absoluteC = new Book("Opencl","Munshi", 3);
@@ -1121,34 +1137,34 @@ public class LibraryServer {
 				
 				
 				List<Student> _studentList = new ArrayList<Student>();
-				char _firstChar = "paulco".charAt(0);
-				Student _paulco = new Student("Paul", "Coffee", "paul.coffee@coffee.com", 5142222222L, "paulco", "paulco", "McGill");
-				_studentList.add(_paulco);
-				m_allUsers.put(_firstChar, _studentList);
+//				char _firstChar = "paulco".charAt(0);
+//				Student _paulco = new Student("Paul", "Coffee", "paul.coffee@coffee.com", 5142222222L, "paulco", "paulco", "McGill");
+//				_studentList.add(_paulco);
+//				m_allUsers.put(_firstChar, _studentList);
 			}
 			else if (m_port == 2022){
 				m_serverName="Polytechnique";
 				
-				Book _absoluteScala = new Book("Absolute Scala","Walter", 5);
-				//Book _absoluteScala = new Book("bones of the lost","kathy reichs", 4);
-				Book _absoluteErlang = new Book("Absolute Erlang","Walter", 5);				
-				m_bookList.add(_absoluteScala);
-				m_bookList.add(_absoluteErlang);
-				
-				/* Assignment #1 Demo
-				 * Book _absoluteCplusplus = new Book("Cuda","Nicholas", 2);
-				Book _absoluteC = new Book("Opencl","Munshi", 3);
-				Book _absolutePerl = new Book("3DMath","Fletcher", 1);
-				m_bookList.add(_absoluteCplusplus);
-				m_bookList.add(_absoluteC);
-				m_bookList.add(_absolutePerl);*/
-				
-				
+//				Book _absoluteScala = new Book("Absolute Scala","Walter", 5);
+//				//Book _absoluteScala = new Book("bones of the lost","kathy reichs", 4);
+//				Book _absoluteErlang = new Book("Absolute Erlang","Walter", 5);				
+//				m_bookList.add(_absoluteScala);
+//				m_bookList.add(_absoluteErlang);
+//				
+//				/* Assignment #1 Demo
+//				 * Book _absoluteCplusplus = new Book("Cuda","Nicholas", 2);
+//				Book _absoluteC = new Book("Opencl","Munshi", 3);
+//				Book _absolutePerl = new Book("3DMath","Fletcher", 1);
+//				m_bookList.add(_absoluteCplusplus);
+//				m_bookList.add(_absoluteC);
+//				m_bookList.add(_absolutePerl);*/
+//				
+//				
 				List<Student> _studentList = new ArrayList<Student>();
-				char _firstChar = "wayneg".charAt(0);
-				Student _wayneg = new Student("Wayne", "Gretzky", "wayne.gretzky@gretzky.com", 5143333333L, "wayneg", "wayneg", "Polytechnique");
-				_studentList.add(_wayneg);
-				m_allUsers.put(_firstChar, _studentList);
+//				char _firstChar = "wayneg".charAt(0);
+//				Student _wayneg = new Student("Wayne", "Gretzky", "wayne.gretzky@gretzky.com", 5143333333L, "wayneg", "wayneg", "Polytechnique");
+//				_studentList.add(_wayneg);
+//				m_allUsers.put(_firstChar, _studentList);
 			}
 			
 			System.out.println(m_serverName + " Library Server is up an running! starting UDP server...");

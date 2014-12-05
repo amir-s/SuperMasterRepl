@@ -8,7 +8,7 @@ import java.net.InetAddress;
 // UDP communication in the libraries
 public class UDPTransporter {
 	
-	// this function sends a message to a port on localhost and waits for reply
+	// this function sends a message to a port and waits for reply
 	public static String transport(String host, int port, String msg) {
 		try {
 			DatagramSocket clientSocket = new DatagramSocket();

@@ -1,4 +1,6 @@
 
+import java.io.FileNotFoundException;
+
 import com.comp6231.common.ILibrary;
 import com.comp6231.common.UDPServer;
 
@@ -127,13 +129,16 @@ public class LibraryServerDispatcher implements ILibrary{
 		portal.start();
 	}
 	
-	public LibraryServerDispatcher() {
+	public LibraryServerDispatcher() throws FileNotFoundException {
+		m_concordiaServer.loadBooks("../concordia.books");
+		m_mcgillServer.loadBooks("../mcgill.books");
+		m_polytechniqueServer.loadBooks("../polytechnique.books");
 		initPortal();
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		new LibraryServerDispatcher();
 	}
-	public static void test() {
+	public static void test() throws FileNotFoundException {
 	
 		LibraryServerDispatcher drms = new LibraryServerDispatcher();
 		//System.out.println(drms.getNonRetuners("Polytechnique", "Admin", "Admin", 5));

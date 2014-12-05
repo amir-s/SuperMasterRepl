@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.Scanner;
 
+import com.UDPTransport.UDPTransporter;
 import com.heartbeat.HeartBeatCallBack;
 import com.heartbeat.HeartBeatListener;
 
@@ -12,6 +13,10 @@ public class ReplicaManager {
 	private String replica = null;
 	private Process process = null;
 	private int heartBeatPort = -1;
+	
+	private String sequencerHost = "localhost";
+	private int sequencerPort = 4050;
+	
 	Process startProcess () throws IOException {
 		System.out.println("STARTING REPLICA " + replica);
 		ProcessBuilder pb = new ProcessBuilder();
@@ -36,7 +41,7 @@ public class ReplicaManager {
 		this.replica = replica;
 		this.heartBeatPort = heartBeatPort;
 		
-		HeartBeatListener hbl = new HeartBeatListener(heartBeatPort, new HeartBeatCallBack() {
+		new HeartBeatListener(this.heartBeatPort, new HeartBeatCallBack() {
 			
 			public void up() {
 				System.out.println("REPLICA " + replica + " IS UP");
@@ -58,10 +63,10 @@ public class ReplicaManager {
 	}
 	
 	public static void main(String[] args) throws Exception {
-//		int index = 2;
-//		String[] names = {"amir", "ilyas", "alex"};
-//		int[] ports = {4021, 4022, 4023};
-//		
+		if (args.length < 2) {
+			System.out.println("You should provide the replica name and heartbeat port");
+			return;
+		}
 		System.out.println("Starting " + args[0] + " with heart beat port=" + args[1]);
 		ReplicaManager rm = new ReplicaManager(args[0], Integer.parseInt(args[1]));
 		Scanner sc = new Scanner(System.in);
@@ -70,5 +75,6 @@ public class ReplicaManager {
 				rm.restartProcess();
 			}
 		}
+		sc.close();
 	}
 }

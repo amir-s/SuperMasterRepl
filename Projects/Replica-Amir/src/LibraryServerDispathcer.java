@@ -28,7 +28,7 @@ public class LibraryServerDispathcer implements ILibrary{
 		String[] univs = {"concordia", "mcgill", "polytechnique"};
 		// loop over schools and register them into POA
 		for (String u: univs) {
-			libs.put(u,new LibraryImpl(u, cnf.getInt(u+":udp:port")).loadBooks(u+".books"));
+			libs.put(u,new LibraryImpl(u, cnf.getInt(u+":udp:port")).loadBooks("../"+u+".books"));
 		}
 		
 		// write all the key values into the config file

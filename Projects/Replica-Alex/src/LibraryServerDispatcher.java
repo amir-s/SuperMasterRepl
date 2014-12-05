@@ -1,5 +1,6 @@
 
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	 * Mark - Driver - Methods
 	 */
 	 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		new LibraryServerDispatcher();
 	}
 	
@@ -21,7 +22,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	 * Mark - Constructors
 	 */
 	
-	public LibraryServerDispatcher() {
+	public LibraryServerDispatcher() throws FileNotFoundException {
 		initPortal();
 		initServers();
 	}
@@ -54,13 +55,14 @@ public class LibraryServerDispatcher implements ILibrary{
 	 * Mark - Servers - Methods
 	 */
 	
-	private void initServers() {
+	private void initServers() throws FileNotFoundException {
 		System.out.println("Alex Replica");
 		libraries = new HashMap<String, LibraryServer>();
 		
 		List<ServerInfo> infos = ServerInfoManager.defaultManager().getServers();
 		for (ServerInfo info : infos) {
 			LibraryServer libraryServer = new LibraryServer(info);
+			libraryServer.loadBooks("../"+info.getName().toLowerCase()+".books");
 			libraries.put(info.getName(), libraryServer);
 		}
 	}

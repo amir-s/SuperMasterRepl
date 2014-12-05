@@ -1,6 +1,9 @@
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Scanner;
 
 import com.comp6231.common.ILibrary;
 
@@ -466,19 +469,19 @@ public class LibraryServer implements ILibrary{
 //		account = new Account("Admin", "Admin", "Ad", "Min", "xxxxxxx", "911");
 //		database.addAccount(account);
 //
-		account = new Account("zhaozhe", "zhaozhe", "Zhe", "Zhao", "xxxxxxx", "514");
-		database.addAccount(account);
+//		account = new Account("zhaozhe", "zhaozhe", "Zhe", "Zhao", "xxxxxxx", "514");
+//		database.addAccount(account);
 //		
 //		account = new Account("xiaoming", "xiaoming", "Xiao", "Ming", "xxxxxxx", "123");
 //		database.addAccount(account);
 //		
-		Book book;
+//		Book book;
 		
 //		book = new Book("BookA", "A", 3);
 //		database.addBook(book);	
 //		
-		book = new Book("Book", "B", 1);
-		database.addBook(book);		
+//		book = new Book("Book", "B", 1);
+//		database.addBook(book);		
 		
 //		this.reserveBook("zhaozhe", "zhaozhe", "BookA", "A");
 //		this.reserveBook("zhaozhe", "zhaozhe", "BookB", "B");
@@ -486,8 +489,8 @@ public class LibraryServer implements ILibrary{
 //		this.reserveBook("xiaoming", "xiaoming", "BookB", "B");
 		
 		
-		account = new Account("Admin", "Admin", "Ad", "Min", "xxxxxxx", "911");
-		database.addAccount(account);
+//		account = new Account("Admin", "Admin", "Ad", "Min", "xxxxxxx", "911");
+//		database.addAccount(account);
 	
 //		account = new Account("FrankenStein", "frate", "Stein", "Franken", "xxxxxxx", "514");
 //		database.addAccount(account);
@@ -546,6 +549,21 @@ public class LibraryServer implements ILibrary{
 		//Admin Admin 0
 		
 		
+		
+	}
+
+	public void loadBooks(String file) throws FileNotFoundException {
+		Scanner sc;	
+		sc = new Scanner(new File(file));
+		while (sc.hasNextLine()) {
+			// read information for each book from the file
+			String name = sc.nextLine().toLowerCase();
+			String author = sc.nextLine().toLowerCase();
+			int quantity = Integer.parseInt(sc.nextLine());
+			// put it into list
+			database.addBook(new Book(name, author, quantity));
+		}
+		sc.close();
 		
 	}
 }
