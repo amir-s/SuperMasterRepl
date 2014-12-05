@@ -58,11 +58,12 @@ public class ReplicaManager {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		int index = 2;
-		String[] names = {"amir", "ilyas", "alex"};
-		int[] ports = {4021, 4022, 4023};
-		
-		ReplicaManager rm = new ReplicaManager(names[index], ports[index]);
+//		int index = 2;
+//		String[] names = {"amir", "ilyas", "alex"};
+//		int[] ports = {4021, 4022, 4023};
+//		
+		System.out.println("Starting " + args[0] + " with heart beat port=" + args[1]);
+		ReplicaManager rm = new ReplicaManager(args[0], Integer.parseInt(args[1]));
 		Scanner sc = new Scanner(System.in);
 		while (sc.hasNext()) {
 			if (sc.next().equals("r")) {
