@@ -72,6 +72,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_REGISTE_USER);
 		
+		System.out.println("LibraryFrontEnd : Function Called : registerUser");
+		
 		message.addParameter("instName", instName);
 		message.addParameter("lastName", lastName);
 		message.addParameter("emailAddress", emailAddress);

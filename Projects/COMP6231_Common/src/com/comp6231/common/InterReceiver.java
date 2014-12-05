@@ -68,6 +68,8 @@ public class InterReceiver extends Thread {
 				InterMessage receiveMessage = new InterMessage();
 				receiveMessage.decode(receiveBytes);
 				
+				System.out.println("InterRecever : Event : Received message at port " + portNumber + " from port " + receivePacket.getPort());
+				
 				// build send back message
 				InterMessage sendMessage = new InterMessage();
 				sendMessage.setType(InterMessage.TYPE_RETURN);

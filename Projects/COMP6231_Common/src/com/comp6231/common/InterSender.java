@@ -39,10 +39,12 @@ public class InterSender {
 			InetAddress host = InetAddress.getByName("localhost");
 			int serverPort = toPortNumber;
 
+			System.out.println("InterSender : Event : Going to send message to port " + toPortNumber);
 			// sending 
 			byte[] sendBytes = sendMessage.encode();
 			DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, host, serverPort);
 			socket.send(sendPacket);
+			
 //			
 			// receiving
 			byte[] receiveBytes = new byte[1000];

@@ -76,6 +76,8 @@ public class LibraryServerDispatcher implements ILibrary{
 			String lastName, String emailAddress, String phoneNumber,
 			String username, String password) {
 		
+		System.out.println("LibraryServerDispatcher : Function Called : registerUser");
+		
 		LibraryServer libraryServer = libraries.get(instName);
 		return libraryServer.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password);
 	}
