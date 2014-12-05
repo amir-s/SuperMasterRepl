@@ -19,8 +19,7 @@ public class ServerInfo {
 		this.identity = portForRMI;
 		this.portForUDP = portForUDP;
 		
-		String path = "/Users/Zhaozhe/Documents/study/Concorida/Courses/2014_09_COMP 6231_Distributed_System_Design/Workspace/Assignment_1";
-		path = path + "/" + "data";
+		String path = "data";
 		path = path + "/" + name;
 		path = path + "/" + "log";
 		path = path + "/" + "users";

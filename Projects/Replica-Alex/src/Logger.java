@@ -159,8 +159,7 @@ public class Logger {
 		}
 		
 		private String logPath() {
-			String path = "";
-			path = path + "" + "data";
+			String path = "data";
 			path = path + "/" + libraryServer.getServerInfo().getName();
 			path = path + "/" + "log";
 			return path;
