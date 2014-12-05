@@ -92,6 +92,8 @@ public class ReplicaManager {
 	
 	// USAGE:
 	// java -cp bin/:../COMP6231_Common/bin com.replicaManager.ReplicaManager amir 4021 4011
+	// java -cp bin/:../COMP6231_Common/bin com.replicaManager.ReplicaManager ilyas 4022 4012
+	// java -cp bin/:../COMP6231_Common/bin com.replicaManager.ReplicaManager alex 4023 4013
 	public static void main(String[] args) throws Exception {
 		if (args.length < 3) {
 			System.out.println("You should provide the replica name and heartbeat port");

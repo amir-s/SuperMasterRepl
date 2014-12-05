@@ -118,7 +118,7 @@ public class LibraryImpl {
 			list.put(username, new Student(firstName, lastName, emailAddress, phoneNumber, username, password));
 			Logger.log(institudeName, username, "Username registered");
 		}
-		return 5;
+		return 0;
 	}
 	
 	// check if a username and password that provided
@@ -159,12 +159,12 @@ public class LibraryImpl {
 		authorName = authorName.toLowerCase();
 		
 		// do we have this book?
-		if (!books.containsKey(bookName+":"+authorName)) {
+		if (!books.containsKey(bookName+"#"+authorName)) {
 			Logger.log(institudeName, username, "Book " + bookName + ":" + authorName + " not found");
 			return 3;
 		}
 		// get the book
-		Book b = books.get(bookName+":"+authorName);
+		Book b = books.get(bookName+"#"+authorName);
 		// lock the book
 		synchronized (b) {
 			// we dont have any of this book right now, it is finished
@@ -198,12 +198,12 @@ public class LibraryImpl {
 		authorName = authorName.toLowerCase();
 		
 		// do we have this book?
-		if (!books.containsKey(bookName+":"+authorName)) {
+		if (!books.containsKey(bookName+"#"+authorName)) {
 			Logger.log(institudeName, "INTER", "Book " + bookName + ":" + authorName + " not found");
 			return 3;
 		}
 		// get the book
-		Book b = books.get(bookName+":"+authorName);
+		Book b = books.get(bookName+"#"+authorName);
 		// lock it
 		synchronized (b) {
 			// do we still have it?
@@ -231,7 +231,7 @@ public class LibraryImpl {
 				String author = sc.nextLine().toLowerCase();
 				int quantity = Integer.parseInt(sc.nextLine());
 				// put it into list
-				books.put(name+":"+author, new Book(name, author, quantity));
+				books.put(name+"#"+author, new Book(name, author, quantity));
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
@@ -257,7 +257,7 @@ public class LibraryImpl {
 			return 2;
 		}
 		// get the book
-		Book b = books.get(bookName+":"+authorName);
+		Book b = books.get(bookName+"#"+authorName);
 		// is it real?
 		if (b == null) {
 			Logger.log(institudeName, adminUsername, "Book not found " + bookName + ":" + authorName);
@@ -348,7 +348,7 @@ public class LibraryImpl {
 			if (result.startsWith("TRUE")) {
 				Logger.log(institudeName, username, "Found the book on " + u + "! Reserving ...");
 				Book b = new Book(bookName, authorName, 0);
-				books.put(bookName+":"+authorName+"##"+u+"@"+username, b);
+				books.put(bookName+"#"+authorName+"##"+u+"@"+username, b);
 				b.borrowers.put(username, new Integer(14));
 				Logger.log(institudeName, username, "Added reservation " + bookName+":"+authorName+"##"+u+"@"+username + " for user " + username);
 				return 0;

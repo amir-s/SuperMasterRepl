@@ -101,6 +101,16 @@ public class UDPServer{
 				String username = receiveMessage.getParameter("username");
 				String password = receiveMessage.getParameter("password");
 				
+//				System.out.println("-----------!!!!!!!!----------");
+//				System.out.println(instName);
+//				System.out.println(firstName);
+//				System.out.println(lastName);
+//				System.out.println(emailAddress);
+//				System.out.println(phoneNumber);
+//				System.out.println(username);
+//				System.out.println(password);
+
+				
 				String value = library.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password);
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
@@ -165,6 +175,13 @@ public class UDPServer{
 				String password = receiveMessage.getParameter("password");
 				String bookName = receiveMessage.getParameter("bookName");
 				String authorName = receiveMessage.getParameter("authorName");
+				
+//				System.out.println("-------------------");
+//				System.out.println(instName);
+//				System.out.println(username);
+//				System.out.println(password);
+//				System.out.println(bookName);
+//				System.out.println(authorName);
 				
 				String value = library.reserveInterLibrary(instName, username, password, bookName, authorName);
 				

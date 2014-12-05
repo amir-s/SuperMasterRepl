@@ -1,0 +1,4 @@
+
+Fri Dec 05 00:09:22 EST 2014: The Account has been successfully created in Concordia:
+Fri Dec 05 00:09:22 EST 2014: FirstName: null, LastName: alskdj, Email Address: jdklsa
+Fri Dec 05 00:09:22 EST 2014: PhoneNumber: 123123, Username: alskdjf, Password: jfdklas, Institution: Concordia

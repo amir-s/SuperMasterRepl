@@ -1,0 +1,22 @@
+[concordia] (amir1234) Registering user
+[concordia] (amir1234) Username registered
+[concordia] (amir1234) Inter Reserving book X
+
+:Y for amir1234
+[concordia] (amir1234) Authenticating
+[concordia] (amir1234) Reserving book X
+
+:Y for amir1234
+[concordia] (amir1234) Authenticating
+[concordia] (amir1234) Book x
+
+:y not found
+[concordia] (amir1234) Requesting to mcgill to reserve X
+
+:Y for amir1234
+[concordia] (amir1234) NOT Found the book on mcgill!
+[concordia] (amir1234) Requesting to polytechnique to reserve X
+
+:Y for amir1234
+[concordia] (amir1234) NOT Found the book on polytechnique!
+[concordia] (amir1234) NOT Found the book

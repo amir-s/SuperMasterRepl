@@ -75,6 +75,7 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		System.out.println("LibraryFrontEnd : Function Called : registerUser");
 		
 		message.addParameter("instName", instName);
+		message.addParameter("firstName", firstName);
 		message.addParameter("lastName", lastName);
 		message.addParameter("emailAddress", emailAddress);
 		message.addParameter("phoneNumber", phoneNumber);
@@ -107,7 +108,7 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		
 		message.addParameter("instName", instName);
 		message.addParameter("adminUsername", adminUsername);
-		message.addParameter("adminUsername", adminUsername);
+		message.addParameter("adminPassword", adminPassword);
 		message.addParameter("username", username);
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
@@ -126,7 +127,7 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("username", username);
 		message.addParameter("password", password);
 		message.addParameter("bookName", bookName);
-		message.addParameter("bookName", bookName);
+		message.addParameter("authorName", authorName);
 
 		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);

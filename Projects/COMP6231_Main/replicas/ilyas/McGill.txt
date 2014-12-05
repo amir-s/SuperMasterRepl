@@ -1,0 +1,20 @@
+
+Fri Dec 05 00:51:59 EST 2014: Failed to reserve book X
+
+mirsa with author Y for an Inter Library request
+Fri Dec 05 00:55:21 EST 2014: Failed to reserve book alskdjalskd
+rsa
+equenceNumber with author lsakdjlfaksd for an Inter Library request
+Fri Dec 05 00:59:26 EST 2014: Failed to reserve book X
+
+mirsa with author Y for an Inter Library request
+Fri Dec 05 01:04:08 EST 2014: Failed to reserve book X
+ss
+mirsa with author Y for an Inter Library request
+Fri Dec 05 01:07:08 EST 2014: Failed to reserve book X
+
+ with author Y for an Inter Library request
+Fri Dec 05 01:11:31 EST 2014: Failed to reserve book X
+ with author Y for an Inter Library request
+Fri Dec 05 01:16:52 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 01:21:03 EST 2014: Failed to reserve book X with author Y for an Inter Library request

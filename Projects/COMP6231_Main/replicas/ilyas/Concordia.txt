@@ -11,3 +11,39 @@ Thu Dec 04 23:10:13 EST 2014: Failed to register the username aslkdj, it already
 Thu Dec 04 23:11:34 EST 2014: Failed to register the username aslkdj, it already exists.
 Thu Dec 04 23:54:20 EST 2014: The Account for user asdlkj has been successfully created in Concordia.
 Thu Dec 04 23:57:14 EST 2014: The Account for user alsdkjf has been successfully created in Concordia.
+Fri Dec 05 00:09:22 EST 2014: The Account for user alskdjf has been successfully created in Concordia.
+Fri Dec 05 00:10:35 EST 2014: The Account for user jfklad has been successfully created in Concordia.
+Fri Dec 05 00:15:18 EST 2014: The Account for user aslkdj has been successfully created in Concordia.
+Fri Dec 05 00:18:08 EST 2014: The Account for user aslkfdj has been successfully created in Concordia.
+Fri Dec 05 00:18:39 EST 2014: The Account for user aslkd4j has been successfully created in Concordia.
+Fri Dec 05 00:23:49 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 00:34:54 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 00:47:14 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 00:51:06 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 00:51:59 EST 2014: reserveInterLibrary: book X
+
+mirsa not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 00:55:21 EST 2014: reserveInterLibrary: book alskdjalskd
+rsa
+equenceNumber not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 00:59:05 EST 2014: Failed to register the username amirsa, it already exists.
+Fri Dec 05 00:59:26 EST 2014: reserveInterLibrary: book X
+
+mirsa not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 01:03:55 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 01:04:08 EST 2014: reserveInterLibrary: book X
+ss
+mirsa not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 01:06:49 EST 2014: The Account for user amir1234 has been successfully created in Concordia.
+Fri Dec 05 01:07:08 EST 2014: reserveInterLibrary: book X
+
+ not available at local library for user request amir1234. Checking other servers
+Fri Dec 05 01:11:17 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 01:11:31 EST 2014: reserveInterLibrary: book X
+ not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 01:16:41 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 01:16:52 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 01:16:52 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 01:20:54 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 01:21:03 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 01:21:03 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.

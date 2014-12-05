@@ -27,7 +27,7 @@ public class Sequencer {
 	
 	public Sequencer() {
 		testInit();
-//		try {
+		try {
 //			Thread t = new Thread(new Runnable() {
 //		         public void run()
 //		         {
@@ -35,17 +35,17 @@ public class Sequencer {
 //		         }
 //			});
 //			t.start();
-//			Thread t1 = new Thread(new Runnable() {
-//				 public void run()
-//				 {
-//					 startReplicaManagerListener();
-//				 }
-//			});
-//			t1.start();
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+			Thread t1 = new Thread(new Runnable() {
+				 public void run()
+				 {
+					 startReplicaManagerListener();
+				 }
+			});
+			t1.start();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //		
 //		try {
 //			Thread t = new Thread(new Runnable() {
@@ -155,9 +155,9 @@ public class Sequencer {
 				String _udpRequest="";
 				
 				for (_i = 0; _i < _buffer.length && _buffer[_i] != 0; _i++) {
-					_udpRequest = new String(_buffer, 0, _i, _charset);
+					_udpRequest += (char)_buffer[_i];
 				}
-					
+					System.out.println("!! '" + _udpRequest+"'");
 				if( _udpRequest.contains("STOP")){
 					System.out.println("START QUEUEING");
 					holdRequests = true;				
@@ -188,7 +188,7 @@ public class Sequencer {
 				
 				message.addParameter(InterMessage.KEY_SEQUENCE_NUMBER, Long.toString(sequenceNumber));
 				sequenceNumber++;
-				
+				System.out.println(new String(message.encode()));
 				InterSender sender;
 				sender = new InterSender();
 				sender.setToPortNumber(r1ServerPort);
@@ -223,6 +223,7 @@ public class Sequencer {
 				if (r[1].equals(r[2]) && !r[1].equals(r[0])) wrong = 0;
 				if (r[0].equals(r[2]) && !r[0].equals(r[1])) wrong = 1;
 				if (r[0].equals(r[1]) && !r[0].equals(r[2])) wrong = 2;
+				
 				
 				if (wrong != -1) {
 					UDPTransporter.send("localhost", replicaManagers[wrong], "WRONG");

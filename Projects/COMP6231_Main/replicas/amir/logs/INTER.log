@@ -1,0 +1,144 @@
+[mcgill] (INTER) Reserving book X
+
+mirsa:Y
+[mcgill] (INTER) Book x
+
+mirsa:y not found
+[mcgill] (INTER) Reserving book X
+
+mirsa:Y
+[mcgill] (INTER) Book x
+
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+
+mirsa:Y
+[polytechnique] (INTER) Book x
+
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+
+mirsa:Y
+[polytechnique] (INTER) Book x
+
+mirsa:y not found
+[mcgill] (INTER) Reserving book alskdjalskd
+rsa
+equenceNumber:lsakdjlfaksd
+[mcgill] (INTER) Book alskdjalskd
+rsa
+equencenumber:lsakdjlfaksd not found
+[mcgill] (INTER) Reserving book alskdjalskd
+rsa
+equenceNumber:lsakdjlfaksd
+[mcgill] (INTER) Book alskdjalskd
+rsa
+equencenumber:lsakdjlfaksd not found
+[polytechnique] (INTER) Reserving book alskdjalskd
+rsa
+equenceNumber:lsakdjlfaksd
+[polytechnique] (INTER) Book alskdjalskd
+rsa
+equencenumber:lsakdjlfaksd not found
+[polytechnique] (INTER) Reserving book alskdjalskd
+rsa
+equenceNumber:lsakdjlfaksd
+[polytechnique] (INTER) Book alskdjalskd
+rsa
+equencenumber:lsakdjlfaksd not found
+[mcgill] (INTER) Reserving book X
+
+mirsa:Y
+[mcgill] (INTER) Book x
+
+mirsa:y not found
+[mcgill] (INTER) Reserving book X
+
+mirsa:Y
+[mcgill] (INTER) Book x
+
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+
+mirsa:Y
+[polytechnique] (INTER) Book x
+
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+
+mirsa:Y
+[polytechnique] (INTER) Book x
+
+mirsa:y not found
+[mcgill] (INTER) Reserving book X
+ss
+mirsa:Y
+[mcgill] (INTER) Book x
+ss
+mirsa:y not found
+[mcgill] (INTER) Reserving book X
+ss
+mirsa:Y
+[mcgill] (INTER) Book x
+ss
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+ss
+mirsa:Y
+[polytechnique] (INTER) Book x
+ss
+mirsa:y not found
+[polytechnique] (INTER) Reserving book X
+ss
+mirsa:Y
+[polytechnique] (INTER) Book x
+ss
+mirsa:y not found
+[mcgill] (INTER) Reserving book X
+
+:Y
+[mcgill] (INTER) Book x
+
+:y not found
+[mcgill] (INTER) Reserving book X
+
+:Y
+[mcgill] (INTER) Book x
+
+:y not found
+[polytechnique] (INTER) Reserving book X
+
+:Y
+[polytechnique] (INTER) Book x
+
+:y not found
+[polytechnique] (INTER) Reserving book X
+
+:Y
+[polytechnique] (INTER) Book x
+
+:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is finished
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is finished
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is finished
