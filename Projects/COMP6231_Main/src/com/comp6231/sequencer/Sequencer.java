@@ -1,21 +1,49 @@
 package com.comp6231.sequencer;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.net.*;
-import java.io.*;
-import java.nio.charset.Charset;
+
+import com.comp6231.common.InterMessage;
 
 import com.comp6231.common.InterMessage;
 
 public class Sequencer {
-	private Queue<byte[]> seqQueue = new LinkedList<byte[]>();
+	private Queue<DatagramPacket> seqQueue = new LinkedList<DatagramPacket>();
+	private HashMap<Long,DatagramPacket> seqMap = new HashMap<Long,DatagramPacket>();
 	private boolean holdRequests = false;
 	private int r1ServerPort = 5000;
 	private int r2ServerPort = 6000;
 	private int r3ServerPort = 7000;
+	private long sequenceNumber = 0;
 	
 	public Sequencer() {
+		try {
+			Thread t = new Thread(new Runnable() {
+		         public void run()
+		         {
+		        	 startFrontEndListener();
+		         }
+			});
+			t.start();
+			Thread t1 = new Thread(new Runnable() {
+				 public void run()
+				 {
+					 startReplicaManagerListener();
+				 }
+			});
+			t1.start();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			Thread t = new Thread(new Runnable() {
 		         public void run()
@@ -30,17 +58,11 @@ public class Sequencer {
 		}
 		
 		try {
-			Thread t1 = new Thread(new Runnable() {
-		         public void run()
-		         {
-		        	 startReplicaManagerListener();
-		         }
-			});
-			t1.start();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	
@@ -64,21 +86,32 @@ public class Sequencer {
 				DatagramPacket _request = new DatagramPacket(_buffer, _buffer.length);
 				
 				_aSocket.receive(_request);
-	
+				
+				seqQueue.add(_request);
+				seqMap.put(new Long(sequenceNumber), _request);
+				
+				InterMessage message = new InterMessage();
+				message.decode(_buffer);
+				message.addParameter(InterMessage.KEY_SEQUENCE_NUMBER, Long.toString(sequenceNumber));
+				_buffer = message.encode();
+				
 				//TODO: Adding to the queue
-				//seqQueue.add(_buffer);
+
 				InetAddress _aHost = InetAddress.getByName("localhost");
 				System.out.println("Sequencer: Got a message on port 4001");
 				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
 				
 				//TODO:Add hold requests check
-				DatagramPacket _sendToR1 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r1ServerPort);
-				DatagramPacket _sendToR2 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r2ServerPort);
-				DatagramPacket _sendToR3 = new DatagramPacket(_request.getData(), _request.getLength(), _aHost, r3ServerPort);
+				DatagramPacket _sendToR1 = new DatagramPacket(_buffer, _buffer.length, _aHost, r1ServerPort);
+				DatagramPacket _sendToR2 = new DatagramPacket(_buffer, _buffer.length, _aHost, r2ServerPort);
+				DatagramPacket _sendToR3 = new DatagramPacket(_buffer, _buffer.length, _aHost, r3ServerPort);
 				
 				_aSocket.send(_sendToR1);
 				_aSocket.send(_sendToR2);
 				_aSocket.send(_sendToR3);
+				
+				
+				
 				
 				//TODO: Remove from queue when done
 				//seqQueue.remove();
@@ -126,7 +159,7 @@ public class Sequencer {
 					System.out.println("START QUEUEING");
 					holdRequests = true;				
 				}
-				else if( _udpRequest.contains("START")){
+				else if(_udpRequest.contains("START")){
 					System.out.println("STOP QUEUEING");
 					holdRequests = false;				
 				}
@@ -143,5 +176,7 @@ public class Sequencer {
 		Sequencer sq = new Sequencer();
 
 	}
+	
+	
 
 }
