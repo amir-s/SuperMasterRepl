@@ -15,7 +15,7 @@ public class Heart extends Thread{
 	}
 	public void run() {
 		while (running) {
-			System.out.println("Sending HeartBeat");
+			System.out.print("^^ ");
 			UDPTransporter.send(host, port, msg);
 			try {
 				Thread.sleep(PERIOD);
