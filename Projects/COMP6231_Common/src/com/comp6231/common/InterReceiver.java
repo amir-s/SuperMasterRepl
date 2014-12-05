@@ -70,28 +70,27 @@ public class InterReceiver extends Thread {
 				
 				System.out.println("InterRecever : Event : Received message at port " + portNumber + " from port " + receivePacket.getPort());
 				
-				// build send back message
-				InterMessage sendMessage = new InterMessage();
-				sendMessage.setType(InterMessage.TYPE_RETURN);
-				
 				// handle
 				String messageType = receiveMessage.getType();
 				InterReceiverHandler handler = handlers.get(messageType);
 				if (handler == null) {
 					System.out.println("There is no handler for '" + messageType + "'");
 				}else {
-					handler.handle(receiveMessage, sendMessage);
-					// send back
-					byte[] sendBytes = sendMessage.encode();
-					DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, receivePacket.getAddress(), receivePacket.getPort());
-					socket.send(sendPacket);
+					InterMessage sendMessage = handler.handle(receiveMessage);
+					if (sendMessage != null) {
+						sendMessage.setType(InterMessage.TYPE_RETURN);
+						
+						// send back
+						byte[] sendBytes = sendMessage.encode();
+						DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, receivePacket.getAddress(), receivePacket.getPort());
+						socket.send(sendPacket);
+					}
 				}
 
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage() + " catch something");
 		} finally {
 			if (socket != null) socket.close();
 		}

@@ -25,12 +25,29 @@ public class InterSender {
 	public void setToPortNumber(int toPortNumber) {
 		this.toPortNumber = toPortNumber;
 	}
+	
+	/*
+	 * Mark - Control - Properties
+	 */
+	
+	private boolean oneWay;
+	
+	/*
+	 * Mark - Control - Getters & Setters
+	 */
+
+	public boolean isOneWay() {
+		return oneWay;
+	}
+
+	public void setOneWay(boolean oneWay) {
+		this.oneWay = oneWay;
+	}
 
 	/*
 	 * Mark - Basic - Methods
 	 */
 	
-
 	public InterMessage sendMessage(InterMessage sendMessage) {
 		DatagramSocket socket = null;
 		 
@@ -45,16 +62,17 @@ public class InterSender {
 			DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, host, serverPort);
 			socket.send(sendPacket);
 			
-//			
-			// receiving
-			byte[] receiveBytes = new byte[1000];
-			DatagramPacket receivePacket = new DatagramPacket(receiveBytes, receiveBytes.length);
-			socket.receive(receivePacket);
-			
-			// build the returning message
-			InterMessage receiveMessage = new InterMessage();
-			receiveMessage.decode(receiveBytes);
-			return receiveMessage;
+			if (!isOneWay()) {
+				// receiving
+				byte[] receiveBytes = new byte[1000];
+				DatagramPacket receivePacket = new DatagramPacket(receiveBytes, receiveBytes.length);
+				socket.receive(receivePacket);
+				
+				// build the returning message
+				InterMessage receiveMessage = new InterMessage();
+				receiveMessage.decode(receiveBytes);
+				return receiveMessage;
+			}
 			
 		} catch (SocketException e) {
 			System.out.println("Socket: " + e.getMessage());
