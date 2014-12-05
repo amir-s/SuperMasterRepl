@@ -58,7 +58,11 @@ public class ReplicaManager {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		ReplicaManager rm = new ReplicaManager("amir", 4021);
+		int index = 2;
+		String[] names = {"amir", "ilyas", "alex"};
+		int[] ports = {4021, 4022, 4023};
+		
+		ReplicaManager rm = new ReplicaManager(names[index], ports[index]);
 		Scanner sc = new Scanner(System.in);
 		while (sc.hasNext()) {
 			if (sc.next().equals("r")) {
