@@ -88,7 +88,8 @@ public class UDPServer{
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
-			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage returnMessage = new InterMessage();
 				
 				System.out.println("UDPServer : Event : Did receive handle request");
 				
@@ -103,6 +104,8 @@ public class UDPServer{
 				String value = library.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password);
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+
+				return returnMessage;
 			}
 		}, InterMessage.TYPE_REGISTE_USER);
 		
@@ -110,7 +113,9 @@ public class UDPServer{
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
-			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage returnMessage = new InterMessage();
+				
 				String instName = receiveMessage.getParameter("instName");
 				String username = receiveMessage.getParameter("username");
 				String password = receiveMessage.getParameter("password");
@@ -120,6 +125,8 @@ public class UDPServer{
 				String value = library.reserveBook(instName, username, password, bookName, authorName);
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+				
+				return returnMessage;
 			}
 		}, InterMessage.TYPE_RESERVE_BOOK);
 		
@@ -127,7 +134,9 @@ public class UDPServer{
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
-			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage returnMessage = new InterMessage();
+				
 				String instName = receiveMessage.getParameter("instName");
 				String adminUsername = receiveMessage.getParameter("adminUsername");
 				String adminPassword = receiveMessage.getParameter("adminPassword");
@@ -139,6 +148,8 @@ public class UDPServer{
 				String value = library.setDuration(instName, adminUsername, adminPassword, username, bookName, authorName, Integer.valueOf(days));
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+
+				return returnMessage;
 			}
 		}, InterMessage.TYPE_SET_DURATION);
 		
@@ -146,7 +157,9 @@ public class UDPServer{
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
-			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage returnMessage = new InterMessage();
+				
 				String instName = receiveMessage.getParameter("instName");
 				String username = receiveMessage.getParameter("username");
 				String password = receiveMessage.getParameter("password");
@@ -156,6 +169,8 @@ public class UDPServer{
 				String value = library.reserveInterLibrary(instName, username, password, bookName, authorName);
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+
+				return returnMessage;
 			}
 		}, InterMessage.TYPE_RESERVE_INTER_LIBRARY);
 		
@@ -163,7 +178,9 @@ public class UDPServer{
 		interReceiver.addHandler(new InterReceiverHandler() {
 			
 			@Override
-			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage returnMessage = new InterMessage();
+				
 				String instName = receiveMessage.getParameter("instName");
 				String adminUsername = receiveMessage.getParameter("adminUsername");
 				String adminPassword = receiveMessage.getParameter("adminPassword");
@@ -172,6 +189,8 @@ public class UDPServer{
 				String value = library.getNonRetuners(instName, adminUsername, adminPassword, Integer.valueOf(days));
 				
 				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+
+				return returnMessage;
 			}
 		}, InterMessage.TYPE_GET_NON_RETURNERS);
 	}
