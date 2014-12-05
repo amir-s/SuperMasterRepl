@@ -39,11 +39,20 @@ public class InterReceiver extends Thread {
 	 
 
 	private Map<String, InterReceiverHandler> handlers;
+	private InterReceiverHandler universalHandler;
 	
 	/*
 	 * Mark - Handlers - Methods
 	 */
 	 
+	public InterReceiverHandler getUniversalHandler() {
+		return universalHandler;
+	}
+
+	public void setUniversalHandler(InterReceiverHandler universalHandler) {
+		this.universalHandler = universalHandler;
+	}
+
 	public void addHandler(InterReceiverHandler handler, String messageType) {
 		handlers.put(messageType, handler);
 	}
@@ -74,8 +83,12 @@ public class InterReceiver extends Thread {
 				String messageType = receiveMessage.getType();
 				InterReceiverHandler handler = handlers.get(messageType);
 				if (handler == null) {
-					System.out.println("There is no handler for '" + messageType + "'");
-				}else {
+					handler = universalHandler;
+				}
+				
+				if (handler == null) {
+					System.out.println("han");
+				} else {
 					InterMessage sendMessage = handler.handle(receiveMessage);
 					if (sendMessage != null) {
 						sendMessage.setType(InterMessage.TYPE_RETURN);

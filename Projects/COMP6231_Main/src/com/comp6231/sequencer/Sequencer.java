@@ -11,8 +11,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import com.comp6231.common.InterMessage;
-
-import com.comp6231.common.InterMessage;
+import com.comp6231.common.InterReceiver;
+import com.comp6231.common.InterReceiverHandler;
+import com.comp6231.common.InterSender;
 
 public class Sequencer {
 	private Queue<DatagramPacket> seqQueue = new LinkedList<DatagramPacket>();
@@ -93,6 +94,7 @@ public class Sequencer {
 				InterMessage message = new InterMessage();
 				message.decode(_buffer);
 				message.addParameter(InterMessage.KEY_SEQUENCE_NUMBER, Long.toString(sequenceNumber));
+				sequenceNumber++;
 				_buffer = message.encode();
 				
 				//TODO: Adding to the queue
@@ -101,17 +103,16 @@ public class Sequencer {
 				System.out.println("Sequencer: Got a message on port 4001");
 				System.out.println("Sequencer: Message Content: " + new String(_request.getData()));
 				
-				//TODO:Add hold requests check
-				DatagramPacket _sendToR1 = new DatagramPacket(_buffer, _buffer.length, _aHost, r1ServerPort);
-				DatagramPacket _sendToR2 = new DatagramPacket(_buffer, _buffer.length, _aHost, r2ServerPort);
-				DatagramPacket _sendToR3 = new DatagramPacket(_buffer, _buffer.length, _aHost, r3ServerPort);
+//				//TODO:Add hold requests check
+//				DatagramPacket _sendToR1 = new DatagramPacket(_buffer, _buffer.length, _aHost, r1ServerPort);
+//				DatagramPacket _sendToR2 = new DatagramPacket(_buffer, _buffer.length, _aHost, r2ServerPort);
+//				DatagramPacket _sendToR3 = new DatagramPacket(_buffer, _buffer.length, _aHost, r3ServerPort);
+//				
+//				_aSocket.send(_sendToR1);
+//				_aSocket.send(_sendToR2);
+//				_aSocket.send(_sendToR3);
 				
-				_aSocket.send(_sendToR1);
-				_aSocket.send(_sendToR2);
-				_aSocket.send(_sendToR3);
-				
-				
-				
+//				_buffer = returnedMessage1.encode();
 				
 				//TODO: Remove from queue when done
 				//seqQueue.remove();
@@ -169,6 +170,53 @@ public class Sequencer {
 		}finally {if(_aSocket != null) _aSocket.close();}
 		
 	}
+	
+	private InterReceiver receiver;
+
+
+	private void testInit() {
+
+		receiver = new InterReceiver();
+		receiver.setPortNumber(4001);
+		receiver.setUniversalHandler(new InterReceiverHandler() {
+
+			@Override
+			public InterMessage handle(InterMessage receiveMessage) {
+				InterMessage message = receiveMessage;
+				
+				message.addParameter(InterMessage.KEY_SEQUENCE_NUMBER, Long.toString(sequenceNumber));
+				sequenceNumber++;
+				
+				InterSender sender;
+				sender = new InterSender();
+				sender.setToPortNumber(r1ServerPort);
+				InterMessage returnedMessage1 = sender.sendMessage(message);
+				returnedMessage1.removeParameter(InterMessage.KEY_SEQUENCE_NUMBER);
+				returnedMessage1.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
+
+				sender = new InterSender();
+				sender.setToPortNumber(r2ServerPort);
+				InterMessage returnedMessage2 = sender.sendMessage(message);
+				returnedMessage2.removeParameter(InterMessage.KEY_SEQUENCE_NUMBER);
+				returnedMessage2
+						.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
+
+				sender = new InterSender();
+				sender.setToPortNumber(r3ServerPort);
+				InterMessage returnedMessage3 = sender.sendMessage(message);
+				returnedMessage3.removeParameter(InterMessage.KEY_SEQUENCE_NUMBER);
+				returnedMessage3.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
+
+				return returnedMessage1;
+
+			}
+
+		});
+
+		receiver.start();
+
+	}
+
 	/**
 	 * @param args
 	 */
