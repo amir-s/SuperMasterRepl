@@ -72,6 +72,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_REGISTE_USER);
 		
+		System.out.println("LibraryFrontEnd : Function Called : registerUser");
+		
 		message.addParameter("instName", instName);
 		message.addParameter("lastName", lastName);
 		message.addParameter("emailAddress", emailAddress);
@@ -79,8 +81,7 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("username", username);
 		message.addParameter("password", password);
 		
-		interSender.sendMessage(message);
-		InterMessage returnMessage = null;
+		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -94,9 +95,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("password", password);
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
-		
-		interSender.sendMessage(message);
-		InterMessage returnMessage = null;
+
+		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -112,9 +112,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
 		message.addParameter("days", days);
-		
-		interSender.sendMessage(message);
-		InterMessage returnMessage = null;
+
+		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -128,9 +127,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("password", password);
 		message.addParameter("bookName", bookName);
 		message.addParameter("bookName", bookName);
-		
-		interSender.sendMessage(message);
-		InterMessage returnMessage = null;
+
+		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -143,9 +141,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("adminUsername", adminUsername);
 		message.addParameter("adminPassword", adminPassword);
 		message.addParameter("days", days);
-		
-		interSender.sendMessage(message);
-		InterMessage returnMessage = null;
+
+		InterMessage returnMessage = interSender.sendMessage(message);
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 

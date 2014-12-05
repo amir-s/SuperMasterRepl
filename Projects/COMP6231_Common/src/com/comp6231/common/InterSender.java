@@ -31,7 +31,7 @@ public class InterSender {
 	 */
 	
 
-	public void sendMessage(InterMessage sendMessage) {
+	public InterMessage sendMessage(InterMessage sendMessage) {
 		DatagramSocket socket = null;
 		 
 		try {
@@ -39,20 +39,22 @@ public class InterSender {
 			InetAddress host = InetAddress.getByName("localhost");
 			int serverPort = toPortNumber;
 
+			System.out.println("InterSender : Event : Going to send message to port " + toPortNumber);
 			// sending 
 			byte[] sendBytes = sendMessage.encode();
 			DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, host, serverPort);
 			socket.send(sendPacket);
+			
 //			
-//			// receiving
-//			byte[] receiveBytes = new byte[1000];
-//			DatagramPacket receivePacket = new DatagramPacket(receiveBytes, receiveBytes.length);
-//			socket.receive(receivePacket);
-//			
-//			// build the returning message
-//			InterMessage receiveMessage = new InterMessage();
-//			receiveMessage.decode(receiveBytes);
-//			return receiveMessage;
+			// receiving
+			byte[] receiveBytes = new byte[1000];
+			DatagramPacket receivePacket = new DatagramPacket(receiveBytes, receiveBytes.length);
+			socket.receive(receivePacket);
+			
+			// build the returning message
+			InterMessage receiveMessage = new InterMessage();
+			receiveMessage.decode(receiveBytes);
+			return receiveMessage;
 			
 		} catch (SocketException e) {
 			System.out.println("Socket: " + e.getMessage());
@@ -61,5 +63,6 @@ public class InterSender {
 		} finally {
 			if (socket != null) socket.close();
 		}
+		return null;
 	}
 }

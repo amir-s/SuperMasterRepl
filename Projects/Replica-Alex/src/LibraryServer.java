@@ -56,6 +56,8 @@ public class LibraryServer implements ILibrary{
 	public String registerUser(String instName, String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password){
 		
 		// Assuming that every parameter in this function is not null
+
+		System.out.println("LibraryServer : Function Called : registerUser : at " + serverInfo.getName());
 		
 		Response response = new Response();
 		response.setErrorCode(ServerError.SUCCESS);

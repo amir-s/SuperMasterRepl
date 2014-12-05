@@ -89,6 +89,9 @@ public class UDPServer{
 			
 			@Override
 			public void handle(InterMessage receiveMessage, InterMessage returnMessage) {
+				
+				System.out.println("UDPServer : Event : Did receive handle request");
+				
 				String instName = receiveMessage.getParameter("instName");
 				String firstName = receiveMessage.getParameter("firstName");
 				String lastName = receiveMessage.getParameter("lastName");
