@@ -1,0 +1,5 @@
+
+Fri Dec 05 18:15:14 EST 2014: The Account has been successfully created in Polytechnique:
+Fri Dec 05 18:15:14 EST 2014: FirstName: amirsa1, LastName: amirsa1, Email Address: amirsa1
+Fri Dec 05 18:15:14 EST 2014: PhoneNumber: 123123, Username: amirsa1, Password: amirsa1, Institution: Polytechnique
+Fri Dec 05 18:15:44 EST 2014: Failed to reserve book Xfor the username amirsa1. No more copies available.

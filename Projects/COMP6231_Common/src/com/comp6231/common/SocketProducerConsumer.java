@@ -95,7 +95,7 @@ public class SocketProducerConsumer extends Thread {
 			public void run() {
 				try {
 					while (true) {
-						System.out.println("Checking Queue");
+						System.out.print("<> ");
 						if (stop == true) {
 							System.out.println("Consuming is paused!");
 							Thread.sleep(10000);
@@ -104,7 +104,7 @@ public class SocketProducerConsumer extends Thread {
 						synchronized (lock) {
 							if (sockets.size() > 0) consumer.consume(messages.poll(), sockets.poll());
 						}
-						Thread.sleep(2000);
+						Thread.sleep(10000);
 					}
 				}catch (Exception e) {
 					e.printStackTrace();

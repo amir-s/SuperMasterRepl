@@ -55,7 +55,7 @@ public class AdminClient extends Client {
 
 			case 1: 
 			{
-				// get non returnes 
+				// get non returns 
 				System.out.println("username password days");
 				String username = keyboard.next(); 
 				String password = keyboard.next(); 

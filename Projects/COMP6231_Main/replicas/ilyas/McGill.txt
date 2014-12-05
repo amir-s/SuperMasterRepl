@@ -30,3 +30,6 @@ Fri Dec 05 12:41:47 EST 2014: Failed to reserve book X with author Y for an Inte
 Fri Dec 05 14:09:49 EST 2014: Failed to reserve book X with author Y for an Inter Library request
 Fri Dec 05 14:10:19 EST 2014: Failed to reserve book X with author Y for an Inter Library request
 Fri Dec 05 14:14:55 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 18:13:44 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 18:24:23 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 18:34:55 EST 2014: Failed to reserve book X with author Y for an Inter Library request

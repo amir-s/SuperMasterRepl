@@ -103,7 +103,11 @@ public class InterMessage {
 		String[] parts = message.split("\\|");
 		this.type = parts[0];
 		String[] parameterStrings = parts[1].split(",");
+		System.out.println("---");
+		System.out.println(this.type);
+		System.out.println(message);
 		for (String parameterString : parameterStrings){
+			System.out.println(parameterString);
 			String[] paraParts = parameterString.split(":");
 			String name = paraParts[0];
 			String value = paraParts[1];

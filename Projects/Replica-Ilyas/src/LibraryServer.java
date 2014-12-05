@@ -758,7 +758,7 @@ public class LibraryServer {
 	@return : list of non returners from the local server
 	*/
 	public String listNonReturnersFromCurrentServerInstance(int NumDays){
-		String _result="@" + m_serverName + ",";
+		String _result= "";
 		
 		for (Character _c : m_allUsers.keySet()) {
 		    synchronized (m_allUsers.get(_c)){
@@ -774,7 +774,7 @@ public class LibraryServer {
 		    		}
 		    		
 		    		if(_reportStudent){
-		    			_result = _result + _s.m_fristName + "," + _s.m_lastName + "," + _s.m_phoneNumber;// + "\n";
+		    			_result += "$" + m_serverName + "^" + _s.m_fristName + "^" + _s.m_lastName + "^" + _s.m_phoneNumber;// + "\n";
 		    		}
 			    }
 		    }

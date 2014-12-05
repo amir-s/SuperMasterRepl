@@ -295,7 +295,7 @@ public class LibraryImpl {
 					if (record.getValue().intValue() >= days) continue; // is it desired?
 					// add this to the return list
 					Student st = getList(getKey(record.getKey())).get(record.getKey());
-					result += "@" + institudeName + "," + st.firstName + "," + st.lastName + "," + st.phoneNumber;
+					result += "$" + institudeName + "^" + st.firstName + "^" + st.lastName + "^" + st.phoneNumber;
 				}
 			}
 		}
