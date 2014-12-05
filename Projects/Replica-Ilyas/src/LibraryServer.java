@@ -317,16 +317,16 @@ public class LibraryServer {
 	*/	
 	public String reserveBookFromARemoteLibrary(String Username, String BookName, String AuthorName){
 		String _result="-3";
-		
-		if (m_serverName.equals("Concordia")){
+		if (m_serverName.toLowerCase().equals("concordia")){
 
 			//Check McGill first
 			String _mcgillResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6790);
+			_result = _mcgillResult;
 			if (_mcgillResult.contains("Result: Success.")){
 				
 				//update student record
 				String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-				
+				_result = _updateRecordResult;
 				//check if student already has the book reserved 
 				if (_updateRecordResult.contains("Result: Failed.")){
 										
@@ -351,11 +351,12 @@ public class LibraryServer {
 			else if(_mcgillResult.contains("Result: Failed.")){
 				//Check polytechnique
 				String _polytechniqueResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
+				_result = _polytechniqueResult;
 				if (_polytechniqueResult.contains("Result: Success.")){
 					
 					//update student record
 					String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-					
+					_result = _updateRecordResult;
 					//check if student already has the book reserved 
 					if (_updateRecordResult.contains("Result: Failed.")){
 						
@@ -381,21 +382,22 @@ public class LibraryServer {
 				}
 			}
 		}
-		else if (m_serverName.equals("McGill")){
+		else if (m_serverName.toLowerCase().equals("mcgill")){
 			//Check Concordia first
 			String _concordiaResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6789);
+			_result = _concordiaResult;
 			if (_concordiaResult.contains("Result: Success.")){
 				
 				//update student record
 				String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-				
+				_result = _updateRecordResult;
 				//check if student already has the book reserved 
 				if (_updateRecordResult.contains("Result: Failed.")){
 										
 					unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6789);
 					
 					if (_updateRecordResult.contains("already reserved")){
-						_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+						_result="1@";
 						
 					}
 					else{
@@ -413,18 +415,19 @@ public class LibraryServer {
 			else if(_concordiaResult.contains("Result: Failed.")){
 				//Check polytechnique
 				String _polytechniqueResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
+				_result = _polytechniqueResult;
 				if (_polytechniqueResult.contains("Result: Success.")){
 					
 					//update student record
 					String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-					
+					_result = _updateRecordResult;
 					//check if student already has the book reserved 
 					if (_updateRecordResult.contains("Result: Failed.")){
 						
 						unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6791);
 						
 						if (_updateRecordResult.contains("already reserved")){
-							_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+							_result="1@";
 							
 						}
 						else{
@@ -443,21 +446,22 @@ public class LibraryServer {
 				}
 			}
 		}
-		else if (m_serverName.equals("Polytechnique")){
+		else if (m_serverName.toLowerCase().equals("polytechnique")){
 			//Check Concordia first
 			String _concordiaResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6789);
+			_result = _concordiaResult;
 			if (_concordiaResult.contains("Result: Success.")){
 				
 				//update student record
 				String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-				
+				_result = _updateRecordResult;
 				//check if student already has the book reserved 
 				if (_updateRecordResult.contains("Result: Failed.")){
 										
 					unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6789);
 					
 					if (_updateRecordResult.contains("already reserved")){
-						_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+						_result="1@";
 						
 					}
 					else{
@@ -475,18 +479,19 @@ public class LibraryServer {
 			else if(_concordiaResult.contains("Result: Failed.")){
 				//Check McGill
 				String _mcgillResult = reserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6790);
+				_result = _mcgillResult;
 				if (_mcgillResult.contains("Result: Success.")){
 					
 					//update student record
 					String _updateRecordResult = updateStudentRecord(Username, BookName, AuthorName);
-					
+					_result = _updateRecordResult;
 					//check if student already has the book reserved 
 					if (_updateRecordResult.contains("Result: Failed.")){
 						
 						unreserveBookFromARemoteLibraryViaUDP(BookName, AuthorName, 6790);
 						
 						if (_updateRecordResult.contains("already reserved")){
-							_result="1@Result: Failed. The user " + Username + " has already reserved the book " + BookName;
+							_result="1@";
 							
 						}
 						else{
