@@ -3,3 +3,6 @@ Thu Dec 04 20:21:20 EST 2014: The Account for user amiramir has been successfull
 Thu Dec 04 20:33:01 EST 2014: The Account for user amiramir has been successfully created in Concordia.
 Thu Dec 04 20:43:08 EST 2014: The Account for user amiramir has been successfully created in Concordia.
 Thu Dec 04 20:44:36 EST 2014: The Account for user asdjalsd has been successfully created in Concordia.
+Thu Dec 04 20:53:11 EST 2014: The Account for user alskdjalskd has been successfully created in Concordia.
+Thu Dec 04 20:59:08 EST 2014: The Account for user alskdja has been successfully created in Concordia.
+Thu Dec 04 21:03:15 EST 2014: The Account for user aslkdj has been successfully created in Concordia.

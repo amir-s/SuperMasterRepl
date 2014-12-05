@@ -77,12 +77,16 @@ public class InterReceiver extends Thread {
 				// handle
 				String messageType = receiveMessage.getType();
 				InterReceiverHandler handler = handlers.get(messageType);
-				handler.handle(receiveMessage, sendMessage);
+				if (handler == null) {
+					System.out.println("There is no handler for '" + messageType + "'");
+				}else {
+					handler.handle(receiveMessage, sendMessage);
+					// send back
+					byte[] sendBytes = sendMessage.encode();
+					DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, receivePacket.getAddress(), receivePacket.getPort());
+					socket.send(sendPacket);
+				}
 
-				// send back
-				byte[] sendBytes = sendMessage.encode();
-				DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, receivePacket.getAddress(), receivePacket.getPort());
-				socket.send(sendPacket);
 			}
 			
 		} catch (Exception e) {
