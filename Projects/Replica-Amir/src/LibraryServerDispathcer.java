@@ -49,12 +49,14 @@ public class LibraryServerDispathcer implements ILibrary{
 	public String registerUser(String InstName, String firstName,
 			String lastName, String emailAddress, String phoneNumber,
 			String username, String password) {
+		InstName = InstName.toLowerCase();
 		return libs.get(InstName).registerUser(firstName, lastName, emailAddress, phoneNumber, username, password)+"@";
 	
 	}
 
 	public String reserveBook(String InstName, String username,
 			String password, String bookName, String authorName) {
+		InstName = InstName.toLowerCase();
 		return libs.get(InstName).reserveBook(username, password, bookName, authorName)+"@";
 		
 	}
@@ -63,12 +65,14 @@ public class LibraryServerDispathcer implements ILibrary{
 	public String setDuration(String InstName, String adminUsername,
 			String adminPassword, String username, String bookName,
 			String authorName, int days) {
+		InstName = InstName.toLowerCase();
 		return libs.get(InstName).setDuration(adminUsername, adminPassword, username, bookName, authorName, days)+"@";
 		
 	}
 
 	public String getNonRetuners(String InstName, String adminUsername,
 			String adminPassword, int days) {
+		InstName = InstName.toLowerCase();
 		String res = libs.get(InstName).getNonRetuners(adminUsername, adminPassword, days);
 		if (res.equals("-1")) return "2@";
 		return "0@"+res;
@@ -77,6 +81,7 @@ public class LibraryServerDispathcer implements ILibrary{
 
 	public String reserveInterLibrary(String InstName, String username, String password,
 			String bookName, String authorName) {
+		InstName = InstName.toLowerCase();
 		return libs.get(InstName).reserveInterLibrary(username, password, bookName, authorName)+"@";
 	}
 }

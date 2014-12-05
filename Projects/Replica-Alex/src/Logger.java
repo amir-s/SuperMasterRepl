@@ -159,8 +159,8 @@ public class Logger {
 		}
 		
 		private String logPath() {
-			String path = "/Users/Zhaozhe/Documents/study/Concorida/Courses/2014_09_COMP 6231_Distributed_System_Design/Workspace/Assignment_1";
-			path = path + "/" + "data";
+			String path = "";
+			path = path + "" + "data";
 			path = path + "/" + libraryServer.getServerInfo().getName();
 			path = path + "/" + "log";
 			return path;

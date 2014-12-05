@@ -20,7 +20,6 @@ public class LibraryServerDispatcher implements ILibrary{
 	// 5 : Username exists 
 	public String registerUser(String instName, String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password){
 		long longPhoneNumber=0L;  
-		
 		try {
 			 longPhoneNumber = Long.parseLong(phoneNumber);
 			 //System.out.println("longPhoneNumber = " + longPhoneNumber);
@@ -47,6 +46,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	// 2 : Authentication failed
 	// 3 : Book does not exists or no copies left, or the user already has the book
 	public String reserveBook(String instName, String username, String password, String bookName, String authorName){
+		
 		if (instName.toLowerCase().equals("concordia")){
 			return m_concordiaServer.reserveBook(username, password, bookName, authorName);
 		}

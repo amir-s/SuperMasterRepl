@@ -86,6 +86,7 @@ public class InterReceiver extends Thread {
 			}
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage() + " catch something");
 		} finally {
 			if (socket != null) socket.close();
