@@ -32,9 +32,9 @@ public class ServerInfoManager {
 		servers = new ArrayList<ServerInfo>();
 		serversByName = new HashMap<String, ServerInfo>();
 		
-		addServerInfo(new ServerInfo("Concordia", 1, 6000));
-		addServerInfo(new ServerInfo("McGill", 2, 6001));
-		addServerInfo(new ServerInfo("UM", 3, 6002));
+		addServerInfo(new ServerInfo("Concordia", 1, 7001));
+		addServerInfo(new ServerInfo("McGill", 2, 7002));
+		addServerInfo(new ServerInfo("Polytechnique", 3, 7003));
 	}
 	
 	/*

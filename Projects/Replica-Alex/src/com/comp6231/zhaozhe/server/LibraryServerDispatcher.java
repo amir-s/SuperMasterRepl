@@ -1,5 +1,9 @@
 package com.comp6231.zhaozhe.server;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.comp6231.common.ILibrary;
 import com.comp6231.common.UDPServer;
 
@@ -19,6 +23,7 @@ public class LibraryServerDispatcher implements ILibrary{
 	
 	public LibraryServerDispatcher() {
 		initPortal();
+		initServers();
 	}
 	
 	/*
@@ -39,42 +44,72 @@ public class LibraryServerDispatcher implements ILibrary{
 		portal.start();
 	}
 	
+	/*
+	 * Mark - Servers - Properties
+	 */
+	
+	private Map<String, LibraryServer> libraries; 
+	
+	/*
+	 * Mark - Servers - Methods
+	 */
+	
+	private void initServers() {
+		libraries = new HashMap<String, LibraryServer>();
+		
+		List<ServerInfo> infos = ServerInfoManager.defaultManager().getServers();
+		for (ServerInfo info : infos) {
+			LibraryServer libraryServer = new LibraryServer(info);
+			libraries.put(info.getName(), libraryServer);
+		}
+	}
+	
+	/*
+	 * Mark - Proxy - Methods
+	 */
+	 
+	 
 	
 	@Override
 	public String registerUser(String instName, String firstName,
 			String lastName, String emailAddress, String phoneNumber,
 			String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LibraryServer libraryServer = libraries.get(instName);
+		return libraryServer.registerUser(instName, firstName, lastName, emailAddress, phoneNumber, username, password);
 	}
 
 	@Override
 	public String reserveBook(String instName, String username,
 			String password, String bookName, String authorName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LibraryServer libraryServer = libraries.get(instName);
+		return libraryServer.reserveBook(instName, username, password, bookName, authorName);
 	}
 
 	@Override
 	public String setDuration(String instName, String adminUsername,
 			String adminPassword, String username, String bookName,
 			String authorName, int days) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LibraryServer libraryServer = libraries.get(instName);
+		return libraryServer.setDuration(instName, adminUsername, adminPassword, username, bookName, authorName, days);
 	}
 
 	@Override
 	public String reserveInterLibrary(String instName, String username,
 			String password, String bookName, String authorName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LibraryServer libraryServer = libraries.get(instName);
+		return libraryServer.reserveInterLibrary(instName, username, password, bookName, authorName);
 	}
 
 	@Override
 	public String getNonRetuners(String instName, String adminUsername,
 			String adminPassword, int days) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		LibraryServer libraryServer = libraries.get(instName);
+		return libraryServer.getNonRetuners(instName, adminUsername, adminPassword, days);
 	}
 	
 	

@@ -79,7 +79,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("username", username);
 		message.addParameter("password", password);
 		
-		InterMessage returnMessage = interSender.sendMessage(message);
+		interSender.sendMessage(message);
+		InterMessage returnMessage = null;
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -94,7 +95,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
 		
-		InterMessage returnMessage = interSender.sendMessage(message);
+		interSender.sendMessage(message);
+		InterMessage returnMessage = null;
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -111,7 +113,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("authorName", authorName);
 		message.addParameter("days", days);
 		
-		InterMessage returnMessage = interSender.sendMessage(message);
+		interSender.sendMessage(message);
+		InterMessage returnMessage = null;
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -126,7 +129,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("bookName", bookName);
 		message.addParameter("bookName", bookName);
 		
-		InterMessage returnMessage = interSender.sendMessage(message);
+		interSender.sendMessage(message);
+		InterMessage returnMessage = null;
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
@@ -140,7 +144,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("adminPassword", adminPassword);
 		message.addParameter("days", days);
 		
-		InterMessage returnMessage = interSender.sendMessage(message);
+		interSender.sendMessage(message);
+		InterMessage returnMessage = null;
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 

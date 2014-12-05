@@ -8,26 +8,6 @@ import com.comp6231.zhaozhe.entity.Book;
 import com.comp6231.zhaozhe.entity.Reservation;
 
 public class LibraryServer implements ILibrary{
-	
-	/*
-	 * Mark - Driver
-	 */
-	
-	public static void main(String[] args) {
-		try {
-
-			ServerInfoManager serverInfoManager = ServerInfoManager.defaultManager();
-			for (ServerInfo serverInfo: serverInfoManager.getServers()){
-
-				LibraryServer libraryServer = new LibraryServer(serverInfo);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	/*
 	 * Mark - Constructors
 	 */
