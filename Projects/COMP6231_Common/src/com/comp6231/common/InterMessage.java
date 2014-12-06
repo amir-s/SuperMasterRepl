@@ -102,8 +102,8 @@ public class InterMessage {
 		message = message.substring(0, endIndex);
 		String[] parts = message.split("\\|");
 		this.type = parts[0];
-		String[] rest = parts[1].split("@");
-		String[] parameterStrings = rest[0].split(",");
+		//String[] rest = parts[1].split("@");
+		String[] parameterStrings = parts[1].split(",");
 		System.out.println("---");
 		System.out.println(this.type);
 		System.out.println(message);
@@ -114,14 +114,16 @@ public class InterMessage {
 			String value = paraParts[1];
 			this.addParameter(name, value);
 		}
-		if (rest.length > 1) this.addParameter("REST", rest[1]);
+		//if (rest.length > 1) this.addParameter("REST", rest[1]);
 //		System.out.println(rest[1]);
 		
 	}
+	
+	
 	public static void main(String[] args) {
 		InterMessage msg = new InterMessage();
 		msg.decode("RETURN|value:0@$concordia^amirsa^amirsa^123123\n".getBytes());
-		System.out.println(msg.getParameter("REST"));
+		System.out.println(msg.getParameter("value"));
 		
 	}
 }

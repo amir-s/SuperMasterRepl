@@ -1,5 +1,9 @@
 package com.comp6231.common;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+
 import com.heartbeat.Heart;
 
 public class UDPServer{
@@ -204,8 +208,17 @@ public class UDPServer{
 				String days = receiveMessage.getParameter("days");
 				
 				String value = library.getNonRetuners(instName, adminUsername, adminPassword, Integer.valueOf(days));
-				
-				returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+				String[] parts = value.split("@");
+				if (parts.length == 1) returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, value);
+				else {
+					String[] list = parts[1].substring(1).split("\\$");
+					Arrays.sort(list);
+					String send = parts[0]+"@";
+					for (int i=0;i<list.length;i++) {
+						send += "$" + list[i];
+					}
+					returnMessage.addParameter(InterMessage.KEY_RETURN_VALUE, send);
+				}
 
 				return returnMessage;
 			}

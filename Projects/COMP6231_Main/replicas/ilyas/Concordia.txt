@@ -110,3 +110,15 @@ Fri Dec 05 19:38:32 EST 2014: reserveInterLibrary: book X not available at local
 Fri Dec 05 19:38:32 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
 Fri Dec 05 19:39:01 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days20. The result is: 
 0@$Concordia^amirsa^amirsa^123123
+Fri Dec 05 19:47:21 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:47:22 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 19:47:22 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 19:51:24 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:51:27 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 19:51:27 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 19:52:01 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123
+Fri Dec 05 20:08:58 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:08:59 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:08:59 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 20:09:10 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers

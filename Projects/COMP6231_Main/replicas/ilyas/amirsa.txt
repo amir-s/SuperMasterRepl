@@ -113,3 +113,15 @@ Fri Dec 05 19:38:27 EST 2014: The Account has been successfully created in Conco
 Fri Dec 05 19:38:27 EST 2014: FirstName: amirsa, LastName: amirsa, Email Address: amirsa
 Fri Dec 05 19:38:27 EST 2014: PhoneNumber: 123123, Username: amirsa, Password: amirsa, Institution: Concordia
 Fri Dec 05 19:38:32 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa. Duration is 14 days
+Fri Dec 05 19:47:21 EST 2014: The Account has been successfully created in Concordia:
+Fri Dec 05 19:47:21 EST 2014: FirstName: amirsa, LastName: amirsa, Email Address: amirsa
+Fri Dec 05 19:47:21 EST 2014: PhoneNumber: 123123, Username: amirsa, Password: amirsa, Institution: Concordia
+Fri Dec 05 19:47:22 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa. Duration is 14 days
+Fri Dec 05 19:51:24 EST 2014: The Account has been successfully created in Concordia:
+Fri Dec 05 19:51:24 EST 2014: FirstName: amirsa, LastName: amirsa, Email Address: amirsa
+Fri Dec 05 19:51:24 EST 2014: PhoneNumber: 123123, Username: amirsa, Password: amirsa, Institution: Concordia
+Fri Dec 05 19:51:27 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa. Duration is 14 days
+Fri Dec 05 20:08:58 EST 2014: The Account has been successfully created in Concordia:
+Fri Dec 05 20:08:58 EST 2014: FirstName: amirsa, LastName: amirsa, Email Address: amirsa
+Fri Dec 05 20:08:58 EST 2014: PhoneNumber: 123123, Username: amirsa, Password: amirsa, Institution: Concordia
+Fri Dec 05 20:08:59 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa. Duration is 14 days
