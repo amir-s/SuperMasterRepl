@@ -62,8 +62,20 @@ public class AdminClient extends Client {
 				String days = keyboard.next(); 
 
 				response = new Response(libraryServer.getNonRetuners(instName, username, password, days));
-				showResponse(response);
-				
+				//showResponse(response);
+				if (response.isSuccess()) {
+					System.out.println("Good!");
+					String[] list = response.getData().substring(1).split("\\$");
+					for (int i=0;i<list.length;i++) {
+						String[] record = list[i].split("\\^");
+						for (int j=0;j<record.length;j++) {
+							if (j != 0) System.out.print("\t");
+							System.out.print(record[j]);
+						}
+						System.out.println();
+					}
+					System.out.println();
+				}
 				break;
 			}
 			
