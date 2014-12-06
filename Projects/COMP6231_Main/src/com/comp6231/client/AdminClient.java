@@ -2,6 +2,7 @@ package com.comp6231.client;
 
 import java.util.Scanner;
 
+import com.comp6231.common.PrettyPrinter;
 import com.comp6231.common.Response;
 
 import corba.LibraryServer;
@@ -65,16 +66,17 @@ public class AdminClient extends Client {
 				//showResponse(response);
 				if (response.isSuccess()) {
 					System.out.println("Good!");
+					
+					final PrettyPrinter printer = new PrettyPrinter(System.out);
+					
+					
 					String[] list = response.getData().substring(1).split("\\$");
+					String[][] table = new String[list.length][];
 					for (int i=0;i<list.length;i++) {
-						String[] record = list[i].split("\\^");
-						for (int j=0;j<record.length;j++) {
-							if (j != 0) System.out.print("\t");
-							System.out.print(record[j]);
-						}
-						System.out.println();
+						table[i] = list[i].split("\\^");
 					}
-					System.out.println();
+					
+					printer.print(table);
 				}
 				break;
 			}

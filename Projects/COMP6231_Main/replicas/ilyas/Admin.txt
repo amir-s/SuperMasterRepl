@@ -27,3 +27,11 @@ Fri Dec 05 20:14:49 EST 2014: Admin operation Get Non Returners called on McGill
 0@$Concordia^amirsa^amirsa^123123
 Fri Dec 05 20:15:18 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
 0@$Concordia^amirsa^amirsa^123123
+Fri Dec 05 20:21:42 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123
+Fri Dec 05 20:23:00 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
+Fri Dec 05 20:23:22 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
+Fri Dec 05 20:23:32 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123

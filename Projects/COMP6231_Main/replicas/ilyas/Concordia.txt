@@ -122,3 +122,14 @@ Fri Dec 05 20:08:58 EST 2014: The Account for user amirsa has been successfully 
 Fri Dec 05 20:08:59 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
 Fri Dec 05 20:08:59 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
 Fri Dec 05 20:09:10 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:21:16 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:21:17 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:21:17 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 20:21:42 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123
+Fri Dec 05 20:23:00 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
+Fri Dec 05 20:23:22 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
+Fri Dec 05 20:23:32 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123

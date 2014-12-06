@@ -43,3 +43,7 @@ Fri Dec 05 19:47:22 EST 2014: Successfully reserved book X for an Inter Library 
 Fri Dec 05 19:51:27 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
 Fri Dec 05 20:08:59 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
 Fri Dec 05 20:09:10 EST 2014: Failed to reserve book X for an Inter Library request. No more copies available.
+Fri Dec 05 20:21:17 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
+Fri Dec 05 20:22:32 EST 2014: The Account for user amirsa1 has been successfully created in Polytechnique.
+Fri Dec 05 20:22:44 EST 2014: Successfully reserved book A for the username amirsa1.
+Fri Dec 05 20:24:00 EST 2014: The Account for user sdjkla has been successfully created in Polytechnique.
