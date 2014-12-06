@@ -412,7 +412,7 @@ public class LibraryServer implements ILibrary{
 	// internal get non returns function
 	public String internalGetNonReturns(String numDays){
 
-		System.out.println("LibraryServer : Function Called : internalGetNonReturns");
+		System.out.println("LibraryServer : Function Called : internalGetNonReturns " + serverInfo.getName());
 		
 		int numDaysInt = Integer.valueOf(numDays);
 		
