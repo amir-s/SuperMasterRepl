@@ -258,6 +258,8 @@ public class LibraryServer implements ILibrary{
 	public String getNonRetuners(String instName, String adminUsername, String adminPassword, int days){
 	
 		// Assuming that every parameter in this function is not null
+		
+		System.out.println("LibraryServer : Function Called : getNonRetuners : at " + serverInfo.getName());
 
 		Response response = new Response();
 		response.setErrorCode(ServerError.SUCCESS);
@@ -283,6 +285,7 @@ public class LibraryServer implements ILibrary{
 
 		// To combine the remote results
 		synchronized (interCommunicationLock) {
+			System.out.println("LibraryServer : Check Point 1 : getNonRetuners");
 
 			InternalMessage sendMessage = new InternalMessage();
 			sendMessage.setType(InternalMessage.TYPE_GET_NON_RETURNS);
@@ -300,9 +303,11 @@ public class LibraryServer implements ILibrary{
 				}
 			});
 
+			System.out.println("LibraryServer : Check Point 2 : getNonRetuners");
 			response.setData(allMessages.toString());
 		}
-		
+
+		System.out.println("LibraryServer : Check Point 3 : getNonRetuners");
 		return response.toString();
 	}
 
@@ -406,6 +411,8 @@ public class LibraryServer implements ILibrary{
 	
 	// internal get non returns function
 	public String internalGetNonReturns(String numDays){
+
+		System.out.println("LibraryServer : Function Called : internalGetNonReturns");
 		
 		int numDaysInt = Integer.valueOf(numDays);
 		
