@@ -415,7 +415,7 @@ public class LibraryServer implements ILibrary{
 		for (Account account : accounts) {
 			for (Reservation reservation : account.getReservations()){
 				// "$" + institudeName + "^" + st.firstName + "^" + st.lastName + "^" + st.phoneNumber;
-				if (reservation.getDuration() <= numDaysInt) {
+				if (reservation.getDuration() < numDaysInt) {
 					sb.append("$");
 					sb.append(serverInfo.getName() + "^");
 					sb.append(account.getFirstName() + "^");
