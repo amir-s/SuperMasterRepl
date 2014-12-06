@@ -226,12 +226,17 @@ public class Sequencer {
 				
 				toSend.setType(InterMessage.TYPE_RETURN);
 				
+				if (wrong == -1) {
+					System.out.println("All answers from replicas are good!");
+				}else {
+					System.out.println("Replica #" + wrong + " generated wrong answer!");
+				}
 				
 				// send back
 				byte[] sendBytes = toSend.encode();
 				DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, packet.getAddress(), packet.getPort());
 				receiver.send(sendPacket);
-				System.out.println("Wrong = " + wrong);
+				
 
 			}
 

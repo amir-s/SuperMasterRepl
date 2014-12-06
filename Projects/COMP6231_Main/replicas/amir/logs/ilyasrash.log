@@ -1,0 +1,48 @@
+[polytechnique] (ilyasrash) Registering user
+[polytechnique] (ilyasrash) Username registered
+[polytechnique] (ilyasrash) Reserving book A:B for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book a:b is reserved. Quantity: 1
+[polytechnique] (ilyasrash) Inter Reserving book A:B for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Reserving book A:B for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book a:b is already borrowed
+[polytechnique] (ilyasrash) Requesting to concordia to reserve A:B for ilyasrash
+[polytechnique] (ilyasrash) Found the book on concordia! Reserving ...
+[polytechnique] (ilyasrash) Added reservation A:B##concordia@ilyasrash for user ilyasrash
+[polytechnique] (ilyasrash) Inter Reserving book X:Y for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Reserving book X:Y for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book x:y is finished
+[polytechnique] (ilyasrash) Requesting to concordia to reserve X:Y for ilyasrash
+[polytechnique] (ilyasrash) NOT Found the book on concordia!
+[polytechnique] (ilyasrash) Requesting to mcgill to reserve X:Y for ilyasrash
+[polytechnique] (ilyasrash) NOT Found the book on mcgill!
+[polytechnique] (ilyasrash) NOT Found the book
+[polytechnique] (ilyasrash) Registering user
+[polytechnique] (ilyasrash) Username registered
+[polytechnique] (ilyasrash) Reserving book A:B for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book a:b is reserved. Quantity: 1
+[polytechnique] (ilyasrash) Inter Reserving book X:Y for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Reserving book X:Y for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book x:y is finished
+[polytechnique] (ilyasrash) Requesting to concordia to reserve X:Y for ilyasrash
+[polytechnique] (ilyasrash) NOT Found the book on concordia!
+[polytechnique] (ilyasrash) Requesting to mcgill to reserve X:Y for ilyasrash
+[polytechnique] (ilyasrash) NOT Found the book on mcgill!
+[polytechnique] (ilyasrash) NOT Found the book
+[concordia] (ilyasrash) Registering user
+[concordia] (ilyasrash) Username registered
+[concordia] (ilyasrash) Reserving book A:B for ilyasrash
+[concordia] (ilyasrash) Authenticating
+[concordia] (ilyasrash) Book a:b is reserved. Quantity: 1
+[polytechnique] (ilyasrash) Registering user
+[polytechnique] (ilyasrash) Username registered
+[polytechnique] (ilyasrash) Reserving book A:B for ilyasrash
+[polytechnique] (ilyasrash) Authenticating
+[polytechnique] (ilyasrash) Book a:b is reserved. Quantity: 1

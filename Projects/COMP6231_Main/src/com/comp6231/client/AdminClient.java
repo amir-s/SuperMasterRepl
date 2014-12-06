@@ -69,11 +69,20 @@ public class AdminClient extends Client {
 					
 					final PrettyPrinter printer = new PrettyPrinter(System.out);
 					
-					
+					if  (response.getData().indexOf("$") == -1) {
+						System.out.println("The list is empty!");
+						break;
+					}
 					String[] list = response.getData().substring(1).split("\\$");
-					String[][] table = new String[list.length][];
+					String[][] table = new String[list.length+1][];
+					table[0] = new String[4];
+					table[0][0] = " Institution Name ";
+					table[0][1] = " First Name ";
+					table[0][2] = " Last Name ";
+					table[0][3] = " Phone Number ";
+					
 					for (int i=0;i<list.length;i++) {
-						table[i] = list[i].split("\\^");
+						table[i+1] = list[i].split("\\^");
 					}
 					
 					printer.print(table);

@@ -1,0 +1,4 @@
+
+Fri Dec 05 21:04:55 EST 2014: The Account has been successfully created in McGill:
+Fri Dec 05 21:04:55 EST 2014: FirstName: asldfj, LastName: alskdj, Email Address: aslkdjflas
+Fri Dec 05 21:04:55 EST 2014: PhoneNumber: 12312312, Username: alksdja, Password: kfjdsla, Institution: McGill

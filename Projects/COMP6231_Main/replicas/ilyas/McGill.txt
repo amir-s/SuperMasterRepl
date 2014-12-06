@@ -66,3 +66,38 @@ Fri Dec 05 20:14:49 EST 2014: Admin operation Get Non Returners called on McGill
 Fri Dec 05 20:15:18 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
 0@$Concordia^amirsa^amirsa^123123
 Fri Dec 05 20:21:17 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:28:03 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:28:46 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121
+Fri Dec 05 20:31:41 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Polytechnique^ilyasrash^ilyasrash^5146380121
+Fri Dec 05 20:32:25 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:32:45 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Polytechnique^ilyasrash^ilyasrash^5146380121
+Fri Dec 05 20:43:07 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:44:43 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:44:57 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 21:00:38 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 21:01:16 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121
+Fri Dec 05 21:02:41 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Polytechnique^ilyasrash^ilyasrash^5146380121
+Fri Dec 05 21:03:14 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 21:03:37 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Polytechnique^ilyasrash^ilyasrash^5146380121
+Fri Dec 05 21:04:20 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Polytechnique^ilyasrash^ilyasrash^5146380121
+Fri Dec 05 21:04:55 EST 2014: The Account for user alksdja has been successfully created in McGill.
+Fri Dec 05 21:12:17 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 21:12:45 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121
+Fri Dec 05 21:14:20 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amirsa^amirsa^5146380121$Concordia^ilyas^rashid^5146380121
+Fri Dec 05 21:15:52 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 22:10:05 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 22:12:57 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amir^saboury^5146380121$Polytechnique^ilyas^rashid^5146380121
+Fri Dec 05 22:13:23 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amir^saboury^5146380121$Polytechnique^ilyas^rashid^5146380121
+Fri Dec 05 22:13:30 EST 2014: Admin operation Get Non Returners called on McGill with Number of Days15. The result is: 
+0@$Concordia^amir^saboury^5146380121$Polytechnique^ilyas^rashid^5146380121

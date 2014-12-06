@@ -1,0 +1,17 @@
+
+Fri Dec 05 20:30:34 EST 2014: The Account has been successfully created in Polytechnique:
+Fri Dec 05 20:30:34 EST 2014: FirstName: ilyasrash, LastName: ilyasrash, Email Address: ilyasrash-at-gmail.com
+Fri Dec 05 20:30:34 EST 2014: PhoneNumber: 5146380121, Username: ilyasrash, Password: password2, Institution: Polytechnique
+Fri Dec 05 20:31:09 EST 2014: Successfully reserved book A for the username ilyasrash. Duration is 14 days
+Fri Dec 05 20:32:07 EST 2014: reserveInterLibrary: Successfully reserved book A locally at Polytechnique for the username ilyasrash. Duration is 14 days
+Fri Dec 05 21:02:12 EST 2014: The Account has been successfully created in Polytechnique:
+Fri Dec 05 21:02:12 EST 2014: FirstName: ilyasrash, LastName: ilyasrash, Email Address: ilyasrash-at-gmail.com
+Fri Dec 05 21:02:12 EST 2014: PhoneNumber: 5146380121, Username: ilyasrash, Password: password2, Institution: Polytechnique
+Fri Dec 05 21:02:31 EST 2014: Successfully reserved book A for the username ilyasrash. Duration is 14 days
+Fri Dec 05 21:14:01 EST 2014: FirstName: ilyas, LastName: rashid, Email Address: ilyasrash-at-gmail.com
+Fri Dec 05 21:14:01 EST 2014: PhoneNumber: 5146380121, Username: ilyasrash, Password: password2, Institution: Concordia
+Fri Dec 05 21:14:11 EST 2014: Successfully reserved book A for the username ilyasrash. Duration is 14 days
+Fri Dec 05 22:12:07 EST 2014: The Account has been successfully created in Polytechnique:
+Fri Dec 05 22:12:07 EST 2014: FirstName: ilyas, LastName: rashid, Email Address: ilyasrash-at-gmail.com
+Fri Dec 05 22:12:07 EST 2014: PhoneNumber: 5146380121, Username: ilyasrash, Password: password2, Institution: Polytechnique
+Fri Dec 05 22:12:35 EST 2014: Successfully reserved book A for the username ilyasrash. Duration is 14 days

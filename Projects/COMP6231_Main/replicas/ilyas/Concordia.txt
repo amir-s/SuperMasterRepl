@@ -133,3 +133,38 @@ Fri Dec 05 20:23:22 EST 2014: Admin operation Get Non Returners called on Concor
 0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
 Fri Dec 05 20:23:32 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
 0@$Concordia^amirsa^amirsa^123123$Polytechnique^amirsa1^amirsa1^123123
+Fri Dec 05 20:27:12 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:28:03 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:28:03 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 20:32:25 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 20:43:05 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:43:07 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:43:07 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 20:44:42 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:44:43 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:44:43 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 20:44:56 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 20:44:57 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 20:44:57 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 21:00:37 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 21:00:38 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 21:00:38 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 21:03:14 EST 2014: Failed to reserve book X with author Y for an Inter Library request
+Fri Dec 05 21:10:48 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 21:12:17 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 21:12:17 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 21:14:01 EST 2014: The Account for user ilyasrash has been successfully created in Concordia.
+Fri Dec 05 21:14:11 EST 2014: Successfully reserved book A for the username ilyasrash.
+Fri Dec 05 21:15:27 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 21:15:52 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 21:15:52 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 21:16:47 EST 2014: reserveInterLibrary: Failed to reserve book fdlksafor the username aslkdj . The username does not exist in Concordia.
+Fri Dec 05 21:20:41 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days10. The result is: 
+0@
+Fri Dec 05 21:20:46 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amir^saboury^5146380121
+Fri Dec 05 22:09:36 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 22:10:05 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 22:10:05 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 22:10:35 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days15. The result is: 
+0@$Concordia^amir^saboury^5146380121

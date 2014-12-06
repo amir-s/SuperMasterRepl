@@ -270,3 +270,45 @@ mirsa:y not found
 [mcgill] (INTER) Book x:y not found
 [polytechnique] (INTER) Reserving book X:Y
 [polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[concordia] (INTER) Reserving book A:B
+[concordia] (INTER) Book a:b is reserved. Quantity: from 2 TO 1
+[concordia] (INTER) Reserving book X:Y
+[concordia] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is finished
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[concordia] (INTER) Reserving book X:Y
+[concordia] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
