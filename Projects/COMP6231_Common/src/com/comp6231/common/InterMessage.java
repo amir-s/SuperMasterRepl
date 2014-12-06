@@ -115,3 +115,5 @@ public class InterMessage {
 		}
 	}
 }
+
+//TYPE|key:value,key:value

@@ -582,7 +582,7 @@ public class LibraryServer {
 	@return : String that contains the list of non returners of all the servers
 	*/
 	public String getNonReturners(String AdminUsername, String AdminPassword, String EducationalInstitution, int NumDays){
-		String _result="0";
+		String _result="0@";
 		//String _eol = System.getProperty("line.separator"); 
 		_result = _result + listNonReturnersFromCurrentServerInstance(NumDays);// + _eol + "........................."+ _eol;
 		

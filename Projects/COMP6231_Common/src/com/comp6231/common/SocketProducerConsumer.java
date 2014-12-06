@@ -104,7 +104,7 @@ public class SocketProducerConsumer extends Thread {
 						synchronized (lock) {
 							if (sockets.size() > 0) consumer.consume(messages.poll(), sockets.poll());
 						}
-						Thread.sleep(10000);
+						Thread.sleep(1000);
 					}
 				}catch (Exception e) {
 					e.printStackTrace();
