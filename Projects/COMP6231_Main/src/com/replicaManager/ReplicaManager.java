@@ -11,6 +11,11 @@ import com.heartbeat.HeartBeatCallBack;
 import com.heartbeat.HeartBeatListener;
 
 public class ReplicaManager {
+	
+	/*
+	 * Mark - Basic - Properties
+	 */
+	 
 	private String replica = null;
 	private Process process = null;
 	private int heartBeatPort = -1;
@@ -19,30 +24,9 @@ public class ReplicaManager {
 	private String sequencerHost = "localhost";
 	private int sequencerPort = 4050;
 	
-	Process startProcess () throws IOException {
-		wrongCounter = 0;
-		System.out.println("STARTING REPLICA " + replica);
-		ProcessBuilder pb = new ProcessBuilder();
-		String path = "./" + replica + ".jar";
-		pb.command("java", "-jar",  path);
-		pb.redirectError(Redirect.INHERIT);
-		pb.redirectOutput(Redirect.INHERIT);
-		pb.directory(new File("./replicas/" + replica + "/"));
-		process = pb.start();
-		System.out.println("Sending START to Sequencer");
-		UDPTransporter.send(sequencerHost, sequencerPort, "START");
-		return process;
-	}
-	Process restartProcess() throws Exception {
-		System.out.println("Sending STOP to Sequencer");
-		UDPTransporter.send(sequencerHost, sequencerPort, "STOP");
-		System.out.println("RESTARTING REPLICA " + replica);
-		
-		System.out.println("KILLING REPLICA " + replica);
-		if (process != null) process.destroy();
-		Thread.sleep(1000);
-		return startProcess();
-	}
+	/*
+	 * Mark - Constructors
+	 */
 	
 	public ReplicaManager(final String replica, int heartBeatPort, int commandPort) throws Exception {
 		this.replica = replica;
@@ -89,6 +73,40 @@ public class ReplicaManager {
 		
 	}
 	
+
+	/*
+	 * Mark - Process Control - Methods
+	 */
+	 
+	Process startProcess () throws IOException {
+		wrongCounter = 0;
+		System.out.println("STARTING REPLICA " + replica);
+		ProcessBuilder pb = new ProcessBuilder();
+		String path = "./" + replica + ".jar";
+		pb.command("java", "-jar",  path);
+		pb.redirectError(Redirect.INHERIT);
+		pb.redirectOutput(Redirect.INHERIT);
+		pb.directory(new File("./replicas/" + replica + "/"));
+		process = pb.start();
+		System.out.println("Sending START to Sequencer");
+		UDPTransporter.send(sequencerHost, sequencerPort, "START");
+		return process;
+	}
+	
+	Process restartProcess() throws Exception {
+		System.out.println("Sending STOP to Sequencer");
+		UDPTransporter.send(sequencerHost, sequencerPort, "STOP");
+		System.out.println("RESTARTING REPLICA " + replica);
+		
+		System.out.println("KILLING REPLICA " + replica);
+		if (process != null) process.destroy();
+		Thread.sleep(1000);
+		return startProcess();
+	}
+	
+	/*
+	 * Mark - Drivers - Methods
+	 */
 	
 	// USAGE:
 	// cd /Projects/COMP6231_Main

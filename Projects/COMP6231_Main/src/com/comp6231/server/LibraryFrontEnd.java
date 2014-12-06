@@ -69,6 +69,8 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 
 	@Override
 	public String registerUser(String instName, String firstName, String lastName, String emailAddress, String phoneNumber, String username, String password) {
+		
+		// marshalling
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_REGISTE_USER);
 		
@@ -82,12 +84,17 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("username", username);
 		message.addParameter("password", password);
 		
+		// send request
 		InterMessage returnMessage = interSender.sendMessage(message);
+
+		// return back
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
 	@Override
 	public String reserveBook(String instName, String username, String password, String bookName, String authorName) {
+		
+		// marshalling
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_RESERVE_BOOK);
 		
@@ -97,12 +104,17 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
 
+		// send request
 		InterMessage returnMessage = interSender.sendMessage(message);
+
+		// return back
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
 	@Override
 	public String setDuration(String instName, String adminUsername, String adminPassword, String username, String bookName, String authorName, String days) {
+		
+		// marshalling
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_SET_DURATION);
 		
@@ -114,12 +126,17 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("authorName", authorName);
 		message.addParameter("days", days);
 
+		// send request
 		InterMessage returnMessage = interSender.sendMessage(message);
+
+		// return back
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
 	@Override
 	public String reserveInterLibrary(String instName, String username, String password, String bookName, String authorName) {
+		
+		// marshalling
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_RESERVE_INTER_LIBRARY);
 		
@@ -129,12 +146,17 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("bookName", bookName);
 		message.addParameter("authorName", authorName);
 
+		// send request
 		InterMessage returnMessage = interSender.sendMessage(message);
+
+		// return back
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
 	@Override
 	public String getNonRetuners(String instName, String adminUsername, String adminPassword, String days) {
+		
+		// marshalling
 		InterMessage message = new InterMessage();
 		message.setType(InterMessage.TYPE_GET_NON_RETURNERS);
 		
@@ -143,7 +165,10 @@ public class LibraryFrontEnd extends LibraryServerPOA {
 		message.addParameter("adminPassword", adminPassword);
 		message.addParameter("days", days);
 
+		// send request
 		InterMessage returnMessage = interSender.sendMessage(message);
+		
+		// return back
 		return returnMessage.getParameter(InterMessage.KEY_RETURN_VALUE);
 	}
 
