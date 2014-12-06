@@ -238,3 +238,7 @@ mirsa:y not found
 [mcgill] (INTER) Book x:y not found
 [polytechnique] (INTER) Reserving book X:Y
 [polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0
+[mcgill] (INTER) Reserving book X:Y
+[mcgill] (INTER) Book x:y not found
+[polytechnique] (INTER) Reserving book X:Y
+[polytechnique] (INTER) Book x:y is reserved. Quantity: from 1 TO 0

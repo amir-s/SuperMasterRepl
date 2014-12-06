@@ -199,9 +199,9 @@ public class Sequencer {
 				returnedMessage3.removeParameter(InterMessage.KEY_REPLICA_MANAGER_PORT_NUMBER);
 				
 				String[] r = new String[3];
-				r[0] = new String(returnedMessage1.encode());
-				r[1] = new String(returnedMessage2.encode());
-				r[2] = new String(returnedMessage3.encode());
+				r[0] = new String(returnedMessage1.encode()).toLowerCase();
+				r[1] = new String(returnedMessage2.encode()).toLowerCase();
+				r[2] = new String(returnedMessage3.encode()).toLowerCase();
 				
 				for (int i=0;i<3;i++) {
 					System.out.println("~~ " + i + " " + r[i]);

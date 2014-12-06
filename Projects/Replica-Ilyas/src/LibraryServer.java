@@ -638,8 +638,7 @@ public class LibraryServer {
 			
 			
 			
-		}
-		else{
+		}else{
 			synchronized (m_allUsers.get(_firstChar)){
 				List<Student> _studentList = m_allUsers.get(_firstChar);
 				

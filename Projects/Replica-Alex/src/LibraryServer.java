@@ -19,8 +19,12 @@ public class LibraryServer implements ILibrary{
 		
 		loger = new Logger();
 		loger.setLibraryServer(this);
-
-		// buildFakeData();
+		
+		
+		// create account for Admin
+		// the username "admin" is always admin
+		database.addAccount(new Account("admin", "admin", "Ad", "Min", "xxxxxxx", "911"));
+		
 		initInternalComunication();
 	}
 
@@ -466,7 +470,7 @@ public class LibraryServer implements ILibrary{
 		Account account;
 //		
 //		account = new Account("Admin", "Admin", "Ad", "Min", "xxxxxxx", "911");
-//		database.addAccount(account);
+//		database.addAccount(new Account("Admin", "Admin", "Ad", "Min", "xxxxxxx", "911"));
 //
 //		account = new Account("zhaozhe", "zhaozhe", "Zhe", "Zhao", "xxxxxxx", "514");
 //		database.addAccount(account);

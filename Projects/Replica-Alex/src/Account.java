@@ -45,7 +45,7 @@ public class Account {
 	 * Mark - Basic - Properties
 	 */
 	
-	public static final String ADMIN_USERNAME = "Admin";
+	public static final String ADMIN_USERNAME = "admin";
 	
 	private String username;
 	private String password;	
