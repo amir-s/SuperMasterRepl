@@ -100,3 +100,13 @@ Fri Dec 05 18:58:42 EST 2014: updateStudentRecord: Successfully reserved book X 
 Fri Dec 05 19:10:43 EST 2014: The Account for user amirsa has been successfully created in Concordia.
 Fri Dec 05 19:10:44 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
 Fri Dec 05 19:10:44 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 19:24:43 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:24:44 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 19:24:44 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 19:34:43 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:37:05 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:38:27 EST 2014: The Account for user amirsa has been successfully created in Concordia.
+Fri Dec 05 19:38:32 EST 2014: reserveInterLibrary: book X not available at local library for user request amirsa. Checking other servers
+Fri Dec 05 19:38:32 EST 2014: updateStudentRecord: Successfully reserved book X for the username amirsa.
+Fri Dec 05 19:39:01 EST 2014: Admin operation Get Non Returners called on Concordia with Number of Days20. The result is: 
+0@$Concordia^amirsa^amirsa^123123

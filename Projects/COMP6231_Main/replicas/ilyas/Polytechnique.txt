@@ -37,3 +37,5 @@ Fri Dec 05 18:24:23 EST 2014: Successfully reserved book X for an Inter Library 
 Fri Dec 05 18:34:55 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
 Fri Dec 05 18:58:42 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
 Fri Dec 05 19:10:44 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
+Fri Dec 05 19:24:44 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
+Fri Dec 05 19:38:32 EST 2014: Successfully reserved book X for an Inter Library request. Number of copies available now: 0
